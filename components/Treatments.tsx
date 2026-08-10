@@ -75,10 +75,10 @@ export default function Treatments() {
   return (
     <section className="block" id="treatments">
       <div className="wrap">
-        <div className="head">
+        <div className="head center">
           <span className="eyebrow">Regenerative &amp; non-surgical options</span>
           <h2>
-            PRP, GFC &amp; <b>exosome therapy</b> for hair
+            PRP, GFC &amp; <b>Exosome Therapy</b> for Hair
           </h2>
           <p>
             Non-surgical, doctor-led approaches to hair loss. Here&rsquo;s a
@@ -128,7 +128,7 @@ export default function Treatments() {
           evolving area; your doctor will discuss the current evidence with you.
         </p>
 
-        <div className="sectioncta">
+        <div className="sectioncta center">
           <a href="#book" className="btn lg">
             Book a free consultation
           </a>

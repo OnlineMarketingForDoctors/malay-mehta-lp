@@ -61,12 +61,12 @@ const signals: { icon: ReactNode; text: string }[] = [
 
 export default function IsThisYou() {
   return (
-    <section className="block cream" id="why">
+    <section className="block" id="why">
       <div className="wrap">
-        <div className="head">
+        <div className="head center">
           <span className="eyebrow">Is this you?</span>
           <h2>
-            If you&rsquo;re noticing <b>hair loss or thinning</b>
+            If You&rsquo;re Noticing <b>Hair Loss or Thinning</b>
           </h2>
           <p>
             Many people exploring PRP, GFC or exosome therapy are at an early stage, and a

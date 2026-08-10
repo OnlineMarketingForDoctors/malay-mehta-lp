@@ -52,20 +52,28 @@ request to Google Fonts.
 
 ## Wiring up the booking form
 
-`components/BookForm.tsx` validates name and phone, captures `gclid`, `utm_source`,
-`utm_medium`, `utm_campaign` and the page URL into hidden fields, and on success sends
-the visitor to `/thank-you`.
+`components/BookForm.tsx` embeds the LeadConnector (GoHighLevel) form
+`MYDGWNFIK8AldRJjAagk` in an iframe, loaded by `link.msgsndr.com/js/form_embed.js`.
 
-To send leads to a CRM, set an environment variable on the Vercel project:
+Everything about the submission now lives in LeadConnector, not in this repo: the fields,
+validation, where leads land, and **where the visitor goes after submitting**. Two things
+follow from that.
 
-```
-NEXT_PUBLIC_LEAD_ENDPOINT=https://your-crm/endpoint
-```
+- **The `/thank-you` redirect is a LeadConnector setting.** This site no longer performs
+  it. For the confirmation page and any destination-based conversion to fire, the form's
+  on-submit action in LeadConnector must point at
+  `https://<domain>/thank-you`. If it is set to show an inline message instead, `/thank-you`
+  is simply never reached.
+- **Campaign parameters are the embed's job.** The old form copied `gclid` and the `utm_*`
+  values into hidden fields; that code is gone. Attribution now depends on LeadConnector
+  reading the query string of the parent page.
 
-The form then POSTs the submission as JSON and only redirects once the endpoint returns
-a success status; a failure keeps the visitor on the form with the clinic's phone number.
-With no endpoint set it validates and redirects without sending anything, so the page can
-go live before the CRM is connected.
+`NEXT_PUBLIC_LEAD_ENDPOINT` is no longer read by anything and can be removed from the
+Vercel project.
+
+The embed's own inline style is `height:100%`, which collapses to zero inside an
+auto-height parent, so `.leadform iframe` sets a `min-height` floor of 502px (its
+`data-height`). The embed script may grow it beyond that.
 
 ### The thank-you page
 
@@ -73,9 +81,9 @@ go live before the CRM is connected.
 to-call. It is `noindex, nofollow` — a confirmation page that ranks collects organic
 landings that never filled the form in, which inflates conversion counts.
 
-Because the redirect is a real page load, `/thank-you` is the natural place for a Google
-Ads conversion tag or a GA4 destination-based conversion. Set that up as a trigger in GTM
-(see below) rather than hard-coding a tag into the page.
+It is a real page load, so it is the natural target for a Google Ads conversion tag or a
+GA4 destination conversion. Set that up as a trigger in GTM (see below) rather than
+hard-coding a tag into the page.
 
 ## Google Tag Manager
 

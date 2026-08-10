@@ -10,7 +10,7 @@ const pillars: { icon: ReactNode; title: string; body: string }[] = [
         strokeLinejoin="round"
       />
     ),
-    title: "Qualified dermatologist",
+    title: "Qualified Dermatologist",
     body: "MBBS and MD in Dermatology, your assessment and any treatment are led by a doctor.",
   },
   {
@@ -26,7 +26,7 @@ const pillars: { icon: ReactNode; title: string; body: string }[] = [
         />
       </>
     ),
-    title: "Honest advice",
+    title: "Honest Advice",
     body: 'We’re known for saying "no" when a treatment won’t help, you’ll get a straight answer.',
   },
   {
@@ -41,7 +41,7 @@ const pillars: { icon: ReactNode; title: string; body: string }[] = [
         <circle cx="12" cy="11" r="2.5" stroke="currentColor" strokeWidth="2" />
       </>
     ),
-    title: "Established Mumbai clinic",
+    title: "Established Mumbai Clinic",
     body: "A dedicated hair and skin clinic in Vile Parle West, caring for patients since 2018.",
   },
   {
@@ -51,7 +51,7 @@ const pillars: { icon: ReactNode; title: string; body: string }[] = [
         <path d="M4 9h16M8 5v14" stroke="currentColor" strokeWidth="2" />
       </>
     ),
-    title: "Options explained clearly",
+    title: "Options Explained Clearly",
     body: "PRP, GFC, exosome and other options, described plainly so you can choose with confidence.",
   },
   {
@@ -72,7 +72,7 @@ const pillars: { icon: ReactNode; title: string; body: string }[] = [
         />
       </>
     ),
-    title: "Safe, careful care",
+    title: "Safe, Careful Care",
     body: "Strict clinical protocols at every step, in a fully equipped, doctor-run clinic.",
   },
   {
@@ -83,16 +83,16 @@ const pillars: { icon: ReactNode; title: string; body: string }[] = [
         <path d="M12 12 9 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </>
     ),
-    title: "Online or in-clinic",
+    title: "Online or In-Clinic",
     body: "Start with a remote consultation if that's easier, reviewed personally by the doctor.",
   },
 ];
 
 export default function WhyDrMehta() {
   return (
-    <section className="block cream">
+    <section className="block">
       <div className="wrap">
-        <div className="head">
+        <div className="head center">
           <span className="eyebrow">Why choose</span>
           <h2>Dr Malay Mehta</h2>
         </div>

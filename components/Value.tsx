@@ -13,7 +13,7 @@ export default function Value() {
         <div>
           <div className="big">
             <small>Your consultation</small>
-            Free &amp; without obligation
+            Free &amp; Without Obligation
           </div>
         </div>
         <div>

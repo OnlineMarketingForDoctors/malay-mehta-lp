@@ -6,12 +6,12 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <section className="block cream" id="pricing">
+    <section className="block" id="pricing">
       <div className="wrap">
         <div className="head center">
           <span className="eyebrow">Pricing</span>
           <h2>
-            Clear, <b>per-session</b> pricing
+            Clear, <b>Per-Session</b> Pricing
           </h2>
           <p>
             Straightforward per-session pricing. The right treatment and the number of

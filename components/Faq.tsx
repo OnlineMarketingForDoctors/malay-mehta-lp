@@ -41,7 +41,7 @@ export default function Faq() {
       <div className="wrap">
         <div className="head center">
           <span className="eyebrow">Good to know</span>
-          <h2>Your questions, answered</h2>
+          <h2>Your Questions, Answered</h2>
         </div>
 
         <div className="faq">

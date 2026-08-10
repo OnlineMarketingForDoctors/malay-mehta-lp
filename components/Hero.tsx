@@ -18,7 +18,7 @@ export default function Hero() {
             <br />
             <em>Exosome Therapy</em>
           </b>{" "}
-          for hair
+          for Hair
         </h1>
         <p className="lead">
           Doctor-led, non-surgical hair restoration with {site.doctor}, MD Dermatology,

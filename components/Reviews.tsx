@@ -31,12 +31,12 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section className="block" id="reviews">
+    <section className="block cream" id="reviews">
       <div className="wrap">
         <div className="head center">
           <span className="eyebrow">Reviews</span>
           <h2>
-            What our <b>patients say</b>
+            What Our <b>Patients Say</b>
           </h2>
           <div className="gbadge">
             <GoogleG /> <b>5.0</b> <span className="gs">★★★★★</span>{" "}

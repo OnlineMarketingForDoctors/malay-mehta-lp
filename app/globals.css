@@ -200,11 +200,11 @@ nav.anchors a:hover {
   background:
     linear-gradient(
       90deg,
-      rgba(20, 24, 28, 0.94) 0%,
-      rgba(20, 24, 28, 0.8) 46%,
-      rgba(20, 24, 28, 0.6) 100%
+      rgba(20, 24, 28, 0.47) 0%,
+      rgba(20, 24, 28, 0.4) 46%,
+      rgba(20, 24, 28, 0.3) 100%
     ),
-    var(--hero-image, none) center / cover no-repeat,
+    var(--hero-image, none) top center / cover no-repeat,
     var(--ink);
   color: #fff;
 }
@@ -368,10 +368,8 @@ section.block {
 
 .tcard {
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 10px;
   padding: 28px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 0 20px #ddd;
   display: flex;
   flex-direction: column;
 }
@@ -427,8 +425,6 @@ section.block {
 
 .subopt {
   background: var(--cream);
-  border: 1px solid #f0e6df;
-  border-radius: 8px;
   padding: 18px 20px;
 }
 
@@ -448,9 +444,10 @@ section.block {
 .disclaim {
   font-size: 12.5px;
   color: var(--muted);
-  margin-top: 26px;
+  margin: 26px auto 0;
   max-width: 900px;
   line-height: 1.55;
+  text-align: center;
 }
 
 /* ---------- signals ---------- */
@@ -462,10 +459,8 @@ section.block {
 
 .signal {
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
   padding: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 0 20px #ddd;
 }
 
 .signal .ic {
@@ -532,10 +527,8 @@ section.block {
 
 .pillar {
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
   padding: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 0 20px #ddd;
 }
 
 .pillar .ic {
@@ -585,21 +578,13 @@ section.block {
 }
 
 .about .photo {
+  width: 100%;
   aspect-ratio: 4/5;
+  object-fit: cover;
   border-radius: 10px;
   background: #ede0cf;
-  border: 1px dashed #d3c3ac;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: #b29a7c;
+  display: block;
   box-shadow: var(--shadow);
-}
-
-.about .photo span {
-  font-weight: 700;
-  font-size: 13px;
-  padding: 0 24px;
 }
 
 .creds {
@@ -681,8 +666,6 @@ section.block {
 }
 
 details {
-  border: 1px solid var(--line);
-  border-radius: 6px;
   background: #fff;
   margin-bottom: 12px;
   overflow: hidden;
@@ -730,7 +713,9 @@ details .a {
 
 /* ---------- booking ---------- */
 .booksec {
-  background: var(--ink);
+  background:
+    var(--book-image, none) center / cover no-repeat,
+    var(--ink);
   color: #fff;
 }
 
@@ -838,6 +823,14 @@ form .btn {
   text-align: center;
   margin-top: 12px;
   line-height: 1.5;
+}
+
+/* LeadConnector embed: its inline style is height:100%, which collapses to zero
+   in an auto-height parent. The floor keeps the form visible before the embed
+   script measures it, and the script is free to grow it past this. */
+.leadform iframe {
+  display: block;
+  min-height: 502px;
 }
 
 .form-error {
@@ -1199,10 +1192,8 @@ footer .fine a {
 
 .bacard {
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 0 20px #ddd;
 }
 
 .bacard img {

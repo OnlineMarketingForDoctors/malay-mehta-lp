@@ -35,5 +35,10 @@ export const site = {
    * the fallback either way.
    */
   heroImage:
-    "https://www.drmalaymehta.com/wp-content/uploads/2021/07/hero-default.jpg",
+    "https://www.drmalaymehta.com/wp-content/uploads/2022/03/growth-factor-concentrate-for-hair-mumbai.jpg",
+  /** Background photograph behind the booking section. */
+  bookImage: "https://www.drmalaymehta.com/wp-content/uploads/2022/01/dark-bg.jpg",
+  /** Portrait in the About section. */
+  doctorPhoto:
+    "https://www.drmalaymehta.com/wp-content/uploads/2025/07/dr-malay-mehta.jpeg",
 } as const;

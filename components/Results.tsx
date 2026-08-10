@@ -23,12 +23,12 @@ const cases = [
 
 export default function Results() {
   return (
-    <section className="block" id="results">
+    <section className="block cream" id="results">
       <div className="wrap">
         <div className="head center">
           <span className="eyebrow">Before &amp; after</span>
           <h2>
-            Real patient <b>results</b>
+            Real Patient <b>Results</b>
           </h2>
           <p>
             A few of our GFC patients. Every plan is personalised, and results vary from

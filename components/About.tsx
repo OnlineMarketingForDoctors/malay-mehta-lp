@@ -1,3 +1,4 @@
+import { site } from "@/lib/site";
 import { Check } from "./icons";
 
 const credentials = [
@@ -33,10 +34,14 @@ export default function About() {
               ))}
             </ul>
           </div>
-          {/* Placeholder frame from the mockup — drop a photo in /public and swap in <Image>. */}
-          <div className="photo">
-            <span>Add a photo of Dr Malay Mehta or the clinic here</span>
-          </div>
+          {/* Plain <img>: served from the main site, intrinsic size not known here. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="photo"
+            src={site.doctorPhoto}
+            alt={`${site.doctor}, dermatologist, Mumbai`}
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
