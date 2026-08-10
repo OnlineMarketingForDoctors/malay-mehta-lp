@@ -96,9 +96,6 @@ export default function ThankYouPage() {
               <a href={site.phoneHref} className="btn lg">
                 Call {site.phoneDisplay}
               </a>
-              <a href="/" className="btn lg tyghost">
-                Back to the page
-              </a>
             </div>
           </div>
         </section>

@@ -4,6 +4,18 @@ Next.js landing page for **PRP, GFC & exosome therapy** at Malay Mehta Aesthetic
 Vile Parle West, Mumbai. Built from the approved mockup, styled to match
 [drmalaymehta.com](https://www.drmalaymehta.com/).
 
+## Routes
+
+| Path | What it is |
+| --- | --- |
+| `/non-surgical-hair-treatment` | The landing page |
+| `/thank-you` | Confirmation page after the form is submitted, `noindex` |
+| `/` | 307 redirect to the landing page |
+
+The landing page path is set once in `lib/site.ts` as `lpPath`; every internal link and the
+root redirect are built from it. Moving the page means changing that value and renaming
+the folder under `app/`.
+
 ## Running locally
 
 ```bash
@@ -18,7 +30,7 @@ npm run build    # production build
 | --- | --- |
 | `app/layout.tsx` | Fonts, page metadata, `MedicalClinic` JSON-LD |
 | `app/globals.css` | The whole design system — brand tokens live in `:root` |
-| `app/page.tsx` | Section order for the landing page |
+| `app/non-surgical-hair-treatment/page.tsx` | The landing page — section order and its SEO metadata |
 | `app/thank-you/page.tsx` | Post-submission confirmation page at `/thank-you` |
 | `components/` | One file per section, in the order they appear |
 | `lib/site.ts` | Clinic name, phone, address, hero image — edit once, applies everywhere |

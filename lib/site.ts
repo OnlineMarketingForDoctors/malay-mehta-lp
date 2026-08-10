@@ -12,6 +12,12 @@ export const site = {
   region: "Maharashtra",
   postalCode: "400056",
   country: "IN",
+  /**
+   * Where the landing page lives. Every internal link is built from this, so
+   * moving the page is a one-line change here plus renaming its folder under
+   * app/. `/` redirects here — see next.config.mjs.
+   */
+  lpPath: "/non-surgical-hair-treatment",
   /** Google Tag Manager container. Loaded on every page from app/layout.tsx. */
   gtmId: "GTM-MZTRS97",
   mainSite: "https://www.drmalaymehta.com/",
@@ -21,7 +27,7 @@ export const site = {
    * clinic name, so a failed load degrades to readable text rather than nothing.
    */
   footerLogo:
-    "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.png",
+    "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.webp",
   /**
    * Hero background photograph, served from the main WordPress site so the
    * landing page stays visually in step with it. Swap for a local file in

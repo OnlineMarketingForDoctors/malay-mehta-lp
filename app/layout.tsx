@@ -10,19 +10,11 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
+/** Defaults only — each page sets its own title and description. */
 export const metadata: Metadata = {
-  title: "PRP, GFC & Exosome Therapy for Hair | Dr Malay Mehta, Mumbai",
+  title: site.name,
   description:
-    "Doctor-led, non-surgical hair restoration in Vile Parle, Mumbai with Dr Malay Mehta, MD Dermatology. PRP hair treatment, GFC therapy and exosome therapy. Book a free consultation.",
-  robots: { index: true, follow: true },
-  openGraph: {
-    title: "PRP, GFC & Exosome Therapy for Hair | Dr Malay Mehta, Mumbai",
-    description:
-      "Non-surgical hair restoration led by Dr Malay Mehta, MD Dermatology. Free consultation in Vile Parle, Mumbai.",
-    siteName: site.name,
-    locale: "en_IN",
-    type: "website",
-  },
+    "Hair and skin care led by Dr Malay Mehta, MD Dermatology, in Vile Parle West, Mumbai.",
 };
 
 /**

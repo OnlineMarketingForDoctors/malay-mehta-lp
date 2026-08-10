@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { site } from "@/lib/site";
 
-// Root-relative so the header works from /thank-you as well as the landing page.
+// Absolute paths so the header works from /thank-you as well as the landing page.
 const links = [
-  { href: "/#treatments", label: "Treatments" },
-  { href: "/#pricing", label: "Pricing" },
-  { href: "/#how", label: "How it works" },
-  { href: "/#about", label: "About Dr Mehta" },
-  { href: "/#reviews", label: "Reviews" },
-  { href: "/#faq", label: "FAQ" },
+  { hash: "#treatments", label: "Treatments" },
+  { hash: "#pricing", label: "Pricing" },
+  { hash: "#how", label: "How it works" },
+  { hash: "#about", label: "About Dr Mehta" },
+  { hash: "#reviews", label: "Reviews" },
+  { hash: "#faq", label: "FAQ" },
 ];
 
 type Props = {
@@ -23,14 +23,18 @@ export default function SiteHeader({ minimal = false }: Props) {
   return (
     <header className="site">
       <div className={`wrap bar${minimal ? " minimal" : ""}`}>
-        <a className="logo" href="/" aria-label={`${site.doctor} Aesthetic Clinic`}>
+        <a
+          className="logo"
+          href={site.lpPath}
+          aria-label={`${site.doctor} Aesthetic Clinic`}
+        >
           <Image src="/logo.jpg" alt={site.name} width={160} height={80} priority />
         </a>
         {!minimal && (
           <>
             <nav className="anchors" aria-label="Page sections">
               {links.map((link) => (
-                <a key={link.href} href={link.href}>
+                <a key={link.hash} href={`${site.lpPath}${link.hash}`}>
                   {link.label}
                 </a>
               ))}
@@ -40,7 +44,7 @@ export default function SiteHeader({ minimal = false }: Props) {
                 <span>Call </span>
                 {site.phoneDisplay}
               </div>
-              <a href="/#book" className="btn">
+              <a href={`${site.lpPath}#book`} className="btn">
                 Book a free consult
               </a>
             </div>

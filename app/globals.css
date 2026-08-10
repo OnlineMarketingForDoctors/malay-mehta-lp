@@ -928,16 +928,6 @@ form .btn {
   gap: 12px;
 }
 
-.tyghost {
-  background: transparent;
-  color: var(--rust);
-  border: 1.5px solid var(--rust);
-}
-
-.tyghost:hover {
-  background: var(--peach-tint);
-}
-
 /* ---------- footer ---------- */
 footer.site {
   background: #151a1f;
