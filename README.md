@@ -62,8 +62,26 @@ to-call. It is `noindex, nofollow` — a confirmation page that ranks collects o
 landings that never filled the form in, which inflates conversion counts.
 
 Because the redirect is a real page load, `/thank-you` is the natural place for a Google
-Ads conversion tag or a GA4 destination-based conversion. Nothing is fired from the page
-today; add the tag there when the accounts are ready.
+Ads conversion tag or a GA4 destination-based conversion. Set that up as a trigger in GTM
+(see below) rather than hard-coding a tag into the page.
+
+## Google Tag Manager
+
+Container `GTM-MZTRS97`, loaded on every page from `app/layout.tsx`: the loader snippet is
+a plain `<script>` in `<head>`, and the `<noscript>` iframe is the first element in
+`<body>`. The container ID lives in `lib/site.ts`.
+
+Two things to know if you touch this:
+
+- It deliberately does **not** use `next/script`. `strategy="beforeInteractive"` queues the
+  snippet through Next's own loader at the top of `<body>` — early enough to run, but not
+  in `<head>` and not the snippet Google gave you.
+- Next emits its framework chunks above the tag in `<head>`. They are all `async`, so this
+  inline script still executes first; there is no way to sit above them in the App Router
+  without giving up Next's head management entirely.
+
+Since `/thank-you` is a distinct URL, the form conversion can be a Page View trigger on
+`Page Path equals /thank-you` — no custom dataLayer event needed.
 
 ## Before running paid traffic
 

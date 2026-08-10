@@ -12,6 +12,8 @@ export const site = {
   region: "Maharashtra",
   postalCode: "400056",
   country: "IN",
+  /** Google Tag Manager container. Loaded on every page from app/layout.tsx. */
+  gtmId: "GTM-MZTRS97",
   mainSite: "https://www.drmalaymehta.com/",
   privacyPolicy: "https://www.drmalaymehta.com/wpautoterms/privacy-policy/",
   /**
