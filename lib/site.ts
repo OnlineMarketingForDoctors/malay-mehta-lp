@@ -27,7 +27,7 @@ export const site = {
    * clinic name, so a failed load degrades to readable text rather than nothing.
    */
   footerLogo:
-    "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.webp",
+    "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.png.webp",
   /**
    * Hero background photograph, served from the main WordPress site so the
    * landing page stays visually in step with it. Swap for a local file in
