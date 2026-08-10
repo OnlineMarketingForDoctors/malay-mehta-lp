@@ -11,29 +11,41 @@ const links = [
   { href: "/#faq", label: "FAQ" },
 ];
 
-export default function SiteHeader() {
+type Props = {
+  /**
+   * Logo only, centred — for pages past the point of conversion, where nav,
+   * phone and a book CTA would only pull the visitor back out.
+   */
+  minimal?: boolean;
+};
+
+export default function SiteHeader({ minimal = false }: Props) {
   return (
     <header className="site">
-      <div className="wrap bar">
+      <div className={`wrap bar${minimal ? " minimal" : ""}`}>
         <a className="logo" href="/" aria-label={`${site.doctor} Aesthetic Clinic`}>
           <Image src="/logo.jpg" alt={site.name} width={160} height={80} priority />
         </a>
-        <nav className="anchors" aria-label="Page sections">
-          {links.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <div className="right">
-          <div className="phone">
-            <span>Call </span>
-            {site.phoneDisplay}
-          </div>
-          <a href="/#book" className="btn">
-            Book a free consult
-          </a>
-        </div>
+        {!minimal && (
+          <>
+            <nav className="anchors" aria-label="Page sections">
+              {links.map((link) => (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="right">
+              <div className="phone">
+                <span>Call </span>
+                {site.phoneDisplay}
+              </div>
+              <a href="/#book" className="btn">
+                Book a free consult
+              </a>
+            </div>
+          </>
+        )}
       </div>
     </header>
   );

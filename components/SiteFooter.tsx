@@ -4,9 +4,13 @@ export default function SiteFooter() {
   return (
     <footer className="site">
       <div className="wrap">
-        <div className="fword">
-          Malay Mehta<small>Aesthetic Clinic</small>
-        </div>
+        {/*
+          Plain <img>, not next/image: the file lives on the main WordPress site
+          and its intrinsic dimensions aren't known here. Height is fixed in CSS
+          so the row can't shift as it loads.
+        */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="flogo" src={site.footerLogo} alt={site.name} />
         <address>
           {site.street}
           <br />

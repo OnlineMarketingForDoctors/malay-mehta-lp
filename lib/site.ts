@@ -17,6 +17,12 @@ export const site = {
   mainSite: "https://www.drmalaymehta.com/",
   privacyPolicy: "https://www.drmalaymehta.com/wpautoterms/privacy-policy/",
   /**
+   * Footer wordmark, served from the main WordPress site. Its alt text is the
+   * clinic name, so a failed load degrades to readable text rather than nothing.
+   */
+  footerLogo:
+    "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.png",
+  /**
    * Hero background photograph, served from the main WordPress site so the
    * landing page stays visually in step with it. Swap for a local file in
    * /public if you would rather not hotlink; the dark gradient underneath is

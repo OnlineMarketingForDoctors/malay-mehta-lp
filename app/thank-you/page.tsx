@@ -31,7 +31,7 @@ const steps = [
 export default function ThankYouPage() {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader minimal />
       <main>
         <section className="tyhero">
           <div className="wrap">
