@@ -493,7 +493,7 @@ section.block {
   counter-increment: s;
   font-weight: 900;
   font-size: 15px;
-  color: #1e2329;
+  color: #fff;
   background: var(--peach);
   width: 40px;
   height: 40px;
@@ -581,7 +581,6 @@ section.block {
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
-  border-radius: 10px;
   background: #ede0cf;
   display: block;
   box-shadow: var(--shadow);
@@ -610,7 +609,7 @@ section.block {
 
 /* ---------- value ---------- */
 .value {
-  background: #fff;
+  background: var(--rust);
 }
 
 .value .wrap {
@@ -624,7 +623,7 @@ section.block {
 .value .big {
   font-weight: 500;
   font-size: clamp(28px, 3.6vw, 42px);
-  color: var(--ink);
+  color: #fff;
   line-height: 1.1;
 }
 
@@ -634,7 +633,7 @@ section.block {
   font-size: 13px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--cream);
   margin-bottom: 8px;
 }
 
@@ -649,14 +648,28 @@ section.block {
   display: flex;
   gap: 12px;
   font-size: 16.5px;
-  color: var(--ink);
+  color: #fff;
   font-weight: 500;
 }
 
 .value li svg {
   flex: 0 0 auto;
-  color: var(--rust);
+  color: var(--cream);
   margin-top: 3px;
+}
+
+/* Inverted CTA: the default rust fill would vanish against this section. */
+.value .btn {
+  background: var(--cream);
+  color: var(--rust);
+}
+
+.value .btn:hover {
+  background: #fff;
+}
+
+.value a:focus-visible {
+  outline-color: var(--cream);
 }
 
 /* ---------- faq ---------- */
@@ -825,12 +838,11 @@ form .btn {
   line-height: 1.5;
 }
 
-/* LeadConnector embed: its inline style is height:100%, which collapses to zero
-   in an auto-height parent. The floor keeps the form visible before the embed
-   script measures it, and the script is free to grow it past this. */
+/* LeadConnector embed. No min-height: the embed script sets the iframe's height
+   from the form's measured content, and any floor taller than that shows up as
+   blank space under the form. display:block removes the inline baseline gap. */
 .leadform iframe {
   display: block;
-  min-height: 502px;
 }
 
 .form-error {
