@@ -98,5 +98,12 @@ Since `/thank-you` is a distinct URL, the form conversion can be a Page View tri
 
 ## Deployment
 
-Connected to the `malay-mehta-lp` Vercel project. Every push builds automatically:
-pushes to the default branch go to production, other branches get preview URLs.
+Connected to the `malay-mehta-lp` Vercel project, which builds on every push.
+
+- **`main` is the production branch.** Pushing to it deploys straight to production, with
+  no manual promote step in the Vercel dashboard.
+- Any other branch gets a preview URL, useful for reviewing a change before it goes live.
+
+Work happens on a feature branch and lands on `main` when it is verified. Note that Vercel
+skips a build when the commit has already been deployed, so pushing an existing commit to
+`main` will not by itself produce a production deployment — push a new commit.
