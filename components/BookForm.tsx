@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
-import { Check } from "./icons";
 
 type Tracking = {
   gclid: string;
@@ -23,17 +23,16 @@ const emptyTracking: Tracking = {
 /**
  * Where submitted leads are POSTed as JSON. Set NEXT_PUBLIC_LEAD_ENDPOINT in the
  * Vercel project to the CRM / form handler URL. With no endpoint configured the
- * form still validates and shows the thank-you state, exactly like the mockup,
- * so the page can go live before the CRM is wired up.
+ * form still validates and redirects to /thank-you, so the page can go live
+ * before the CRM is wired up.
  */
 const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
 
 export default function BookForm() {
+  const router = useRouter();
   const [tracking, setTracking] = useState<Tracking>(emptyTracking);
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const okRef = useRef<HTMLDivElement>(null);
 
   // Campaign parameters are only available in the browser, so read them after mount.
   useEffect(() => {
@@ -47,11 +46,10 @@ export default function BookForm() {
     });
   }, []);
 
+  // The thank-you page is where conversions are counted, so warm it up early.
   useEffect(() => {
-    if (submitted) {
-      okRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, [submitted]);
+    router.prefetch("/thank-you");
+  }, [router]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -70,7 +68,7 @@ export default function BookForm() {
     }
 
     if (!endpoint) {
-      setSubmitted(true);
+      router.push("/thank-you");
       return;
     }
 
@@ -83,12 +81,11 @@ export default function BookForm() {
         body: JSON.stringify(Object.fromEntries(data.entries())),
       });
       if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
-      setSubmitted(true);
+      router.push("/thank-you");
     } catch {
       setError(
         `Sorry, something went wrong. Please call us on ${site.phoneDisplay} and we'll book you in.`,
       );
-    } finally {
       setSubmitting(false);
     }
   }
@@ -110,99 +107,79 @@ export default function BookForm() {
         </div>
 
         <div className="card">
-          {submitted ? (
-            <div className="form-ok" ref={okRef} role="status">
-              <div className="tick">
-                <Check size={26} />
-              </div>
-              <h3>Thank you</h3>
-              <p>
-                We&rsquo;ve received your details and will call you shortly to arrange your
-                free consultation.
-              </p>
+          <div className="kicker">Free · no obligation</div>
+          <h3>Book a free consultation</h3>
+          <p className="sub">A doctor-led hair-loss assessment, online or in-clinic.</p>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="field">
+              <label htmlFor="name">Your name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Full name"
+                required
+                autoComplete="name"
+              />
             </div>
-          ) : (
-            <div>
-              <div className="kicker">Free · no obligation</div>
-              <h3>Book a free consultation</h3>
-              <p className="sub">A doctor-led hair-loss assessment, online or in-clinic.</p>
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="field">
-                  <label htmlFor="name">Your name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Full name"
-                    required
-                    autoComplete="name"
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="phone">Phone / WhatsApp</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="+91"
-                    required
-                    autoComplete="tel"
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="you@email.com"
-                    autoComplete="email"
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="concern">Which treatment are you interested in?</label>
-                  <select id="concern" name="interest" defaultValue="">
-                    <option value="">Select one…</option>
-                    <option>PRP hair treatment</option>
-                    <option>GFC therapy</option>
-                    <option>Exosome therapy</option>
-                    <option>Not sure, please advise</option>
-                  </select>
-                </div>
-                <div className="field">
-                  <label htmlFor="hdyhau">How did you hear about us?</label>
-                  <select id="hdyhau" name="how_did_you_hear" defaultValue="">
-                    <option value="">Select one…</option>
-                    <option>Google</option>
-                    <option>Instagram</option>
-                    <option>Facebook</option>
-                    <option>Friend / colleague</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-
-                <input type="hidden" name="gclid" value={tracking.gclid} readOnly />
-                <input type="hidden" name="utm_source" value={tracking.utm_source} readOnly />
-                <input type="hidden" name="utm_medium" value={tracking.utm_medium} readOnly />
-                <input
-                  type="hidden"
-                  name="utm_campaign"
-                  value={tracking.utm_campaign}
-                  readOnly
-                />
-                <input type="hidden" name="page_url" value={tracking.page_url} readOnly />
-
-                <button className="btn" type="submit" disabled={submitting}>
-                  {submitting ? "Sending…" : "Book my free consultation"}
-                </button>
-                {error && <p className="form-error">{error}</p>}
-                <p className="form-fine">
-                  No cost, no obligation. Your details are used only to arrange your
-                  consultation.
-                </p>
-              </form>
+            <div className="field">
+              <label htmlFor="phone">Phone / WhatsApp</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+91"
+                required
+                autoComplete="tel"
+              />
             </div>
-          )}
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@email.com"
+                autoComplete="email"
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="concern">Which treatment are you interested in?</label>
+              <select id="concern" name="interest" defaultValue="">
+                <option value="">Select one…</option>
+                <option>PRP hair treatment</option>
+                <option>GFC therapy</option>
+                <option>Exosome therapy</option>
+                <option>Not sure, please advise</option>
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="hdyhau">How did you hear about us?</label>
+              <select id="hdyhau" name="how_did_you_hear" defaultValue="">
+                <option value="">Select one…</option>
+                <option>Google</option>
+                <option>Instagram</option>
+                <option>Facebook</option>
+                <option>Friend / colleague</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <input type="hidden" name="gclid" value={tracking.gclid} readOnly />
+            <input type="hidden" name="utm_source" value={tracking.utm_source} readOnly />
+            <input type="hidden" name="utm_medium" value={tracking.utm_medium} readOnly />
+            <input type="hidden" name="utm_campaign" value={tracking.utm_campaign} readOnly />
+            <input type="hidden" name="page_url" value={tracking.page_url} readOnly />
+
+            <button className="btn" type="submit" disabled={submitting}>
+              {submitting ? "Sending…" : "Book my free consultation"}
+            </button>
+            {error && <p className="form-error">{error}</p>}
+            <p className="form-fine">
+              No cost, no obligation. Your details are used only to arrange your
+              consultation.
+            </p>
+          </form>
         </div>
       </div>
     </section>

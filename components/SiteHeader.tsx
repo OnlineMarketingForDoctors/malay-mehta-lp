@@ -1,20 +1,21 @@
 import Image from "next/image";
 import { site } from "@/lib/site";
 
+// Root-relative so the header works from /thank-you as well as the landing page.
 const links = [
-  { href: "#treatments", label: "Treatments" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#how", label: "How it works" },
-  { href: "#about", label: "About Dr Mehta" },
-  { href: "#reviews", label: "Reviews" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#treatments", label: "Treatments" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#how", label: "How it works" },
+  { href: "/#about", label: "About Dr Mehta" },
+  { href: "/#reviews", label: "Reviews" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function SiteHeader() {
   return (
     <header className="site">
       <div className="wrap bar">
-        <a className="logo" href="#top" aria-label={`${site.doctor} Aesthetic Clinic`}>
+        <a className="logo" href="/" aria-label={`${site.doctor} Aesthetic Clinic`}>
           <Image src="/logo.jpg" alt={site.name} width={160} height={80} priority />
         </a>
         <nav className="anchors" aria-label="Page sections">
@@ -29,7 +30,7 @@ export default function SiteHeader() {
             <span>Call </span>
             {site.phoneDisplay}
           </div>
-          <a href="#book" className="btn">
+          <a href="/#book" className="btn">
             Book a free consult
           </a>
         </div>

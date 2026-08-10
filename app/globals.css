@@ -835,39 +835,102 @@ form .btn {
   line-height: 1.5;
 }
 
-.form-ok {
-  text-align: center;
-  padding: 26px 6px;
-}
-
-.form-ok .tick {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--peach-tint);
-  color: var(--rust);
-  display: grid;
-  place-items: center;
-  margin: 0 auto 12px;
-}
-
-.form-ok h3 {
-  font-size: 22px;
-  margin-bottom: 6px;
-  color: var(--ink);
-}
-
-.form-ok p {
-  color: var(--muted);
-  font-size: 15px;
-}
-
 .form-error {
   margin-top: 12px;
   font-size: 13.5px;
   color: var(--rust);
   font-weight: 700;
   text-align: center;
+}
+
+/* ---------- thank-you page ---------- */
+.tyhero {
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+}
+
+.tyhero .wrap {
+  padding: 76px 24px 82px;
+  max-width: 720px;
+}
+
+.tyhero .eyebrow {
+  color: var(--peach);
+}
+
+.tytick {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(228, 174, 149, 0.16);
+  border: 1px solid #3a424a;
+  color: var(--peach);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 22px;
+}
+
+.tyhero h1 {
+  color: #fff;
+  font-size: clamp(34px, 4.6vw, 52px);
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin: 12px 0 0;
+}
+
+.tyhero .lead {
+  font-size: 19px;
+  color: #cdd2d7;
+  margin: 18px auto 0;
+  max-width: 46ch;
+}
+
+.tyhero .callnow {
+  margin-top: 24px;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+}
+
+.tyhero .callnow a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.tyvisit {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.tyvisit h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.tyvisit address {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 16.5px;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+.tyactions {
+  display: grid;
+  gap: 12px;
+}
+
+.tyghost {
+  background: transparent;
+  color: var(--rust);
+  border: 1.5px solid var(--rust);
+}
+
+.tyghost:hover {
+  background: var(--peach-tint);
 }
 
 /* ---------- footer ---------- */
@@ -1247,13 +1310,21 @@ footer .fine a {
     max-width: 440px;
     margin: 0 auto;
   }
+  .tyvisit {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .tyhero .wrap {
+    padding: 54px 24px 58px;
+  }
 }
 
 @media (max-width: 720px) {
   .mobilecta {
     display: block;
   }
-  body {
+  /* Only reserve room on pages that actually render the sticky bar. */
+  body:has(.mobilecta) {
     padding-bottom: 74px;
   }
 }

@@ -18,7 +18,8 @@ npm run build    # production build
 | --- | --- |
 | `app/layout.tsx` | Fonts, page metadata, `MedicalClinic` JSON-LD |
 | `app/globals.css` | The whole design system — brand tokens live in `:root` |
-| `app/page.tsx` | Section order for the page |
+| `app/page.tsx` | Section order for the landing page |
+| `app/thank-you/page.tsx` | Post-submission confirmation page at `/thank-you` |
 | `components/` | One file per section, in the order they appear |
 | `lib/site.ts` | Clinic name, phone, address, hero image — edit once, applies everywhere |
 | `public/` | Logo and before/after photography |
@@ -40,8 +41,8 @@ request to Google Fonts.
 ## Wiring up the booking form
 
 `components/BookForm.tsx` validates name and phone, captures `gclid`, `utm_source`,
-`utm_medium`, `utm_campaign` and the page URL into hidden fields, and shows the
-thank-you state on success.
+`utm_medium`, `utm_campaign` and the page URL into hidden fields, and on success sends
+the visitor to `/thank-you`.
 
 To send leads to a CRM, set an environment variable on the Vercel project:
 
@@ -49,9 +50,20 @@ To send leads to a CRM, set an environment variable on the Vercel project:
 NEXT_PUBLIC_LEAD_ENDPOINT=https://your-crm/endpoint
 ```
 
-The form then POSTs the submission as JSON. With no endpoint set it validates and shows
-the thank-you state without sending anything, so the page can go live before the CRM is
-connected.
+The form then POSTs the submission as JSON and only redirects once the endpoint returns
+a success status; a failure keeps the visitor on the form with the clinic's phone number.
+With no endpoint set it validates and redirects without sending anything, so the page can
+go live before the CRM is connected.
+
+### The thank-you page
+
+`/thank-you` is the conversion destination: confirmation, what happens next, and a click-
+to-call. It is `noindex, nofollow` — a confirmation page that ranks collects organic
+landings that never filled the form in, which inflates conversion counts.
+
+Because the redirect is a real page load, `/thank-you` is the natural place for a Google
+Ads conversion tag or a GA4 destination-based conversion. Nothing is fired from the page
+today; add the tag there when the accounts are ready.
 
 ## Before running paid traffic
 
