@@ -13,15 +13,15 @@ const faqs = [
   },
   {
     q: "What does PRP hair treatment cost?",
-    a: "Cost depends on the plan that's right for you, so it's discussed openly at your free consultation rather than quoted upfront. There's no obligation to proceed.",
+    a: "Cost depends on the plan that's right for you, so it's discussed openly at your consultation rather than quoted upfront. There's no obligation to proceed.",
   },
   {
     q: "Do you offer these treatments near me in Mumbai?",
     a: "Yes, the clinic is in Vile Parle West, Mumbai, and also sees patients from Navi Mumbai and across the city. You can start with an online consultation if that's easier.",
   },
   {
-    q: "Is the consultation free and doctor-led?",
-    a: "Yes. Your initial assessment is free and is carried out by Dr Malay Mehta, MD Dermatology, with no obligation to proceed.",
+    q: "Is the consultation doctor-led?",
+    a: "Yes. Your initial assessment is carried out by Dr Malay Mehta, MD Dermatology, with no obligation to proceed.",
   },
 ];
 

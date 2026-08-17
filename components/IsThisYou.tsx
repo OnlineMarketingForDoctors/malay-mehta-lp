@@ -69,8 +69,8 @@ export default function IsThisYou() {
             If You&rsquo;re Noticing <b>Hair Loss or Thinning</b>
           </h2>
           <p>
-            Many people exploring PRP, GFC or exosome therapy are at an early stage, and a
-            free assessment is a good first step.
+            Many people exploring PRP, GFC or exosome therapy are at an early stage, and an
+            assessment is a good first step.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export default function IsThisYou() {
 
         <div className="sectioncta center">
           <a href="#book" className="btn lg">
-            Book your free assessment
+            Book your assessment
           </a>
         </div>
       </div>

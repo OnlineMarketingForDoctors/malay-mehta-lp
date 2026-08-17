@@ -1,7 +1,7 @@
 import { site } from "@/lib/site";
 import { Check } from "./icons";
 
-const chips = ["MBBS, MD Dermatology", "Vile Parle, Mumbai", "Free consultation"];
+const chips = ["MBBS, MD Dermatology", "Vile Parle, Mumbai", "No-obligation consultation"];
 
 export default function Hero() {
   return (
@@ -23,7 +23,7 @@ export default function Hero() {
         <p className="lead">
           Doctor-led, non-surgical hair restoration with {site.doctor}, MD Dermatology,
           including PRP hair treatment, Growth Factor Concentrate (GFC) and exosome
-          therapy. Start with a free consultation in Vile Parle, Mumbai.
+          therapy. Start with a consultation in Vile Parle, Mumbai.
         </p>
         <div className="trust">
           {chips.map((chip) => (
@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
         <div className="actions">
           <a href="#book" className="btn lg">
-            Book a free consultation
+            Book a consultation
           </a>
           <a href="#treatments" className="btn lg ghost">
             Explore treatments

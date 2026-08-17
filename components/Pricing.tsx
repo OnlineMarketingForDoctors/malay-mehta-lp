@@ -15,7 +15,7 @@ export default function Pricing() {
           </h2>
           <p>
             Straightforward per-session pricing. The right treatment and the number of
-            sessions for you are decided with the doctor at your free consultation.
+            sessions for you are decided with the doctor at your consultation.
           </p>
         </div>
 
@@ -32,13 +32,13 @@ export default function Pricing() {
 
         <p className="pnote">
           Prices are per session and indicative. The number of sessions and the right
-          approach for you are assessed by the doctor at your consultation, which is free,
-          with no obligation.
+          approach for you are assessed by the doctor at your consultation, with no
+          obligation.
         </p>
 
         <div className="sectioncta center">
           <a href="#book" className="btn lg">
-            Book a free consultation
+            Book a consultation
           </a>
         </div>
       </div>

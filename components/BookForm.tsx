@@ -16,7 +16,7 @@ export default function BookForm() {
       <div className="wrap">
         <div>
           <span className="eyebrow">Book Your Assessment</span>
-          <h2>Start With a Free Consultation</h2>
+          <h2>Start With a Consultation</h2>
           <p className="lead">
             Tell us how to reach you and we&rsquo;ll arrange a doctor-led assessment,
             online or at the Vile Parle clinic. We&rsquo;ll talk you through PRP, GFC,
@@ -28,8 +28,8 @@ export default function BookForm() {
         </div>
 
         <div className="card">
-          <div className="kicker">Free · no obligation</div>
-          <h3>Book a Free Consultation</h3>
+          <div className="kicker">No obligation</div>
+          <h3>Book a Consultation</h3>
           <p className="sub">A doctor-led hair-loss assessment, online or in-clinic.</p>
 
           <div className="leadform">
@@ -53,7 +53,7 @@ export default function BookForm() {
           </div>
 
           <p className="form-fine">
-            No cost, no obligation. Your details are used only to arrange your
+            No obligation. Your details are used only to arrange your
             consultation.
           </p>
         </div>

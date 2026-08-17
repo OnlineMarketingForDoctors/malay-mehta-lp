@@ -1,6 +1,6 @@
 const steps = [
   {
-    title: "Book a Free Consultation",
+    title: "Book a Consultation",
     body: "Share a few details and we'll arrange a time that suits you, online or at the Vile Parle clinic.",
   },
   {

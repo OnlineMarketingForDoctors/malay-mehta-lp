@@ -45,7 +45,7 @@ export default function SiteHeader({ minimal = false }: Props) {
                 {site.phoneDisplay}
               </div>
               <a href={`${site.lpPath}#book`} className="btn">
-                Book a free consult
+                Book a consult
               </a>
             </div>
           </>

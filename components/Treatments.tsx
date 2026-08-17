@@ -130,7 +130,7 @@ export default function Treatments() {
 
         <div className="sectioncta center">
           <a href="#book" className="btn lg">
-            Book a free consultation
+            Book a consultation
           </a>
         </div>
       </div>

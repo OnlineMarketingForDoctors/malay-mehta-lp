@@ -13,7 +13,7 @@ export default function Value() {
         <div>
           <div className="big">
             <small>Your consultation</small>
-            Free &amp; Without Obligation
+            Without Obligation
           </div>
         </div>
         <div>
@@ -25,7 +25,7 @@ export default function Value() {
             ))}
           </ul>
           <a href="#book" className="btn lg">
-            Book a free consultation
+            Book a consultation
           </a>
         </div>
       </div>
