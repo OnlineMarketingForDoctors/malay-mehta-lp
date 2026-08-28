@@ -20,10 +20,6 @@ export default function About() {
             height={1490}
             sizes="(max-width: 900px) 100vw, 40vw"
           />
-          <figcaption className="plate">
-            <b>Plate 07</b>
-            <span>{site.doctor}, MD Dermatology</span>
-          </figcaption>
         </figure>
 
         <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>

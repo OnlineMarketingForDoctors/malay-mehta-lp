@@ -188,23 +188,6 @@ a {
 
 /* Plate caption — the recurring device. Every image is captioned like a
    plate in a clinical journal. */
-.plate {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-45);
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  margin-top: 12px;
-}
-
-.plate b {
-  color: var(--rust);
-  font-weight: 500;
-}
-
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -2071,6 +2054,14 @@ a {
   color: #fff;
 }
 
+.ft__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  text-align: right;
+}
+
 .ft__addr {
   font-style: normal;
   font-family: var(--mono);
@@ -2079,8 +2070,65 @@ a {
   letter-spacing: 0.02em;
 }
 
-.ft__addr a {
+/* The number is the fastest route to the clinic, so it is set at the weight
+   the header gives it rather than folded into the address block. */
+.ft__tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: #fff;
+  transition: color 0.25s var(--ease);
+}
+
+.ft__tel svg {
+  color: var(--peach);
+  flex: none;
+  transition: color 0.25s var(--ease);
+}
+
+.ft__tel:hover,
+.ft__tel:hover svg {
+  color: var(--peach);
+}
+
+.ft__social {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+
+.ft__social a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.72);
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.ft__social a:hover {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Once the row wraps, the contact block sits under the wordmark and reads
+   from the same left edge as everything else. */
+@media (max-width: 720px) {
+  .ft__contact {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 .ft__fine {

@@ -8,31 +8,28 @@ import { Arrow } from "./icons";
 const options = [
   {
     key: "prp",
-    abbr: "PRP",
     idx: "Option one",
     name: "Platelet-rich plasma",
     src: img.prp,
-    plate: "Plate 01 · Plasma separation",
+    alt: "Platelet-rich plasma being separated in a clinic centrifuge",
     body: "A small draw of your own blood is spun down until the platelet-rich layer separates, then injected across the thinning areas of the scalp. The oldest and best-understood of the three, and usually where a plan starts.",
     facts: ["Your own blood", "~45 min in clinic", "No downtime"],
   },
   {
     key: "gfc",
-    abbr: "GFC",
     idx: "Option two",
     name: "Growth factor concentrate",
     src: img.gfc,
-    plate: "Plate 02 · GFC preparation",
+    alt: "A growth factor concentrate preparation on a clinic bench",
     body: "A newer preparation, also from your own blood, processed to concentrate the growth factors rather than the platelets that carry them. Dr Mehta will explain where it differs from PRP and whether that difference matters for your scalp.",
     facts: ["Your own blood", "Higher concentrate", "No downtime"],
   },
   {
     key: "exosome",
-    abbr: "EXO",
     idx: "Option three",
     name: "Exosome therapy",
     src: img.exosome,
-    plate: "Plate 03 · Regenerative vials",
+    alt: "Sealed vials of exosome preparation in warm light",
     body: "The newest option, and the one we are most careful about. It is an evolving area, so the conversation covers what the current evidence does and does not show before anyone decides anything.",
     facts: ["Lab-prepared", "Evolving evidence", "Discussed first"],
   },
@@ -97,17 +94,13 @@ export default function Treatments() {
                 <Image
                   key={o.key}
                   src={o.src}
-                  alt={o.plate}
+                  alt={o.alt}
                   fill
                   sizes="(max-width: 900px) 100vw, 42vw"
                   data-on={active === i}
                 />
               ))}
             </div>
-            <p className="plate">
-              <b>{options[active].abbr}</b>
-              <span>{options[active].plate}</span>
-            </p>
           </div>
 
           <div className="tx__list">
@@ -126,7 +119,7 @@ export default function Treatments() {
                 <div className="tx__thumb">
                   <Image
                     src={o.src}
-                    alt={o.plate}
+                    alt={o.alt}
                     width={1100}
                     height={1366}
                     sizes="100vw"

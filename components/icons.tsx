@@ -50,3 +50,59 @@ export function Check({ size = 18 }: { size?: number }) {
     </svg>
   );
 }
+
+/** Social marks, drawn to a common 24px box so they sit on one optical line. */
+export function Facebook({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z" />
+    </svg>
+  );
+}
+
+export function Instagram({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function YouTube({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22.54 6.98a2.78 2.78 0 0 0-1.95-1.97C18.88 4.55 12 4.55 12 4.55s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.98C1 8.7 1 12.28 1 12.28s0 3.58.46 5.3a2.78 2.78 0 0 0 1.95 1.97c1.71.45 8.59.45 8.59.45s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97c.46-1.72.46-5.3.46-5.3s0-3.58-.46-5.3zM9.75 15.55V9.02l5.75 3.27-5.75 3.26z" />
+    </svg>
+  );
+}
+
+export function XMark({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.53 3h3.16l-6.9 7.89L21.9 21h-6.35l-4.98-6.5L4.88 21H1.72l7.38-8.44L2.1 3h6.51l4.5 5.95L17.53 3zm-1.11 16.1h1.75L7.65 4.8H5.77l10.65 14.3z" />
+    </svg>
+  );
+}
+
+export function LinkedIn({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.25H3V9.75zm7 0h3.83v1.54h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.53 4.78 5.82v5.84h-4v-5.18c0-1.24-.02-2.83-1.79-2.83-1.8 0-2.07 1.35-2.07 2.74v5.27h-4V9.75z" />
+    </svg>
+  );
+}
+
+export function Phone({ size = 17 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M6.3 3.5h3l1.5 3.7-2 1.3a11.5 11.5 0 0 0 5.7 5.7l1.3-2 3.7 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.3 5.7 2 2 0 0 1 6.3 3.5z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

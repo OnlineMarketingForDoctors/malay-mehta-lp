@@ -31,9 +31,25 @@ export const site = {
     "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.png.webp",
 } as const;
 
+/** The clinic's public profiles, listed in the footer. */
+export const social = [
+  { key: "facebook", label: "Facebook", href: "https://www.facebook.com/drmalaymehta/" },
+  { key: "instagram", label: "Instagram", href: "https://www.instagram.com/drmalaymehta/" },
+  {
+    key: "youtube",
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UC81lPkFymOFyiZFMKYWjqZA",
+  },
+  { key: "x", label: "X", href: "https://x.com/drmalaymehta" },
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/malay-mehta-b42a88a2/",
+  },
+] as const;
+
 /**
  * Photography, all generated for this page and self-hosted in /public/img.
- * Plate numbers are the captions printed beside each image.
  */
 export const img = {
   hero: "/img/hero.jpg",

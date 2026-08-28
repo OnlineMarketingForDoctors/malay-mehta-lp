@@ -1,4 +1,13 @@
-import { site } from "@/lib/site";
+import { site, social } from "@/lib/site";
+import { Facebook, Instagram, LinkedIn, Phone, XMark, YouTube } from "./icons";
+
+const marks = {
+  facebook: Facebook,
+  instagram: Instagram,
+  youtube: YouTube,
+  x: XMark,
+  linkedin: LinkedIn,
+} as const;
 
 export default function SiteFooter() {
   return (
@@ -13,13 +22,36 @@ export default function SiteFooter() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="ft__logo" src={site.footerLogo} alt={site.name} />
 
-          <address className="ft__addr">
-            {site.street}
-            <br />
-            {site.locality} {site.postalCode}, {site.region}, India
-            <br />
-            <a href={site.phoneHref}>{site.phoneDisplay}</a>
-          </address>
+          <div className="ft__contact">
+            <address className="ft__addr">
+              {site.street}
+              <br />
+              {site.locality} {site.postalCode}, {site.region}, India
+            </address>
+
+            <a className="ft__tel" href={site.phoneHref}>
+              <Phone size={16} />
+              {site.phoneDisplay}
+            </a>
+
+            <ul className="ft__social">
+              {social.map((s) => {
+                const Mark = marks[s.key];
+                return (
+                  <li key={s.key}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${site.doctor} on ${s.label}`}
+                    >
+                      <Mark />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
 
         <p className="ft__fine">
