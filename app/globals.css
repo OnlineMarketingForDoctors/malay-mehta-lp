@@ -870,6 +870,12 @@ a {
   .hero__in {
     margin-top: -46px;
   }
+  /* The credential ledger is a wide two-column table. Stacked under the
+     booking button it is a long scroll for facts the About section already
+     sets out properly. */
+  .hero__ledger {
+    display: none;
+  }
 }
 
 /* ============================================================
