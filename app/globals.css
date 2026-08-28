@@ -2136,12 +2136,13 @@ a {
   }
 }
 
+/* Runs the full width of the footer rather than being measured for reading
+   comfort: it is small print people scan, not a paragraph they read. */
 .ft__fine {
   font-size: 12px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.42);
   margin-top: 26px;
-  max-width: 92ch;
 }
 
 .ft__fine a {
