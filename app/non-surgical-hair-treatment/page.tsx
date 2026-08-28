@@ -5,7 +5,6 @@ import CtaBand from "@/components/CtaBand";
 import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
 import IsThisYou from "@/components/IsThisYou";
-import MobileCta from "@/components/MobileCta";
 import Motion from "@/components/Motion";
 import Pricing from "@/components/Pricing";
 import Process from "@/components/Process";
@@ -53,7 +52,6 @@ export default function Page() {
       </main>
       <SiteFooter />
       <FloatingActions />
-      <MobileCta />
       <Motion />
     </>
   );
