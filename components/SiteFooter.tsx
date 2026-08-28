@@ -31,6 +31,17 @@ export default function SiteFooter() {
           {site.name}. All rights reserved. &nbsp;·&nbsp;{" "}
           <a href={site.privacyPolicy}>Privacy Policy</a>
         </p>
+
+        <p className="ft__by">
+          Powered by{" "}
+          <a
+            href="https://onlinemarketingfordoctors.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Online Marketing For Doctors
+          </a>
+        </p>
       </div>
     </footer>
   );

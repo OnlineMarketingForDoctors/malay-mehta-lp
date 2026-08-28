@@ -7,6 +7,7 @@ export const site = {
   doctor: "Dr Malay Mehta",
   phoneDisplay: "+91 70452 91747",
   phoneHref: "tel:+917045291747",
+  whatsapp: "https://wa.me/+917045291747",
   street: "104, Cosmos Court, Vile Parle West",
   locality: "Mumbai",
   region: "Maharashtra",

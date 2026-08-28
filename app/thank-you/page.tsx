@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import FloatingActions from "@/components/FloatingActions";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { Check } from "@/components/icons";
@@ -72,6 +73,7 @@ export default function ThankYouPage() {
         </section>
       </main>
       <SiteFooter />
+      <FloatingActions />
     </>
   );
 }

@@ -34,6 +34,7 @@ npm run build    # production build
 | `app/thank-you/page.tsx` | Post-submission confirmation page at `/thank-you` |
 | `components/` | One file per section, in the order they appear |
 | `components/Motion.tsx` | The page's single IntersectionObserver, driving every scroll reveal |
+| `components/FloatingActions.tsx` | WhatsApp shortcut and back-to-top, on both pages |
 | `lib/site.ts` | Clinic details and image paths — edit once, applies everywhere |
 | `lib/reviews.ts` | Google reviews, transcribed verbatim from `public/reviews/` |
 | `public/img/` | Generated photography (see below) |

@@ -2222,3 +2222,129 @@ a {
     gap: 26px;
   }
 }
+
+/* ============================================================
+   FLOATING ACTIONS — WhatsApp bottom left, back to top bottom right
+   ============================================================ */
+
+.floats {
+  position: fixed;
+  z-index: 58;
+  inset: auto 0 0 0;
+  pointer-events: none;
+  padding: 0 clamp(16px, 2.4vw, 30px) clamp(16px, 2.4vw, 30px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.floats > * {
+  pointer-events: auto;
+}
+
+.floats__wa,
+.floats__top {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 12px 30px -10px rgba(20, 24, 28, 0.45);
+  transition:
+    transform 0.28s var(--ease),
+    background 0.28s var(--ease),
+    opacity 0.3s var(--ease),
+    visibility 0.3s var(--ease);
+}
+
+.floats__wa {
+  position: relative;
+  background: #25d366;
+  color: #fff;
+}
+
+.floats__wa:hover {
+  background: #1ebe5b;
+  transform: translateY(-3px);
+}
+
+/* Label appears on hover on pointer devices; the aria-label covers the rest */
+.floats__tip {
+  position: absolute;
+  left: calc(100% + 12px);
+  white-space: nowrap;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 13px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateX(-6px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.floats__wa:hover .floats__tip,
+.floats__wa:focus-visible .floats__tip {
+  opacity: 1;
+  transform: none;
+}
+
+.floats__top {
+  background: var(--ink);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+}
+
+.floats__top[data-show="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.floats__top:hover {
+  background: var(--rust);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 720px) {
+  /* Clear the sticky booking bar */
+  .floats {
+    padding-bottom: 84px;
+  }
+  .floats__wa,
+  .floats__top {
+    width: 48px;
+    height: 48px;
+  }
+  .floats__tip {
+    display: none;
+  }
+}
+
+/* ---------- footer credit ---------- */
+
+.ft__by {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.ft__by a {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.25s var(--ease);
+}
+
+.ft__by a:hover {
+  color: #fff;
+}

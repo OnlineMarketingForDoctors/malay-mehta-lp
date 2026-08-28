@@ -11,6 +11,7 @@ import Pricing from "@/components/Pricing";
 import Process from "@/components/Process";
 import Results from "@/components/Results";
 import ReviewMarquee from "@/components/ReviewMarquee";
+import FloatingActions from "@/components/FloatingActions";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import Treatments from "@/components/Treatments";
@@ -51,6 +52,7 @@ export default function Page() {
         <BookForm />
       </main>
       <SiteFooter />
+      <FloatingActions />
       <MobileCta />
       <Motion />
     </>
