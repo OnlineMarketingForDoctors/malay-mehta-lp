@@ -41,7 +41,7 @@ export default function Results() {
           <p className="rs__note" data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
             Real patients of the clinic, photographed with their consent and
             shown unretouched. Each of these plans combined GFC with other
-            treatment — the pictures are not a claim about GFC on its own.
+            treatment, so the pictures are not a claim about GFC on its own.
           </p>
         </div>
 

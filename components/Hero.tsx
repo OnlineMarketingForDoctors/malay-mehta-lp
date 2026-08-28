@@ -41,7 +41,7 @@ export default function Hero() {
             >
               PRP, GFC and exosome therapy for thinning hair, planned and
               performed by {site.doctor}, MD Dermatology. One honest assessment,
-              then a plan that fits your scalp — or a straight answer that it
+              then a plan that fits your scalp, or a straight answer that it
               won&rsquo;t help.
             </p>
             <div

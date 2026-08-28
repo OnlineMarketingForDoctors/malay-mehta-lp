@@ -36,7 +36,7 @@ export default function Pricing() {
           </div>
           <p className="lede" data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
             How many sessions you need is the part nobody can quote from a
-            website — that comes out of the assessment. The rate per session
+            website. That comes out of the assessment. The rate per session
             doesn&rsquo;t move.
           </p>
         </div>

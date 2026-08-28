@@ -23,7 +23,7 @@ const next = [
   {
     when: "At the appointment",
     title: "Dr Mehta looks at your scalp",
-    body: "A dermatoscope assessment, online or at the Vile Parle clinic — whichever suits you.",
+    body: "A dermatoscope assessment, online or at the Vile Parle clinic, whichever suits you.",
   },
   {
     when: "Before you leave",

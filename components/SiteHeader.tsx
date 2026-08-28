@@ -45,7 +45,7 @@ export default function SiteHeader({ minimal = false }: Props) {
               knockout for the transparent state over the hero. */}
           <Image
             className="is-dark"
-            src="/logo.jpg"
+            src="/logo-mark.png"
             alt={site.name}
             width={160}
             height={80}

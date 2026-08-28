@@ -12,7 +12,7 @@ const options = [
     idx: "Option one",
     name: "Platelet-rich plasma",
     src: img.prp,
-    plate: "Plate 01 — Plasma separation",
+    plate: "Plate 01 · Plasma separation",
     body: "A small draw of your own blood is spun down until the platelet-rich layer separates, then injected across the thinning areas of the scalp. The oldest and best-understood of the three, and usually where a plan starts.",
     facts: ["Your own blood", "~45 min in clinic", "No downtime"],
   },
@@ -22,7 +22,7 @@ const options = [
     idx: "Option two",
     name: "Growth factor concentrate",
     src: img.gfc,
-    plate: "Plate 02 — GFC preparation",
+    plate: "Plate 02 · GFC preparation",
     body: "A newer preparation, also from your own blood, processed to concentrate the growth factors rather than the platelets that carry them. Dr Mehta will explain where it differs from PRP and whether that difference matters for your scalp.",
     facts: ["Your own blood", "Higher concentrate", "No downtime"],
   },
@@ -32,7 +32,7 @@ const options = [
     idx: "Option three",
     name: "Exosome therapy",
     src: img.exosome,
-    plate: "Plate 03 — Regenerative vials",
+    plate: "Plate 03 · Regenerative vials",
     body: "The newest option, and the one we are most careful about. It is an evolving area, so the conversation covers what the current evidence does and does not show before anyone decides anything.",
     facts: ["Lab-prepared", "Evolving evidence", "Discussed first"],
   },
@@ -75,15 +75,17 @@ export default function Treatments() {
           <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
             <p className="lede">
               None of these is a transplant, and none of them suits everyone.
-              Which one you are offered — if any — depends on what the
+              Which one you are offered, if any, depends on what the
               dermatoscope shows.
             </p>
             <div className="tx__strip">
-              {["No surgery", "No scars", "No downtime", "Men and women"].map((p) => (
-                <span className="tx__pill" key={p}>
-                  {p}
-                </span>
-              ))}
+              {["No surgery", "No scars", "No downtime", "Men and women"].map(
+                (p) => (
+                  <span className="tx__pill" key={p}>
+                    {p}
+                  </span>
+                ),
+              )}
             </div>
           </div>
         </div>
@@ -118,13 +120,27 @@ export default function Treatments() {
                   items.current[i] = el;
                 }}
               >
-                <span className="tx__idx">{o.idx}</span>
-                <h3 className="h3">{o.name}</h3>
-                <p>{o.body}</p>
-                <div className="tx__facts">
-                  {o.facts.map((f) => (
-                    <span key={f}>{f}</span>
-                  ))}
+                {/* Per-option image. Hidden on desktop, where the sticky
+                    column carries the picture; on mobile each option becomes
+                    a self-contained card with its own image. */}
+                <div className="tx__thumb">
+                  <Image
+                    src={o.src}
+                    alt={o.plate}
+                    width={1100}
+                    height={1366}
+                    sizes="100vw"
+                  />
+                </div>
+                <div className="tx__body">
+                  <span className="tx__idx">{o.idx}</span>
+                  <h3 className="h3">{o.name}</h3>
+                  <p>{o.body}</p>
+                  <div className="tx__facts">
+                    {o.facts.map((f) => (
+                      <span key={f}>{f}</span>
+                    ))}
+                  </div>
                 </div>
               </article>
             ))}

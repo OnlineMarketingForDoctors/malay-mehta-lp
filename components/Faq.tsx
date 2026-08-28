@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "How is GFC different from PRP?",
-    a: "GFC — growth factor concentrate — is also prepared from your own blood, but processed to concentrate the growth factors themselves rather than the platelets carrying them. Dr Mehta will explain where that difference matters for your pattern of loss and where it does not.",
+    a: "GFC, growth factor concentrate, is also prepared from your own blood, but processed to concentrate the growth factors themselves rather than the platelets carrying them. Dr Mehta will explain where that difference matters for your pattern of loss and where it does not.",
   },
   {
     q: "What about exosome therapy?",

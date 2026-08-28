@@ -75,9 +75,16 @@ the clinic's own photographs from `public/Dr Malay Mehta photos/` attached as
 likeness references. Sources were compressed from 61 MB of PNG to ~1.2 MB of
 progressive JPEG.
 
-`public/logo-light.png` is a white knockout of the wordmark, generated from
-`logo.jpg`, for use on dark backgrounds — the header swaps to it while it is
-transparent over the hero.
+The wordmark ships in two generated variants, both derived from `logo.jpg`,
+whose opaque white background showed as a patch on every surface it sat on:
+`public/logo-mark.png` (unpremultiplied against white, so it keeps its colours
+on a transparent ground) and `public/logo-light.png` (a white knockout). The
+header swaps to the knockout while it is transparent over the hero.
+
+### Copy
+
+No em-dashes anywhere in the visible copy, on either page. Source comments
+still use them; they are not copy.
 
 ## Wiring up the booking form
 

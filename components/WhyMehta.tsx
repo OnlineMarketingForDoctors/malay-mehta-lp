@@ -4,7 +4,7 @@ import { img } from "@/lib/site";
 const claims = [
   {
     h: "A dermatologist, not a counsellor",
-    p: "Your scalp is assessed and injected by an MBBS, MD dermatologist — not handed to a sales desk.",
+    p: "Your scalp is assessed and injected by an MBBS, MD dermatologist, not handed to a sales desk.",
   },
   {
     h: "Known for saying no",

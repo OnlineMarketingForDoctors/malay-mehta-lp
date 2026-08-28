@@ -821,6 +821,11 @@ a {
   opacity: 0.55;
 }
 
+/* Desktop: the sticky column carries the imagery, so per-item thumbs are off */
+.tx__thumb {
+  display: none;
+}
+
 .tx__idx {
   font-family: var(--mono);
   font-size: 11.5px;
@@ -870,14 +875,49 @@ a {
   .tx__split {
     grid-template-columns: 1fr;
   }
+
+  /* One shared sticky image doesn't work on a small screen: each option
+     becomes a card carrying its own picture instead. */
   .tx__sticky {
-    position: static;
+    display: none;
   }
-  .tx__frame {
-    aspect-ratio: 3 / 2;
+
+  .tx__list {
+    gap: 20px;
   }
+
+  .tx__item,
+  .tx__item:last-child {
+    background: #fff;
+    border: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-block: 0;
+    box-shadow: 0 12px 34px -22px rgba(30, 35, 41, 0.45);
+  }
+
   .tx__item[data-on="false"] {
     opacity: 1;
+  }
+
+  .tx__thumb {
+    display: block;
+    aspect-ratio: 16 / 11;
+    background: var(--peach-wash);
+  }
+
+  .tx__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tx__body {
+    padding: 24px 22px 26px;
+  }
+
+  .tx__item p {
+    max-width: none;
   }
 }
 

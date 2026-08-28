@@ -2,7 +2,7 @@ const steps = [
   {
     when: "Day one",
     title: "You tell us what changed",
-    body: "A few details online, then a call to find a time — at the Vile Parle clinic or over video if that is easier.",
+    body: "A few details online, then a call to find a time, either at the Vile Parle clinic or over video if that is easier.",
   },
   {
     when: "The appointment",
@@ -12,7 +12,7 @@ const steps = [
   {
     when: "Before you leave",
     title: "You get a plan, or a no",
-    body: "Which treatment, how many sessions, what it costs — or an honest answer that none of it is worth your money.",
+    body: "Which treatment, how many sessions, what it costs. Or an honest answer that none of it is worth your money.",
   },
 ];
 

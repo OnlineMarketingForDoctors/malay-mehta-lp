@@ -30,8 +30,8 @@ export default function About() {
           <span className="tag">The doctor</span>
           <p className="ab__quote">
             Known across Mumbai for telling people when a treatment
-            won&rsquo;t work for their pattern of loss &mdash; before they pay
-            for it.
+            won&rsquo;t work for their pattern of loss, before they pay for
+            it.
           </p>
           <p className="ab__body">
             {site.doctor} is a dermatologist specialising in hair and skin, and
