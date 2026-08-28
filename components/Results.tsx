@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Arrow } from "./icons";
 
 const cases = [
@@ -26,8 +29,46 @@ const cases = [
 ];
 
 export default function Results() {
+  const track = useRef<HTMLDivElement>(null);
+  const [at, setAt] = useState(0);
+  const [ends, setEnds] = useState({ start: true, end: false });
+
+  /** One slide is one patient; the viewport shows two at a time. */
+  const step = useCallback(() => {
+    const el = track.current;
+    if (!el) return 0;
+    const first = el.querySelector<HTMLElement>(".rs__slide");
+    return first ? first.offsetWidth + 24 : el.clientWidth / 2;
+  }, []);
+
+  const sync = useCallback(() => {
+    const el = track.current;
+    if (!el) return;
+    const s = step() || 1;
+    setAt(Math.round(el.scrollLeft / s));
+    setEnds({
+      start: el.scrollLeft <= 2,
+      end: el.scrollLeft >= el.scrollWidth - el.clientWidth - 2,
+    });
+  }, [step]);
+
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    sync();
+    el.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    return () => {
+      el.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
+    };
+  }, [sync]);
+
+  const go = (dir: -1 | 1) =>
+    track.current?.scrollBy({ left: dir * step(), behavior: "smooth" });
+
   return (
-    <section className="band band--cream" id="results">
+    <section className="band band--cream rs" id="results">
       <div className="shell">
         <div className="rs__top">
           <div data-reveal>
@@ -38,28 +79,48 @@ export default function Results() {
               <span className="em">months apart.</span>
             </h2>
           </div>
-          <p className="rs__note" data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
-            Real patients of the clinic, photographed with their consent and
-            shown unretouched. Each of these plans combined GFC with other
-            treatment, so the pictures are not a claim about GFC on its own.
-          </p>
+          <div className="rs__aside" data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
+            <p className="rs__note">
+              Real patients of the clinic, photographed with their consent and
+              shown unretouched. Each of these plans combined GFC with other
+              treatment, so the pictures are not a claim about GFC on its own.
+            </p>
+            <div className="rs__nav">
+              <button
+                type="button"
+                className="rs__btn"
+                onClick={() => go(-1)}
+                disabled={ends.start}
+                aria-label="Previous patient"
+              >
+                <Arrow size={16} />
+              </button>
+              <button
+                type="button"
+                className="rs__btn"
+                onClick={() => go(1)}
+                disabled={ends.end}
+                aria-label="Next patient"
+              >
+                <Arrow size={16} />
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div className="rs__stack">
-          {cases.map((c, i) => (
-            <figure
-              className="rs__plate"
-              key={c.src}
-              data-reveal
-              style={{ "--d": `${i * 110}ms` } as React.CSSProperties}
-            >
-              <Image
-                src={c.src}
-                alt={`Before and after, ${c.who}, ${c.cond}`}
-                width={800}
-                height={500}
-                sizes="(max-width: 820px) 100vw, 55vw"
-              />
+      <div className="rs__viewport shell">
+        <div className="rs__track" ref={track}>
+          {cases.map((c) => (
+            <figure className="rs__slide" key={c.src}>
+              <div className="rs__frame">
+                <Image
+                  src={c.src}
+                  alt={`Before and after, ${c.who}, ${c.cond}`}
+                  fill
+                  sizes="(max-width: 820px) 86vw, 46vw"
+                />
+              </div>
               <figcaption className="rs__cap">
                 <span className="rs__who">{c.who}</span>
                 <span className="rs__who">{c.plate}</span>
@@ -69,13 +130,21 @@ export default function Results() {
             </figure>
           ))}
         </div>
+      </div>
+
+      <div className="shell">
+        <div className="rs__dots" role="tablist" aria-label="Patients">
+          {cases.map((c, i) => (
+            <span key={c.src} className="rs__dot" data-on={i === at} aria-hidden="true" />
+          ))}
+        </div>
 
         <p className="rs__disc">
           Results are individual and not typical. Outcomes vary from person to
           person and are not guaranteed.
         </p>
 
-        <div style={{ marginTop: 34 }}>
+        <div style={{ marginTop: 30 }}>
           <a href="#book" className="btn">
             Ask what is realistic for you <Arrow />
           </a>

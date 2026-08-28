@@ -39,9 +39,9 @@ export default function Page() {
       <main>
         <Hero />
         <ReviewMarquee />
+        <Results />
         <IsThisYou />
         <Treatments />
-        <Results />
         <Pricing />
         <Process />
         <WhyMehta />

@@ -1,6 +1,13 @@
 import Image from "next/image";
 import { img, site } from "@/lib/site";
-import { Arrow } from "./icons";
+import { Arrow, Check, GoogleG } from "./icons";
+
+const selling = [
+  "PRP, GFC and exosome therapy under one roof",
+  "Non-surgical, with zero downtime",
+  "Assessed and injected by an MD dermatologist",
+  "Clear per-session pricing, published up front",
+];
 
 const ledger: [string, string][] = [
   ["Qualification", "MBBS · MD Derm"],
@@ -44,16 +51,38 @@ export default function Hero() {
               then a plan that fits your scalp, or a straight answer that it
               won&rsquo;t help.
             </p>
+            <ul
+              className="hero__points"
+              data-reveal
+              style={{ "--d": "230ms" } as React.CSSProperties}
+            >
+              {selling.map((s) => (
+                <li key={s}>
+                  <Check size={16} />
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+
             <div
               className="hero__acts"
               data-reveal
-              style={{ "--d": "270ms" } as React.CSSProperties}
+              style={{ "--d": "300ms" } as React.CSSProperties}
             >
               <a href="#book" className="btn btn--wide">
                 Book a consultation <Arrow />
               </a>
-              <a href="#treatments" className="btn btn--wide btn--ghost" style={{ color: "#fff", borderColor: "rgba(255,255,255,.42)" }}>
-                See the three options
+              <a href="#reviews" className="hero__badge">
+                <GoogleG size={22} />
+                <span className="hero__badge-body">
+                  <span className="hero__badge-top">
+                    <b>5.0</b>
+                    <span className="hero__badge-stars" aria-hidden="true">
+                      &#9733;&#9733;&#9733;&#9733;&#9733;
+                    </span>
+                  </span>
+                  <span className="hero__badge-sub">Rated on Google Reviews</span>
+                </span>
               </a>
             </div>
           </div>

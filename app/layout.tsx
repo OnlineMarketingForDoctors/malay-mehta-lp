@@ -33,6 +33,11 @@ export const metadata: Metadata = {
   title: site.name,
   description:
     "Hair and skin care led by Dr Malay Mehta, MD Dermatology, in Vile Parle West, Mumbai.",
+  icons: {
+    icon: "/favicon_www_drmalaymehta_com_64x64.png",
+    shortcut: "/favicon_www_drmalaymehta_com_64x64.png",
+    apple: "/favicon_www_drmalaymehta_com_64x64.png",
+  },
 };
 
 /**

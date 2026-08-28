@@ -41,8 +41,8 @@ export default function SiteHeader({ minimal = false }: Props) {
           aria-label={`${site.doctor} Aesthetic Clinic`}
           style={minimal ? { marginInline: "auto" } : undefined}
         >
-          {/* Two marks: the dark original for light backgrounds, a white
-              knockout for the transparent state over the hero. */}
+          {/* Two marks: the coloured one for the solid header, the clinic's
+              white lockup while the bar is transparent over the hero. */}
           <Image
             className="is-dark"
             src="/logo-mark.png"
@@ -53,11 +53,11 @@ export default function SiteHeader({ minimal = false }: Props) {
           />
           <Image
             className="is-light"
-            src="/logo-light.png"
+            src="/logo-white-malay-mehta.webp"
             alt=""
             aria-hidden="true"
-            width={160}
-            height={80}
+            width={241}
+            height={120}
             priority
           />
         </a>
@@ -72,7 +72,8 @@ export default function SiteHeader({ minimal = false }: Props) {
               ))}
             </nav>
             <a className="hdr__tel" href={site.phoneHref}>
-              {site.phoneDisplay}
+              <span className="hdr__tel-label">Call us now</span>
+              <strong className="hdr__tel-num">{site.phoneDisplay}</strong>
             </a>
             <a href={`${site.lpPath}#book`} className="btn hdr__cta">
               Book a consult <Arrow size={13} />

@@ -315,6 +315,25 @@ a {
   border-bottom: 1px solid transparent;
 }
 
+/* At rest the bar sits over the hero photograph, whose top right is bright.
+   A soft top-down scrim keeps the mark, nav and phone number readable. */
+.hdr::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 19, 23, 0.62),
+    rgba(16, 19, 23, 0)
+  );
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+
+.hdr[data-stuck="true"]::before {
+  opacity: 0;
+}
+
 .hdr[data-stuck="true"] {
   background: rgba(251, 246, 243, 0.92);
   backdrop-filter: blur(14px);
@@ -322,6 +341,8 @@ a {
 }
 
 .hdr__in {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 28px;
@@ -331,11 +352,12 @@ a {
 .hdr__logo img {
   height: 40px;
   width: auto;
-  transition: filter 0.4s var(--ease);
 }
 
-/* Over the dark hero the light knockout mark is shown instead of the dark one */
+/* Over the dark hero the clinic's white lockup replaces the coloured mark.
+   It is a stacked lockup, so it carries a little more height. */
 .hdr__logo .is-light {
+  height: 46px;
   display: none;
 }
 
@@ -384,10 +406,35 @@ a {
 }
 
 .hdr__tel {
-  font-family: var(--mono);
-  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   color: var(--ink);
   white-space: nowrap;
+  transition: color 0.25s var(--ease);
+}
+
+.hdr__tel:hover {
+  color: var(--rust);
+}
+
+.hdr__tel-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.hdr:not([data-stuck="true"]) .hdr__tel-label {
+  color: var(--peach);
+}
+
+.hdr__tel-num {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 
 .hdr__cta {
@@ -408,7 +455,7 @@ a {
   color: var(--ink);
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1160px) {
   .hdr__nav {
     display: none;
   }
@@ -418,14 +465,18 @@ a {
 }
 
 @media (max-width: 620px) {
-  .hdr__tel {
+  /* Keep the number, drop the button: on a phone, calling is the shorter path */
+  .hdr__cta {
     display: none;
   }
-  .hdr__cta {
+  .hdr__tel {
     margin-left: auto;
   }
+  .hdr__tel-num {
+    font-size: 17px;
+  }
   .hdr__in {
-    height: 64px;
+    height: 66px;
   }
 }
 
@@ -513,11 +564,87 @@ a {
   max-width: 40ch;
 }
 
+.hero__points {
+  list-style: none;
+  margin-top: 26px;
+  display: grid;
+  gap: 9px;
+}
+
+.hero__points li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 11px;
+  align-items: start;
+  font-size: 15.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero__points svg {
+  color: var(--peach);
+  margin-top: 3px;
+}
+
 .hero__acts {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 34px;
+  align-items: center;
+  gap: 14px 18px;
+  margin-top: 30px;
+}
+
+/* Google rating badge, standing in for the old secondary button */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 20px 11px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.hero__badge:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero__badge-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__badge-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.hero__badge-top b {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero__badge-stars {
+  color: #f0b429;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+
+.hero__badge-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.66);
 }
 
 /* Credential ledger — mono rows, right column, reads like a chart */
@@ -922,7 +1049,7 @@ a {
 }
 
 /* ============================================================
-   RESULTS — offset editorial plates, deliberately unequal
+   RESULTS — a slider showing two patients at a time, uniform frames
    ============================================================ */
 
 .rs__top {
@@ -930,46 +1057,98 @@ a {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(24px, 5vw, 72px);
   align-items: end;
-  margin-bottom: clamp(40px, 5vw, 70px);
+  margin-bottom: clamp(34px, 4vw, 54px);
+}
+
+.rs__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
 }
 
 .rs__note {
   font-size: 13.5px;
   color: var(--ink-45);
   line-height: 1.6;
-  max-width: 46ch;
+  max-width: 50ch;
 }
 
-.rs__stack {
+.rs__nav {
+  display: flex;
+  gap: 10px;
+}
+
+.rs__btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink);
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(18px, 3vw, 40px) clamp(16px, 2.4vw, 32px);
+  place-items: center;
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    opacity 0.25s var(--ease);
 }
 
-.rs__plate {
+.rs__btn:first-child svg {
+  transform: rotate(180deg);
+}
+
+.rs__btn:hover:not(:disabled) {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.rs__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* The track scrolls inside the shell; overflow is clipped to the section */
+.rs__viewport {
+  overflow: hidden;
+}
+
+.rs__track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+
+.rs__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Two patients per view, so one slide is half the track minus the gap */
+.rs__slide {
+  flex: 0 0 calc((100% - 24px) / 2);
+  scroll-snap-align: start;
+}
+
+/* Every frame is the same box regardless of the source file */
+.rs__frame {
   position: relative;
-}
-
-/* Deliberately unequal spans and vertical offsets — a print layout, not a grid */
-.rs__plate:nth-child(1) {
-  grid-column: 1 / span 7;
-}
-
-.rs__plate:nth-child(2) {
-  grid-column: 8 / span 5;
-  align-self: end;
-  padding-bottom: clamp(0px, 3vw, 46px);
-}
-
-.rs__plate:nth-child(3) {
-  grid-column: 3 / span 6;
-  margin-top: clamp(0px, 2vw, 30px);
-}
-
-.rs__plate img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
   background: var(--peach-wash);
+}
+
+.rs__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .rs__cap {
@@ -1002,8 +1181,25 @@ a {
   color: var(--ink-45);
 }
 
+.rs__dots {
+  display: flex;
+  gap: 7px;
+  margin-top: 26px;
+}
+
+.rs__dot {
+  width: 22px;
+  height: 2px;
+  background: var(--hairline);
+  transition: background 0.3s var(--ease);
+}
+
+.rs__dot[data-on="true"] {
+  background: var(--rust);
+}
+
 .rs__disc {
-  margin-top: clamp(34px, 4vw, 56px);
+  margin-top: 22px;
   font-size: 12.5px;
   line-height: 1.65;
   color: var(--ink-45);
@@ -1015,12 +1211,9 @@ a {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  .rs__plate:nth-child(1),
-  .rs__plate:nth-child(2),
-  .rs__plate:nth-child(3) {
-    grid-column: 1 / -1;
-    margin-top: 0;
-    padding-bottom: 0;
+  /* One at a time on a phone, with a peek at the next */
+  .rs__slide {
+    flex: 0 0 86%;
   }
 }
 
@@ -1146,15 +1339,17 @@ a {
 .iy__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
+  align-items: stretch;
   gap: clamp(28px, 4vw, 56px);
 }
 
+/* The copy column is long, so the photograph runs the full height of the row
+   rather than floating in the middle of it. */
 .iy__media {
   position: relative;
-  /* Bleeds past the shell to the viewport edge */
   margin-right: calc(-1 * (var(--gutter) + var(--edge)));
-  aspect-ratio: 3 / 2;
+  align-self: stretch;
+  min-height: 460px;
 }
 
 .iy__media img {
@@ -1167,33 +1362,24 @@ a {
   margin-top: 20px;
 }
 
-.iy__list {
-  list-style: none;
-  margin-top: 34px;
-  border-top: 1px solid var(--hairline);
+.iy__prose {
+  margin-top: 30px;
+  max-width: 60ch;
 }
 
-.iy__list li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 18px;
-  align-items: baseline;
-  padding-block: 18px;
-  border-bottom: 1px solid var(--hairline);
+.iy__prose p {
   font-size: 16.5px;
-  line-height: 1.45;
-  transition: transform 0.35s var(--ease);
+  line-height: 1.72;
+  color: var(--ink-70);
 }
 
-.iy__list li:hover {
-  transform: translateX(6px);
+.iy__prose p + p {
+  margin-top: 1.15em;
 }
 
-.iy__n {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--rust);
-  letter-spacing: 0.1em;
+/* The opening question set carries the section, so it holds full ink */
+.iy__prose p:first-child {
+  color: var(--ink);
 }
 
 .iy__cta {
@@ -1207,8 +1393,8 @@ a {
   .iy__media {
     margin-right: calc(-1 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
-    /* stacked layout sits inside the shell again */
     aspect-ratio: 16 / 10;
+    min-height: 0;
     order: -1;
   }
 }

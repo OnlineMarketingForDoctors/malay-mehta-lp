@@ -57,9 +57,10 @@ brief, so the difference is carried by the display face and the layout system.
 
 Every section uses a different device: a full-bleed hero with a credential
 ledger, a dragging review marquee, an image that bleeds off the viewport edge,
-a sticky image column that swaps as you scroll the treatment list, offset
-editorial plates, a typeset price list, a drawn process rule, a solid panel
-over a macro photograph, a magazine spread, and an accordion. The only card
+a sticky image column that swaps as you scroll the treatment list, a
+two-up before/after slider with uniform frames, a long selling passage beside a
+full-height photograph, a typeset price list, a drawn process rule, a solid
+panel over a macro photograph, a magazine spread, and an accordion. The only card
 grid on the page is the reviews, by design.
 
 Motion is one shared `IntersectionObserver` in `components/Motion.tsx`. Sections
@@ -75,11 +76,14 @@ the clinic's own photographs from `public/Dr Malay Mehta photos/` attached as
 likeness references. Sources were compressed from 61 MB of PNG to ~1.2 MB of
 progressive JPEG.
 
-The wordmark ships in two generated variants, both derived from `logo.jpg`,
-whose opaque white background showed as a patch on every surface it sat on:
-`public/logo-mark.png` (unpremultiplied against white, so it keeps its colours
-on a transparent ground) and `public/logo-light.png` (a white knockout). The
-header swaps to the knockout while it is transparent over the hero.
+The header carries two marks: `public/logo-mark.png` for the solid bar (derived
+from `logo.jpg`, whose opaque white background showed as a patch on every
+surface it sat on) and the clinic's own `public/logo-white-malay-mehta.webp`
+while the bar is transparent over the hero. The favicon is
+`public/favicon_www_drmalaymehta_com_64x64.png`, wired up through `metadata.icons`.
+
+At rest the header also lays a soft top-down scrim over the hero so the mark,
+nav and phone number stay readable against the bright part of the photograph.
 
 ### Copy
 
