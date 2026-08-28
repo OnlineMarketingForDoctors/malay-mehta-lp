@@ -10,21 +10,18 @@ const cases = [
     who: "27 · Male",
     cond: "Androgenetic alopecia",
     det: "Medication, a laser helmet and four GFC sessions.",
-    plate: "Plate 04",
   },
   {
     src: "/results/gfc-case-02.jpg",
     who: "24 · Female",
     cond: "Female pattern hair loss",
     det: "Medication and five monthly GFC sessions.",
-    plate: "Plate 05",
   },
   {
     src: "/results/gfc-case-03.jpg",
     who: "28 · Female",
     cond: "Telogen effluvium",
     det: "Four GFC sessions and a multivitamin, after illness.",
-    plate: "Plate 06",
   },
 ];
 
@@ -68,7 +65,7 @@ export default function Results() {
     track.current?.scrollBy({ left: dir * step(), behavior: "smooth" });
 
   return (
-    <section className="band band--cream rs" id="results">
+    <section className="band rs" id="results">
       <div className="shell">
         <div className="rs__top">
           <div data-reveal>
@@ -123,7 +120,6 @@ export default function Results() {
               </div>
               <figcaption className="rs__cap">
                 <span className="rs__who">{c.who}</span>
-                <span className="rs__who">{c.plate}</span>
                 <span className="rs__cond">{c.cond}</span>
                 <span className="rs__det">{c.det}</span>
               </figcaption>
