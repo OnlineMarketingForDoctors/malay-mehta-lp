@@ -876,6 +876,11 @@ a {
   .hero__ledger {
     display: none;
   }
+  /* The rating repeats a few hundred pixels down, at the head of the review
+     carousel, where it has the reviews themselves behind it. */
+  .hero__badge {
+    display: none;
+  }
 }
 
 /* ============================================================
