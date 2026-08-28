@@ -1,69 +1,81 @@
+"use client";
+
+import { useState } from "react";
+
 const faqs = [
   {
     q: "What is PRP hair treatment?",
-    a: "PRP (platelet-rich plasma) hair treatment is a non-surgical procedure that uses a concentrate prepared from a small sample of your own blood, injected into the scalp. Whether it suits you is assessed by the doctor at your consultation.",
+    a: "A small amount of your own blood is spun in a centrifuge until the platelet-rich plasma separates out, and that layer is injected into the thinning areas of the scalp. It is non-surgical and done in the clinic. Whether it suits you is decided at the consultation, not before it.",
   },
   {
-    q: "How is GFC therapy different from PRP?",
-    a: "GFC (Growth Factor Concentrate) is a newer preparation also derived from your own blood. Dr Mehta will explain the practical differences between GFC and PRP and which may be more appropriate for you.",
+    q: "How is GFC different from PRP?",
+    a: "GFC — growth factor concentrate — is also prepared from your own blood, but processed to concentrate the growth factors themselves rather than the platelets carrying them. Dr Mehta will explain where that difference matters for your pattern of loss and where it does not.",
   },
   {
-    q: "What is exosome therapy for hair?",
-    a: "Exosome therapy is a newer, non-surgical regenerative approach. As it's an evolving area, the doctor will discuss what it involves and the current evidence with you individually before any decision.",
+    q: "What about exosome therapy?",
+    a: "It is the newest of the three and the evidence is still developing, so it is discussed individually and carefully. You will be told what the current research does and does not show before any decision is made.",
   },
   {
-    q: "What does PRP hair treatment cost?",
-    a: "Cost depends on the plan that's right for you, so it's discussed openly at your consultation rather than quoted upfront. There's no obligation to proceed.",
+    q: "How many sessions will I need?",
+    a: "That is genuinely the one thing that cannot be answered from a website. It depends on the pattern and stage of loss, and it is what the dermatoscope assessment is for. Most plans run over several months.",
   },
   {
-    q: "Do you offer these treatments near me in Mumbai?",
-    a: "Yes, the clinic is in Vile Parle West, Mumbai, and also sees patients from Navi Mumbai and across the city. You can start with an online consultation if that's easier.",
+    q: "What does it cost?",
+    a: "Per-session rates are published on this page: ₹10,000 for PRP, ₹15,000 for GFC and ₹20,000 for exosome therapy. The total depends on how many sessions your plan needs.",
   },
   {
-    q: "Is the consultation doctor-led?",
-    a: "Yes. Your initial assessment is carried out by Dr Malay Mehta, MD Dermatology, with no obligation to proceed.",
+    q: "Where is the clinic, and can I start online?",
+    a: "The clinic is in Vile Parle West, Mumbai, and sees patients from across the city and Navi Mumbai. You can start with an online consultation, which the doctor reviews personally, if that is easier.",
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.q,
-    acceptedAnswer: { "@type": "Answer", text: faq.a },
-  })),
-};
-
 export default function Faq() {
-  return (
-    <section className="block cream" id="faq">
-      <div className="wrap">
-        <div className="head center">
-          <span className="eyebrow">Good to know</span>
-          <h2>Your Questions, Answered</h2>
-        </div>
+  const [open, setOpen] = useState<number | null>(0);
 
-        <div className="faq">
-          {faqs.map((faq, i) => (
-            <details key={faq.q} open={i === 0}>
-              <summary>
-                {faq.q}
-                <span className="pm" aria-hidden="true">
-                  +
-                </span>
-              </summary>
-              <div className="a">{faq.a}</div>
-            </details>
-          ))}
+  return (
+    <section className="band fq" id="faq">
+      <div className="shell fq__grid">
+        <aside className="fq__aside" data-reveal>
+          <span className="tag">Good to know</span>
+          <h2 className="h2">
+            Questions
+            <br />
+            <span className="em">worth asking.</span>
+          </h2>
+          <p>
+            If yours is not here, it is a good thing to bring to the
+            consultation.
+          </p>
+        </aside>
+
+        <div className="fq__list" data-reveal style={{ "--d": "110ms" } as React.CSSProperties}>
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div className="fq__item" key={f.q} data-open={isOpen}>
+                <h3>
+                  <button
+                    type="button"
+                    className="fq__q"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-a-${i}`}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                  >
+                    <span className="fq__n">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{f.q}</span>
+                    <span className="fq__sign" aria-hidden="true" />
+                  </button>
+                </h3>
+                <div className="fq__a" id={`faq-a-${i}`} role="region">
+                  <div>
+                    <p>{f.a}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      <script
-        type="application/ld+json"
-        // Mirrors the questions and answers rendered above; no user input involved.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
     </section>
   );
 }

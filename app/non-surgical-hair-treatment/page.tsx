@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import About from "@/components/About";
 import BookForm from "@/components/BookForm";
+import CtaBand from "@/components/CtaBand";
 import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
 import IsThisYou from "@/components/IsThisYou";
 import MobileCta from "@/components/MobileCta";
+import Motion from "@/components/Motion";
 import Pricing from "@/components/Pricing";
+import Process from "@/components/Process";
 import Results from "@/components/Results";
-import Reviews from "@/components/Reviews";
+import ReviewMarquee from "@/components/ReviewMarquee";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import Strip from "@/components/Strip";
 import Treatments from "@/components/Treatments";
-import Value from "@/components/Value";
-import WhyDrMehta from "@/components/WhyDrMehta";
+import WhyMehta from "@/components/WhyMehta";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -38,21 +38,21 @@ export default function Page() {
       <SiteHeader />
       <main>
         <Hero />
-        <Strip />
+        <ReviewMarquee />
+        <IsThisYou />
         <Treatments />
         <Results />
         <Pricing />
-        <Reviews />
-        <IsThisYou />
-        <HowItWorks />
-        <WhyDrMehta />
+        <Process />
+        <WhyMehta />
         <About />
-        <Value />
         <Faq />
+        <CtaBand />
         <BookForm />
       </main>
       <SiteFooter />
       <MobileCta />
+      <Motion />
     </>
   );
 }

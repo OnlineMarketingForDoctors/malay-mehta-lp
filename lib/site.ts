@@ -28,17 +28,20 @@ export const site = {
    */
   footerLogo:
     "https://www.drmalaymehta.com/wp-content/uploads/2021/07/logo-footer.png.webp",
-  /**
-   * Hero background photograph, served from the main WordPress site so the
-   * landing page stays visually in step with it. Swap for a local file in
-   * /public if you would rather not hotlink; the dark gradient underneath is
-   * the fallback either way.
-   */
-  heroImage:
-    "https://www.drmalaymehta.com/wp-content/uploads/2022/03/growth-factor-concentrate-for-hair-mumbai.jpg",
-  /** Background photograph behind the booking section. */
-  bookImage: "https://www.drmalaymehta.com/wp-content/uploads/2022/01/dark-bg.jpg",
-  /** Portrait in the About section. */
-  doctorPhoto:
-    "https://www.drmalaymehta.com/wp-content/uploads/2025/07/dr-malay-mehta.jpeg",
+} as const;
+
+/**
+ * Photography, all generated for this page and self-hosted in /public/img.
+ * Plate numbers are the captions printed beside each image.
+ */
+export const img = {
+  hero: "/img/hero.jpg",
+  portrait: "/img/portrait.jpg",
+  consult: "/img/consult.jpg",
+  prp: "/img/prp.jpg",
+  gfc: "/img/gfc.jpg",
+  exosome: "/img/exosome.jpg",
+  mirror: "/img/mirror.jpg",
+  clinic: "/img/clinic.jpg",
+  scalp: "/img/scalp.jpg",
 } as const;

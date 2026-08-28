@@ -1,97 +1,50 @@
-import type { ReactNode } from "react";
+import Image from "next/image";
+import { img } from "@/lib/site";
+import { Arrow } from "./icons";
 
-const signals: { icon: ReactNode; text: string }[] = [
-  {
-    icon: (
-      <>
-        <path
-          d="M3 12s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7Z"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="2" />
-      </>
-    ),
-    text: "You've noticed thinning, hair fall or a receding hairline",
-  },
-  {
-    icon: (
-      <path
-        d="M12 3v18M5 8l7-5 7 5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    ),
-    text: "You'd rather explore non-surgical hair treatment first",
-  },
-  {
-    icon: (
-      <path
-        d="M4 7h16M4 12h16M4 17h10"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    ),
-    text: "You've tried off-the-shelf products without much luck",
-  },
-  {
-    icon: (
-      <>
-        <path
-          d="M12 21s-7-4.35-7-10a7 7 0 0 1 14 0c0 5.65-7 10-7 10Z"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9.5 11.5 11 13l3.5-3.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </>
-    ),
-    text: "You want an honest, expert opinion before deciding anything",
-  },
+const signs = [
+  "Your parting looks wider in photographs than it feels in the mirror",
+  "More hair in the shower drain than there used to be",
+  "A hairline that has crept back over two or three years",
+  "Shampoos and serums from the pharmacy that changed nothing",
 ];
 
 export default function IsThisYou() {
   return (
-    <section className="block" id="why">
-      <div className="wrap">
-        <div className="head center">
-          <span className="eyebrow">Is this you?</span>
-          <h2>
-            If You&rsquo;re Noticing <b>Hair Loss or Thinning</b>
+    <section className="band iy" id="signs">
+      <div className="shell iy__grid">
+        <div className="iy__copy">
+          <span className="tag" data-reveal>
+            Where most people start
+          </span>
+          <h2 className="h2" data-reveal style={{ "--d": "90ms" } as React.CSSProperties}>
+            You noticed it
+            <br />
+            <span className="em">a while ago.</span>
           </h2>
-          <p>
-            Many people exploring PRP, GFC or exosome therapy are at an early stage, and an
-            assessment is a good first step.
-          </p>
+          <ol className="iy__list" data-reveal style={{ "--d": "160ms" } as React.CSSProperties}>
+            {signs.map((s, i) => (
+              <li key={s}>
+                <span className="iy__n">{String(i + 1).padStart(2, "0")}</span>
+                <span>{s}</span>
+              </li>
+            ))}
+          </ol>
+          <div className="iy__cta" data-reveal style={{ "--d": "240ms" } as React.CSSProperties}>
+            <a href="#book" className="btn">
+              Get it looked at properly <Arrow />
+            </a>
+          </div>
         </div>
 
-        <div className="grid4">
-          {signals.map((signal) => (
-            <div className="signal" key={signal.text}>
-              <div className="ic">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  {signal.icon}
-                </svg>
-              </div>
-              <p>{signal.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="sectioncta center">
-          <a href="#book" className="btn lg">
-            Book your assessment
-          </a>
-        </div>
+        <figure className="iy__media" data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
+          <Image
+            src={img.mirror}
+            alt="A man examining his hairline in a bathroom mirror"
+            fill
+            sizes="(max-width: 900px) 100vw, 50vw"
+          />
+        </figure>
       </div>
     </section>
   );

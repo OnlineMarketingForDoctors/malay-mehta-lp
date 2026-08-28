@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Script from "next/script";
-import { site } from "@/lib/site";
+import { img, site } from "@/lib/site";
 
 /**
  * The booking form is a LeadConnector (GoHighLevel) embed, so submission,
@@ -8,31 +9,41 @@ import { site } from "@/lib/site";
  */
 export default function BookForm() {
   return (
-    <section
-      className="booksec"
-      id="book"
-      style={{ ["--book-image" as string]: `url('${site.bookImage}')` }}
-    >
-      <div className="wrap">
-        <div>
-          <span className="eyebrow">Book Your Assessment</span>
-          <h2>Start With a Consultation</h2>
-          <p className="lead">
-            Tell us how to reach you and we&rsquo;ll arrange a doctor-led assessment,
-            online or at the Vile Parle clinic. We&rsquo;ll talk you through PRP, GFC,
-            exosome and other non-surgical options, and what suits you.
+    <section className="bk" id="book">
+      <div className="bk__grid">
+        <figure className="bk__media">
+          <Image
+            src={img.clinic}
+            alt={`The consultation room at ${site.name}`}
+            fill
+            sizes="(max-width: 900px) 100vw, 42vw"
+          />
+          <figcaption className="bk__cap">
+            <span className="tag">Where you&rsquo;ll be seen</span>
+            <p className="h3">Vile Parle West, Mumbai</p>
+            <address className="bk__addr">
+              {site.street}
+              <br />
+              {site.locality} {site.postalCode}
+              <br />
+              <a href={site.phoneHref}>{site.phoneDisplay}</a>
+            </address>
+          </figcaption>
+        </figure>
+
+        <div className="bk__panel">
+          <span className="tag">Book your assessment</span>
+          <h2 className="h2">
+            Start with
+            <br />
+            <span className="em">a consultation.</span>
+          </h2>
+          <p className="bk__sub">
+            Tell us how to reach you and we&rsquo;ll arrange a doctor-led
+            assessment, online or at the clinic.
           </p>
-          <div className="callnow">
-            or call <a href={site.phoneHref}>{site.phoneDisplay}</a>
-          </div>
-        </div>
 
-        <div className="card">
-          <div className="kicker">No obligation</div>
-          <h3>Book a Consultation</h3>
-          <p className="sub">A doctor-led hair-loss assessment, online or in-clinic.</p>
-
-          <div className="leadform">
+          <div className="bk__form">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/MYDGWNFIK8AldRJjAagk"
               style={{ width: "100%", height: "100%", border: "none", borderRadius: "4px" }}
@@ -52,7 +63,7 @@ export default function BookForm() {
             />
           </div>
 
-          <p className="form-fine">
+          <p className="bk__fine">
             No obligation. Your details are used only to arrange your
             consultation.
           </p>

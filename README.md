@@ -1,7 +1,7 @@
 # Malay Mehta Aesthetic Clinic — landing page
 
 Next.js landing page for **PRP, GFC & exosome therapy** at Malay Mehta Aesthetic Clinic,
-Vile Parle West, Mumbai. Built from the approved mockup, styled to match
+Vile Parle West, Mumbai. A "clinical editorial" design carrying the palette of
 [drmalaymehta.com](https://www.drmalaymehta.com/).
 
 ## Routes
@@ -29,26 +29,55 @@ npm run build    # production build
 | Path | What's in it |
 | --- | --- |
 | `app/layout.tsx` | Fonts, page metadata, `MedicalClinic` JSON-LD |
-| `app/globals.css` | The whole design system — brand tokens live in `:root` |
+| `app/globals.css` | The whole design system — tokens in `:root`, then one namespaced block per section |
 | `app/non-surgical-hair-treatment/page.tsx` | The landing page — section order and its SEO metadata |
 | `app/thank-you/page.tsx` | Post-submission confirmation page at `/thank-you` |
 | `components/` | One file per section, in the order they appear |
-| `lib/site.ts` | Clinic name, phone, address, hero image — edit once, applies everywhere |
-| `public/` | Logo and before/after photography |
+| `components/Motion.tsx` | The page's single IntersectionObserver, driving every scroll reveal |
+| `lib/site.ts` | Clinic details and image paths — edit once, applies everywhere |
+| `lib/reviews.ts` | Google reviews, transcribed verbatim from `public/reviews/` |
+| `public/img/` | Generated photography (see below) |
 
-### Brand tokens
+### Design
 
-Set in `:root` in `app/globals.css` and taken from the main site:
+"Clinical editorial": large photography, one distinct layout per section, and a
+recurring plate caption device borrowed from clinical journals. The palette is
+unchanged from the previous design — rust `#BB3613`, peach `#E4AE95`, ink
+`#1E2329`, cream `#FFF7F4` — on a warm paper `#FBF6F3`.
 
-| Token | Value | Used for |
+| Role | Face | Used for |
 | --- | --- | --- |
-| `--rust` | `#BB3613` | Buttons, links, accent headings |
-| `--peach` | `#E4AE95` | Hero accent, step numbers, card rules |
-| `--ink` | `#1E2329` | Headings, dark sections |
-| `--cream` | `#FFF7F4` | Alternating section backgrounds |
+| Display | Fraunces (variable, SOFT + WONK axes) | Headlines and pull statements |
+| Body | Figtree | Running copy |
+| Utility | DM Mono | Plate numbers, prices, ledgers, section tags |
 
-Body and headings use Roboto, loaded through `next/font` so there is no render-blocking
-request to Google Fonts.
+Deliberately **not** a high-contrast Didone on cream with a terracotta accent —
+that is the default look for this kind of page. The palette was fixed by the
+brief, so the difference is carried by the display face and the layout system.
+
+Every section uses a different device: a full-bleed hero with a credential
+ledger, a dragging review marquee, an image that bleeds off the viewport edge,
+a sticky image column that swaps as you scroll the treatment list, offset
+editorial plates, a typeset price list, a drawn process rule, a solid panel
+over a macro photograph, a magazine spread, and an accordion. The only card
+grid on the page is the reviews, by design.
+
+Motion is one shared `IntersectionObserver` in `components/Motion.tsx`. Sections
+stay server components and simply mark elements `data-reveal` (fade and lift)
+or `data-draw` (used by the process rule). Everything reveals immediately under
+`prefers-reduced-motion`, and nothing is left hidden if the observer is missing.
+
+### Photography
+
+`public/img/*.jpg` was generated for this page with Nano Banana Pro. The three
+frames featuring Dr Mehta (`hero`, `portrait`, `consult`) were generated with
+the clinic's own photographs from `public/Dr Malay Mehta photos/` attached as
+likeness references. Sources were compressed from 61 MB of PNG to ~1.2 MB of
+progressive JPEG.
+
+`public/logo-light.png` is a white knockout of the wordmark, generated from
+`logo.jpg`, for use on dark backgrounds — the header swaps to it while it is
+transparent over the hero.
 
 ## Wiring up the booking form
 

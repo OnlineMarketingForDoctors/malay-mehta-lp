@@ -1,12 +1,12 @@
 /** Inline SVGs shared across sections. They inherit colour from the parent. */
 
-export function Check({ size = 20 }: { size?: number }) {
+export function Arrow({ size = 15 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path
-        d="M20 6L9 17l-5-5"
+        d="M2 8h11m0 0-4.2-4.2M13 8l-4.2 4.2"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -14,7 +14,7 @@ export function Check({ size = 20 }: { size?: number }) {
   );
 }
 
-export function GoogleG({ size = 18 }: { size?: number }) {
+export function GoogleG({ size = 17 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
       <path
@@ -32,6 +32,20 @@ export function GoogleG({ size = 18 }: { size?: number }) {
       <path
         fill="#EA4335"
         d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"
+      />
+    </svg>
+  );
+}
+
+export function Check({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M20 6L9 17l-5-5"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

@@ -1,13 +1,31 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { DM_Mono, Figtree, Fraunces } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const roboto = Roboto({
+/** Display: a soft, slightly wonky serif — warm and editorial without the
+ *  high-contrast Didone look every clinic page reaches for. */
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  axes: ["SOFT", "WONK", "opsz"],
   display: "swap",
-  variable: "--font-roboto",
+  variable: "--font-fraunces",
+});
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-figtree",
+});
+
+/** Utility face for the clinical data the page is full of: plate numbers,
+ *  session counts, prices, months. */
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-mono",
 });
 
 /** Defaults only — each page sets its own title and description. */
@@ -18,8 +36,23 @@ export const metadata: Metadata = {
 };
 
 /**
- * LocalBusiness data only. The reviews on the page are labelled as samples, so
- * no review or rating markup is emitted until real verified reviews are wired in.
+ * Google Tag Manager loader, verbatim from the GTM install snippet.
+ *
+ * Rendered as a plain <script> inside <head> rather than via next/script:
+ * `beforeInteractive` queues the snippet through Next's own loader at the top
+ * of <body>, which is neither in the head nor the untouched snippet. Next still
+ * emits its framework chunks above this tag, but those are async, so this
+ * inline script executes first.
+ */
+const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${site.gtmId}');`;
+
+/**
+ * LocalBusiness data only. The reviews on the page are real but not verified
+ * through a review platform here, so no rating markup is emitted.
  */
 const clinicSchema = {
   "@context": "https://schema.org",
@@ -43,26 +76,14 @@ const clinicSchema = {
   },
 };
 
-/**
- * Google Tag Manager loader, verbatim from the GTM install snippet.
- *
- * Rendered as a plain <script> inside <head> rather than via next/script:
- * `beforeInteractive` queues the snippet through Next's own loader at the top
- * of <body>, which is neither in the head nor the untouched snippet. Next still
- * emits its framework chunks above this tag, but those are async, so this
- * inline script executes first.
- */
-const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${site.gtmId}');`;
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={roboto.variable}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${figtree.variable} ${dmMono.variable}`}
+    >
       <head>
         {/* Google Tag Manager — first element in <head>. */}
         <script dangerouslySetInnerHTML={{ __html: gtmSnippet }} />

@@ -1,47 +1,52 @@
-import { site } from "@/lib/site";
-import { Check } from "./icons";
+import Image from "next/image";
+import { img, site } from "@/lib/site";
 
-const credentials = [
-  "MBBS · MD Dermatology, Venereology & Leprosy",
-  "International fellowships at McGill (Canada) & Nashville (USA)",
-  "Founder & chief dermatologist, Vile Parle, Mumbai",
+const creds: [string, string][] = [
+  ["Degrees", "MBBS · MD Dermatology, Venereology & Leprosy"],
+  ["Fellowship", "Microsurgical and advanced medical dermatology, McGill University, Canada"],
+  ["Fellowship", "Laser and cosmetic dermatology, Nashville, USA"],
+  ["Role", `Founder and chief dermatologist, ${site.name}`],
 ];
 
 export default function About() {
   return (
-    <section className="block about" id="about">
-      <div className="wrap">
-        <div className="row">
-          <div>
-            <span className="eyebrow">About the doctor</span>
-            <h2>Dr Malay Mehta</h2>
-            <p>
-              Dr Mehta is a dermatologist specialising in hair and skin, with an MBBS and
-              an MD in Dermatology, Venereology &amp; Leprosy. He is the founder and chief
-              dermatologist of Malay Mehta Aesthetic Clinic in Mumbai.
-            </p>
-            <p>
-              He has trained in advanced medical and cosmetic dermatology internationally,
-              including a microsurgical and advanced medical dermatology fellowship under
-              Dr Robin Billick at McGill University, Canada, and a laser and cosmetic
-              dermatology fellowship under Dr Michael Gold in Nashville, USA.
-            </p>
-            <ul className="creds">
-              {credentials.map((credential) => (
-                <li key={credential}>
-                  <Check /> {credential}
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Plain <img>: served from the main site, intrinsic size not known here. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="photo"
-            src={site.doctorPhoto}
-            alt={`${site.doctor}, dermatologist, Mumbai`}
-            loading="lazy"
+    <section className="band ab" id="about">
+      <div className="shell ab__grid">
+        <figure className="ab__media" data-reveal>
+          <Image
+            src={img.portrait}
+            alt={`Portrait of ${site.doctor}`}
+            width={1200}
+            height={1490}
+            sizes="(max-width: 900px) 100vw, 40vw"
           />
+          <figcaption className="plate">
+            <b>Plate 07</b>
+            <span>{site.doctor}, MD Dermatology</span>
+          </figcaption>
+        </figure>
+
+        <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties}>
+          <span className="tag">The doctor</span>
+          <p className="ab__quote">
+            Known across Mumbai for telling people when a treatment
+            won&rsquo;t work for their pattern of loss &mdash; before they pay
+            for it.
+          </p>
+          <p className="ab__body">
+            {site.doctor} is a dermatologist specialising in hair and skin, and
+            the founder of {site.name} in Vile Parle West. He trained in advanced
+            medical and cosmetic dermatology internationally before setting up
+            the clinic, and still does the assessments himself.
+          </p>
+          <ul className="ab__creds">
+            {creds.map(([k, v], i) => (
+              <li key={`${k}-${i}`}>
+                <span>{k}</span>
+                <span>{v}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
