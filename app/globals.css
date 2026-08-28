@@ -2054,12 +2054,13 @@ a {
   color: #fff;
 }
 
+/* Address, number and profiles read as one line across the top of the
+   footer, with the wordmark holding the left edge. */
 .ft__contact {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
-  text-align: right;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px clamp(24px, 3vw, 44px);
 }
 
 .ft__addr {
@@ -2122,12 +2123,16 @@ a {
   transform: translateY(-2px);
 }
 
-/* Once the row wraps, the contact block sits under the wordmark and reads
-   from the same left edge as everything else. */
-@media (max-width: 720px) {
+/* Below the wordmark there is no width left for one line, so the three
+   parts stack and read from the same left edge as everything else. */
+@media (max-width: 1080px) {
   .ft__contact {
+    flex-direction: column;
     align-items: flex-start;
-    text-align: left;
+    gap: 16px;
+    /* Full width, so the block starts at the page's left edge rather than
+       hanging off the right where the one-line layout put it. */
+    width: 100%;
   }
 }
 
