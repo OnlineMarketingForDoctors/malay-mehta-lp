@@ -1460,6 +1460,9 @@
 
 .hvoi__media img {
   object-fit: cover;
+  /* The frame is portrait and the photograph landscape, so the crop has to be
+     told where the subject is: Dr Mehta stands in its left third. */
+  object-position: 32% center;
 }
 
 .hvoi__q {
