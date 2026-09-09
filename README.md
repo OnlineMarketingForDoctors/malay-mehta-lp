@@ -173,11 +173,14 @@ backdrop out of frame.
 
 ### The booking form
 
-`components/ht/HtForm.tsx` embeds the same LeadConnector form as the
-non-surgical page: `LP Form`, `MYDGWNFIK8AldRJjAagk`. Both landing pages point
-at it, so leads from the two arrive in one place. Give this page its own form
-in LeadConnector if they need telling apart, and change the four `MYDGWNFIK...`
-ids in that component to the new one.
+`components/ht/HtForm.tsx` embeds this page's own LeadConnector form,
+`Popup Booking Form (Landing Page)` / `8lRVXNNSYjy5O1FuHRUt`. It is a different
+form from the one on the non-surgical page, so the two pages' leads can be told
+apart. Swapping it means changing the four id references in that component.
+
+The embed carries `data-cookie-consent` and `data-cookie-consent-provider`,
+which the other page's does not, so LeadConnector handles the consent prompt
+inside the iframe.
 
 
 ### Photography

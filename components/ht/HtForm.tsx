@@ -3,13 +3,13 @@ import Script from "next/script";
 import { htImg, site } from "@/lib/site";
 
 /**
- * The booking form is the same LeadConnector (GoHighLevel) embed the
- * non-surgical page uses, so submission, validation and the post-submit
- * destination are all configured in LeadConnector rather than here.
+ * The booking form is a LeadConnector (GoHighLevel) embed, so submission,
+ * validation and the post-submit destination are all configured in
+ * LeadConnector rather than here.
  *
- * Note that both landing pages point at the same form (`LP Form`,
- * MYDGWNFIK8AldRJjAagk), so leads from the two arrive in one place. Give this
- * page its own form in LeadConnector if the two need telling apart.
+ * This page has its own form, `Popup Booking Form (Landing Page)`, separate
+ * from the one the non-surgical page uses, so the two pages' leads can be
+ * told apart.
  */
 export default function HtForm() {
   return (
@@ -63,9 +63,9 @@ export default function HtForm() {
             style={{ "--d": "180ms" } as React.CSSProperties}
           >
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/MYDGWNFIK8AldRJjAagk"
+              src="https://api.leadconnectorhq.com/widget/form/8lRVXNNSYjy5O1FuHRUt"
               style={{ width: "100%", height: "100%", border: "none", borderRadius: "4px" }}
-              id="inline-MYDGWNFIK8AldRJjAagk"
+              id="inline-8lRVXNNSYjy5O1FuHRUt"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -73,11 +73,13 @@ export default function HtForm() {
               data-activation-value=""
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
-              data-form-name="LP Form"
-              data-height="502"
-              data-layout-iframe-id="inline-MYDGWNFIK8AldRJjAagk"
-              data-form-id="MYDGWNFIK8AldRJjAagk"
-              title="LP Form"
+              data-form-name="Popup Booking Form (Landing Page)"
+              data-height="1014"
+              data-layout-iframe-id="inline-8lRVXNNSYjy5O1FuHRUt"
+              data-form-id="8lRVXNNSYjy5O1FuHRUt"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="Popup Booking Form (Landing Page)"
             />
           </div>
 
