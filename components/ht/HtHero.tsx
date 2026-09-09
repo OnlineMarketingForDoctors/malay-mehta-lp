@@ -43,10 +43,9 @@ export default function HtHero() {
           data-reveal
           style={{ "--d": "170ms" } as React.CSSProperties}
         >
-          One day, one sitting, and a rich look forever. A minimally invasive,
-          long-lasting FUE hair transplant, planned and performed personally by
-          {" "}
-          {site.doctor}, MBBS, MD Dermatology.
+          Up to 6,000 grafts placed in a single sitting, by {site.doctor}{" "}
+          himself, behind a hairline drawn by hand to suit your face. Permanent,
+          minimally invasive, and finished in a day.
         </p>
 
         <div

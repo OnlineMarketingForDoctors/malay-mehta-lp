@@ -59,27 +59,31 @@ export default function HtAbout() {
             style={{ "--d": "140ms" } as React.CSSProperties}
           >
             <p className="habt__first">
-              Dr Malay Mehta began his career in a small part of Gujarat, where
-              his passion for serving his local community was formed. He found
-              his calling in cosmetic procedures through his love of drawing,
-              sketching and painting: the science and the art matched.
+              Dr Malay Mehta&rsquo;s reputation is built on one thing: hairlines
+              nobody can pick out. He came to surgery through drawing, sketching
+              and painting, and hairline design is where that still shows. The
+              angle, the direction, the density and the irregular transition are
+              drawn by hand on every patient before a single graft is taken,
+              because a transplant is judged on whether the front looks like it
+              grew there.
             </p>
             <p>
-              He trained in dermatology, the science of skin, hair and nail, and
-              worked in a chain clinic for four years before starting out as a
-              hair transplant surgeon and cosmetic dermatologist. He holds
-              fellowships in microsurgical and advanced medical dermatology
-              under Dr Robin Billick at McGill University, Canada, and in laser
-              and cosmetic dermatology under Dr Michael Gold in Nashville.
+              He qualified MBBS in 2011 and took his MD in 2014, then spent four
+              years in a chain clinic before opening his own centre in the heart
+              of Mumbai, where he is chief surgeon and managing director. Four
+              surgical tables run alongside a fully trained team, which is what
+              makes a 5,000 to 6,000 graft sitting possible in one day instead
+              of split across two surgeries six months apart. The punches are
+              imported and run on a German motor, keeping graft transection to
+              around 1 to 2%.
             </p>
             <p>
-              He then set up his own centre in the heart of Mumbai, where he
-              works as chief dermatologist and managing director. The clinic
-              runs four surgical tables alongside fully trained staff, which is
-              what allows a full sitting to be finished in one day. His
-              reputation has come from hair transplant work, where he is known
-              for creating a natural look through advanced, safe techniques at a
-              price everyone can afford.
+              The work he is best known for is the difficult end of it: grade 6
+              and 7 patterns, exhausted donor areas, and repairing transplants
+              performed badly elsewhere, where beard and body grafts make up the
+              numbers a scalp no longer can. Patients come from across Mumbai and
+              from Dubai, Qatar and Turkey. Dr Mehta plans every case himself,
+              performs the surgery himself, and is in theatre throughout.
             </p>
           </div>
 

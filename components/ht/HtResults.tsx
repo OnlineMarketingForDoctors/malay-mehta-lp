@@ -58,7 +58,7 @@ export default function HtResults() {
           <div data-reveal>
             <span className="tag">Before &amp; after</span>
             <h2 className="h2 hres__h2">
-              Eleven patients,
+              Real patients,
               <br />
               <span className="em">counted in grafts.</span>
             </h2>

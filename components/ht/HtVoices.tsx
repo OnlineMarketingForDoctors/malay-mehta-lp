@@ -36,8 +36,18 @@ export default function HtVoices() {
           >
             <p>{first.quote}</p>
             <footer>
-              <b>{first.name}</b>
-              <span>{first.role}</span>
+              <Image
+                className="hvoi__face"
+                src={first.photo}
+                alt={first.name}
+                width={320}
+                height={320}
+                sizes="60px"
+              />
+              <span className="hvoi__by">
+                <b>{first.name}</b>
+                <span>{first.role}</span>
+              </span>
             </footer>
           </blockquote>
 
@@ -48,8 +58,18 @@ export default function HtVoices() {
           >
             <p>{second.quote}</p>
             <footer>
-              <b>{second.name}</b>
-              <span>{second.role}</span>
+              <Image
+                className="hvoi__face"
+                src={second.photo}
+                alt={second.name}
+                width={320}
+                height={320}
+                sizes="60px"
+              />
+              <span className="hvoi__by">
+                <b>{second.name}</b>
+                <span>{second.role}</span>
+              </span>
             </footer>
           </blockquote>
         </div>

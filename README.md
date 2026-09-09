@@ -157,6 +157,20 @@ training list.
 pointing at their own sections. Its defaults are the non-surgical page's, so
 that page is unchanged.
 
+### The case studies
+
+`case-studies/` at the repo root holds the clinic's five documented cases: an
+operative note and the original photographs for each. **It is deliberately not
+under `public/`**, because everything under `public/` is served, and these are
+full-resolution patient photographs and surgical notes.
+
+What the page uses are cropped, optimised derivatives in
+`public/results/cases/`, generated from those originals. They are cropped to the
+treated area, so in most of them the face is not the subject. Case 5's earlier
+photographs were taken at the clinic in Turkey that performed his first
+transplant, so they are cropped in tightly to keep that clinic's branded
+backdrop out of frame.
+
 ### Two things to finish before this page goes live
 
 - **The booking form is a placeholder.** `components/ht/HtForm.tsx` mirrors the
@@ -165,9 +179,11 @@ that page is unchanged.
   photographs) but submits nowhere; it shows a notice instead. Replace it with a
   LeadConnector iframe the way `components/BookForm.tsx` does, or point the
   `<form>` at a real endpoint and drop the guard in `onSubmit`.
-- **The case studies slider is not built.** `public/case studies/` is empty. The
-  before/after slider in `components/ht/HtResults.tsx` reads from the `results`
-  array in `lib/ht.ts` and is the pattern to follow.
+- **Confirm the case study consent.** The before and after frames from the old
+  FUE page are published with the patients' eyes redacted; the five case study
+  photographs are not, because that is how the clinic supplied them for the
+  website. If they should match, redact them or crop tighter and regenerate the
+  files in `public/results/cases/`.
 
 ### Photography
 

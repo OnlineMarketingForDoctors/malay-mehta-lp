@@ -780,12 +780,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(22px, 2.6vw, 38px);
-  align-items: start;
-}
-
-/* The right-hand column drops, so the pairs never line up as a table. */
-.hproc__card:nth-child(even) {
-  margin-top: clamp(30px, 6vw, 96px);
+  align-items: stretch;
 }
 
 .hproc__card {
@@ -797,17 +792,10 @@
   box-shadow: 0 30px 54px -40px rgba(30, 35, 41, 0.62);
 }
 
-/* Each frame is a different height, so the run reads as a spread. */
-.hproc__card[data-proc="male"] {
-  aspect-ratio: 4 / 5;
-}
-.hproc__card[data-proc="hairline"] {
-  aspect-ratio: 5 / 6;
-}
-.hproc__card[data-proc="repair"] {
-  aspect-ratio: 1 / 1;
-}
-.hproc__card[data-proc="beard"] {
+/* One ratio for all four, so the 2x2 reads as a set rather than a collage.
+   The copy sits on the photograph, so the frames also have to be the same
+   height for the titles to line up across a row. */
+.hproc__card {
   aspect-ratio: 4 / 5;
 }
 
@@ -869,14 +857,6 @@
 @media (max-width: 780px) {
   .hproc__grid {
     grid-template-columns: 1fr;
-  }
-
-  .hproc__card:nth-child(even) {
-    margin-top: 0;
-  }
-
-  .hproc__card[data-proc] {
-    aspect-ratio: 4 / 5;
   }
 }
 
@@ -1493,10 +1473,8 @@
   color: var(--ink-45);
 }
 
-/* The second quote steps out to the right and sits over the gutter. */
+/* Same left edge as the first, so the pair reads as one column. */
 .hvoi__q--two {
-  margin-left: clamp(0px, 4vw, 62px);
-  margin-top: clamp(-30px, -2vw, 0px);
   background: var(--paper);
 }
 
@@ -1512,10 +1490,6 @@
     aspect-ratio: 4 / 3;
   }
 
-  .hvoi__q--two {
-    margin-left: 0;
-    margin-top: 0;
-  }
 }
 
 /* ============================================================
@@ -1966,4 +1940,387 @@
   .hfrm__pair {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================================
+   CASE STUDIES — one documented case per full-width slide
+   ============================================================ */
+
+.hcase {
+  background: var(--cream);
+  padding-block: var(--band);
+  overflow: hidden;
+}
+
+.hcase__top {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 46ch);
+  gap: 40px 64px;
+  align-items: end;
+}
+
+.hcase__h2 {
+  margin-top: 20px;
+}
+
+.hcase__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.hcase__note {
+  color: var(--ink-70);
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+
+.hcase__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hcase__btn {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+.hcase__btn:first-child svg {
+  transform: rotate(180deg);
+}
+
+.hcase__btn:hover:not(:disabled) {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: #fff;
+}
+
+.hcase__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.hcase__count {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.hcase__count i {
+  font-style: normal;
+  color: var(--ink-45);
+  margin-inline: 4px;
+}
+
+/* One slide fills the viewport width, so a case is read rather than skimmed. */
+.hcase__viewport {
+  margin-top: clamp(44px, 4.6vw, 68px);
+}
+
+.hcase__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.hcase__track::-webkit-scrollbar {
+  display: none;
+}
+
+.hcase__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.hcase__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
+  gap: clamp(28px, 3.6vw, 56px);
+  align-items: start;
+}
+
+.hcase__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(10px, 1.2vw, 18px);
+}
+
+.hcase__frame {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--hairline-soft);
+  box-shadow: 0 26px 46px -36px rgba(30, 35, 41, 0.55);
+}
+
+.hcase__frame img {
+  width: 100%;
+  height: auto;
+}
+
+.hcase__frame figcaption {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(18, 21, 25, 0.72);
+  backdrop-filter: blur(4px);
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.hcase__frame--after figcaption {
+  background: var(--rust);
+}
+
+.hcase__body {
+  padding-top: 4px;
+}
+
+/* The case number, set at display size the way the graft counts are. */
+.hcase__n {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(40px, 4.6vw, 64px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--rust);
+}
+
+.hcase__who {
+  margin-top: 18px;
+  font-family: var(--display);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 120;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.hcase__proc {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  color: var(--ink-70);
+}
+
+.hcase__proc b {
+  font-weight: 500;
+  color: var(--rust);
+}
+
+.hcase__facts {
+  margin-top: 26px;
+  border-top: 1px solid var(--hairline);
+}
+
+.hcase__facts > div {
+  display: grid;
+  grid-template-columns: 13ch 1fr;
+  gap: 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.hcase__facts dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+  padding-top: 3px;
+}
+
+.hcase__facts dd {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.hcase__summary {
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--ink);
+  max-width: 52ch;
+}
+
+.hcase__detail {
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.64;
+  color: var(--ink-70);
+  max-width: 52ch;
+}
+
+.hcase__dots {
+  display: flex;
+  gap: 6px;
+  margin-top: clamp(34px, 3.4vw, 48px);
+}
+
+.hcase__dot {
+  width: 34px;
+  height: 2px;
+  border: 0;
+  padding: 0;
+  background: var(--hairline);
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+
+.hcase__dot[data-on="true"] {
+  background: var(--rust);
+}
+
+.hcase__disc {
+  margin-top: 24px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-45);
+  max-width: 68ch;
+}
+
+@media (max-width: 900px) {
+  .hcase__top {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .hcase__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hcase__facts > div {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+/* ============================================================
+   PROMISE — the page's one centred statement, straight after
+   the reviews
+   ============================================================ */
+
+.hprm {
+  background: var(--peach-wash);
+  padding-block: clamp(64px, 7vw, 108px);
+  border-bottom: 1px solid rgba(187, 54, 19, 0.12);
+}
+
+.hprm__in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hprm__h2 {
+  max-width: 18ch;
+}
+
+.hprm__body {
+  margin-top: 26px;
+  max-width: 66ch;
+  font-size: clamp(16px, 1.25vw, 18.5px);
+  line-height: 1.62;
+  color: var(--ink-70);
+}
+
+.hprm__points {
+  margin-top: clamp(34px, 3.4vw, 50px);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.hprm__points li {
+  padding-inline: clamp(22px, 3vw, 52px);
+  border-left: 1px solid rgba(187, 54, 19, 0.2);
+}
+
+.hprm__points li:first-child {
+  border-left: 0;
+}
+
+.hprm__points b {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--rust);
+}
+
+.hprm__points span {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+@media (max-width: 640px) {
+  .hprm__points {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .hprm__points li {
+    padding-inline: 0;
+    border-left: 0;
+  }
+}
+
+/* ---- headshots on the two written testimonials ---- */
+
+.hvoi__face {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  border: 2px solid var(--paper);
+  box-shadow: 0 8px 18px -10px rgba(30, 35, 41, 0.5);
+}
+
+.hvoi__by {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* The footer was a baseline row for two bits of text; with a face in it, it
+   is a centred row instead. */
+.hvoi__q footer {
+  align-items: center;
+  gap: 16px;
 }

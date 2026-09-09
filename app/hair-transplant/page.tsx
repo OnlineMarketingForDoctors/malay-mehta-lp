@@ -5,12 +5,14 @@ import ReviewMarquee from "@/components/ReviewMarquee";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader, { type NavLink } from "@/components/SiteHeader";
 import HtAbout from "@/components/ht/HtAbout";
+import HtCases from "@/components/ht/HtCases";
 import HtCta from "@/components/ht/HtCta";
 import HtFaq from "@/components/ht/HtFaq";
 import HtForm from "@/components/ht/HtForm";
 import HtHero from "@/components/ht/HtHero";
 import HtPricing from "@/components/ht/HtPricing";
 import HtProcedures from "@/components/ht/HtProcedures";
+import HtPromise from "@/components/ht/HtPromise";
 import HtResults from "@/components/ht/HtResults";
 import HtSapphire from "@/components/ht/HtSapphire";
 import HtTravel from "@/components/ht/HtTravel";
@@ -23,6 +25,7 @@ const links: NavLink[] = [
   { hash: "#results", label: "Results" },
   { hash: "#sapphire", label: "Sapphire FUE" },
   { hash: "#procedures", label: "Procedures" },
+  { hash: "#cases", label: "Case studies" },
   { hash: "#about", label: "Dr Mehta" },
   { hash: "#pricing", label: "Pricing" },
   { hash: "#faq", label: "FAQ" },
@@ -55,9 +58,11 @@ export default function Page() {
         <div id="reviews">
           <ReviewMarquee />
         </div>
+        <HtPromise />
         <HtResults />
         <HtSapphire />
         <HtProcedures />
+        <HtCases />
         <HtWhy />
         <HtAbout />
         <HtPricing />
