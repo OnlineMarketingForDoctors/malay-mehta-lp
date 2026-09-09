@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { htImg, site } from "@/lib/site";
 import { ledger } from "@/lib/ht";
 import { Arrow, GoogleG } from "../icons";
@@ -12,14 +11,23 @@ import { Arrow, GoogleG } from "../icons";
 export default function HtHero() {
   return (
     <section className="hth" id="top">
+      {/*
+        Art direction rather than one crop for both: a landscape frame with the
+        type beside him on a desktop, a portrait one with him centred and the
+        type below it on a phone. <picture> so only one of the two is ever
+        fetched, which next/image cannot express.
+      */}
       <div className="hth__media">
-        <Image
-          src={htImg.hero}
-          alt={`${site.doctor} in the operating theatre at ${site.name}`}
-          fill
-          priority
-          sizes="100vw"
-        />
+        <picture>
+          <source media="(max-width: 900px)" srcSet={htImg.heroMobile} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={htImg.hero}
+            alt={`${site.doctor} in the operating theatre at ${site.name}`}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
       <div className="hth__scrim" />
 

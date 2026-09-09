@@ -76,6 +76,8 @@ export const htPath = "/hair-transplant";
  */
 export const htImg = {
   hero: "/img/ht/hero.webp",
+  /** Portrait crop of the same subject, for the stacked hero on phones. */
+  heroMobile: "/img/ht/hero-mobile.webp",
   hairline: "/img/ht/hairline.webp",
   theatre: "/img/ht/theatre.webp",
   theatreWide: "/img/ht/theatre-wide.webp",

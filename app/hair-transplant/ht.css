@@ -34,6 +34,13 @@
   z-index: -2;
 }
 
+.hth__media picture,
+.hth__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hth__media img {
   object-fit: cover;
   object-position: 72% center;
@@ -223,17 +230,50 @@
 }
 
 @media (max-width: 900px) {
+  /* On a phone the photograph stops being a background and becomes the top of
+     the page: full bleed, its own height, dissolving into the ground the type
+     sits on. Nothing is set over his face. */
   .hth {
     min-height: 0;
+    display: block;
+    background: #14171a;
   }
 
-  .hth__in {
-    padding-top: 132px;
-    padding-bottom: 40px;
+  .hth__media {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    height: min(66svh, 520px);
   }
 
   .hth__media img {
-    object-position: 66% center;
+    object-position: center 26%;
+  }
+
+  /* The dissolve. It starts well below his face and ends on the exact colour
+     the section is painted, so there is no visible seam. */
+  .hth__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 23, 26, 0) 46%,
+      rgba(20, 23, 26, 0.5) 74%,
+      rgba(20, 23, 26, 0.9) 91%,
+      #14171a 100%
+    );
+  }
+
+  /* The full-frame scrim existed to hold type over the picture. There is no
+     type over the picture here. */
+  .hth__scrim {
+    display: none;
+  }
+
+  .hth__in {
+    padding-top: 4px;
+    padding-bottom: 40px;
   }
 
   .hth__ledger-in {
@@ -877,17 +917,35 @@
     grid-template-columns: 1fr;
   }
 
-  /* Stacked, the copy wraps to nearly twice the height and pushes the
-     eyebrow up into the bright part of the photograph, so the scrim has to
-     reach further. */
+  /* Stacked, the copy runs to nearly twice the height and covered the faces.
+     So it stops being an overlay: the photograph takes the top of the tile at
+     its own height and the copy sits under it on solid ink. */
+  .hproc__card {
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .hproc__media {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 5 / 4;
+  }
+
+  .hproc__media img {
+    object-position: center 24%;
+  }
+
+  /* No scrim at all: with the copy on its own panel the photograph meets it
+     at a clean edge, which suits the glued block better than a fade. */
   .hproc__media::after {
-    background: linear-gradient(
-      to top,
-      rgba(12, 14, 17, 0.95) 0%,
-      rgba(12, 14, 17, 0.88) 42%,
-      rgba(12, 14, 17, 0.45) 72%,
-      rgba(12, 14, 17, 0.1) 100%
-    );
+    display: none;
+  }
+
+  .hproc__body {
+    position: static;
+    background: var(--ink);
+    padding-top: 4px;
   }
 
   .hproc__card + .hproc__card,
