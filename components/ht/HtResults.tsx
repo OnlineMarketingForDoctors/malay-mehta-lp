@@ -69,10 +69,10 @@ export default function HtResults() {
             style={{ "--d": "120ms" } as React.CSSProperties}
           >
             <p className="hres__note">
-              The clinic&rsquo;s own patients, published with their eyes
-              redacted. Every case here carries its graft count, its Norwood
-              Hamilton grade and the month the photograph was taken, because
-              those three things are what a result actually means.
+              The clinic&rsquo;s own patients, published with their consent.
+              Every case here carries its graft count, its Norwood Hamilton
+              grade and the month the photograph was taken, because those three
+              things are what a result actually means.
             </p>
             <div className="hres__nav">
               <button

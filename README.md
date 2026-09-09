@@ -171,7 +171,7 @@ photographs were taken at the clinic in Turkey that performed his first
 transplant, so they are cropped in tightly to keep that clinic's branded
 backdrop out of frame.
 
-### Two things to finish before this page goes live
+### Before this page goes live
 
 - **The booking form is a placeholder.** `components/ht/HtForm.tsx` mirrors the
   field set of the Contact Form 7 form on the WordPress FUE page (name, email,
@@ -179,11 +179,7 @@ backdrop out of frame.
   photographs) but submits nowhere; it shows a notice instead. Replace it with a
   LeadConnector iframe the way `components/BookForm.tsx` does, or point the
   `<form>` at a real endpoint and drop the guard in `onSubmit`.
-- **Confirm the case study consent.** The before and after frames from the old
-  FUE page are published with the patients' eyes redacted; the five case study
-  photographs are not, because that is how the clinic supplied them for the
-  website. If they should match, redact them or crop tighter and regenerate the
-  files in `public/results/cases/`.
+
 
 ### Photography
 

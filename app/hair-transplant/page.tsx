@@ -22,10 +22,10 @@ import { htPath, site } from "@/lib/site";
 import "./ht.css";
 
 const links: NavLink[] = [
-  { hash: "#results", label: "Results" },
+  { hash: "#cases", label: "Case studies" },
   { hash: "#sapphire", label: "Sapphire FUE" },
   { hash: "#procedures", label: "Procedures" },
-  { hash: "#cases", label: "Case studies" },
+  { hash: "#results", label: "Results" },
   { hash: "#about", label: "Dr Mehta" },
   { hash: "#pricing", label: "Pricing" },
   { hash: "#faq", label: "FAQ" },
@@ -59,10 +59,10 @@ export default function Page() {
           <ReviewMarquee />
         </div>
         <HtPromise />
-        <HtResults />
+        <HtCases />
         <HtSapphire />
         <HtProcedures />
-        <HtCases />
+        <HtResults />
         <HtWhy />
         <HtAbout />
         <HtPricing />
