@@ -8,9 +8,10 @@ Vile Parle West, Mumbai. A "clinical editorial" design carrying the palette of
 
 | Path | What it is |
 | --- | --- |
-| `/non-surgical-hair-treatment` | The landing page |
+| `/non-surgical-hair-treatment` | PRP, GFC and exosome landing page |
+| `/hair-transplant` | Sapphire FUE hair transplant landing page, `noindex` |
 | `/thank-you` | Confirmation page after the form is submitted, `noindex` |
-| `/` | 307 redirect to the landing page |
+| `/` | 307 redirect to `/non-surgical-hair-treatment` |
 
 The landing page path is set once in `lib/site.ts` as `lpPath`; every internal link and the
 root redirect are built from it. Moving the page means changing that value and renaming
@@ -31,12 +32,16 @@ npm run build    # production build
 | `app/layout.tsx` | Fonts, page metadata, `MedicalClinic` JSON-LD |
 | `app/globals.css` | The whole design system — tokens in `:root`, then one namespaced block per section |
 | `app/non-surgical-hair-treatment/page.tsx` | The landing page — section order and its SEO metadata |
+| `app/hair-transplant/page.tsx` | The hair transplant landing page and its metadata |
+| `app/hair-transplant/ht.css` | That page's whole stylesheet, namespaced per section |
 | `app/thank-you/page.tsx` | Post-submission confirmation page at `/thank-you` |
 | `components/` | One file per section, in the order they appear |
 | `components/Motion.tsx` | The page's single IntersectionObserver, driving every scroll reveal |
 | `components/FloatingActions.tsx` | WhatsApp shortcut and back-to-top, on both pages |
 | `lib/site.ts` | Clinic details and image paths — edit once, applies everywhere |
 | `lib/reviews.ts` | Google reviews, transcribed verbatim from `public/reviews/` |
+| `lib/ht.ts` | All copy for the hair transplant page, kept out of its components |
+| `components/ht/` | One file per section of the hair transplant page |
 | `public/img/` | Generated photography (see below) |
 
 ### Design
@@ -125,6 +130,56 @@ landings that never filled the form in, which inflates conversion counts.
 It is a real page load, so it is the natural target for a Google Ads conversion tag or a
 GA4 destination conversion. Set that up as a trigger in GTM (see below) rather than
 hard-coding a tag into the page.
+
+## The hair transplant page
+
+`/hair-transplant` targets "hair transplant Mumbai" and its cost, clinic and
+locality variants. Copy is carried over from the clinic's WordPress page at
+`/sapphire-fue-hair-transplant-lp/` and from its About and Meet Dr Malay pages,
+re-set in UK English. Figures, graft counts and the pricing are the clinic's own
+and are reproduced as written.
+
+It shares the design system with the non-surgical page — the same palette,
+typefaces, header, footer, review marquee, scroll reveals and floating actions —
+but none of its CSS. Every rule lives in `app/hair-transplant/ht.css`, imported
+by the page and namespaced one prefix per section (`hth`, `hres`, `hsap`,
+`hproc`, `hwhy`, `habt`, `hpri`, `htrv`, `hvoi`, `hfaq`, `hcta`, `hfrm`), so no
+rule on either page can reach the other.
+
+Where the non-surgical page's recurring device is a plate caption, this page's
+is **a mono figure over a hairline rule**. A hair transplant is the one
+procedure measured in countable units, so graft counts, Norwood Hamilton grades,
+viability and price per thousand are all set the same way: the hero ledger, the
+badge on each result, the eight-point sapphire ledger, the price terms and the
+training list.
+
+`SiteHeader` takes `basePath` and `links` so both pages get the same bar
+pointing at their own sections. Its defaults are the non-surgical page's, so
+that page is unchanged.
+
+### Two things to finish before this page goes live
+
+- **The booking form is a placeholder.** `components/ht/HtForm.tsx` mirrors the
+  field set of the Contact Form 7 form on the WordPress FUE page (name, email,
+  phone, preferred date, how they heard, Norwood grade 1 to 7, up to three
+  photographs) but submits nowhere; it shows a notice instead. Replace it with a
+  LeadConnector iframe the way `components/BookForm.tsx` does, or point the
+  `<form>` at a real endpoint and drop the guard in `onSubmit`.
+- **The case studies slider is not built.** `public/case studies/` is empty. The
+  before/after slider in `components/ht/HtResults.tsx` reads from the `results`
+  array in `lib/ht.ts` and is the pattern to follow.
+
+### Photography
+
+`public/img/ht/*.webp` was generated for this page with Nano Banana Pro. The
+seven frames featuring Dr Mehta were generated with the clinic's photographs
+from `public/Dr Malay Mehta photos/` and the existing `public/img/` frames
+attached as likeness references. Seventeen images come to about 1.6 MB.
+
+`public/results/ht/*.webp` are the clinic's real before and after photographs,
+taken from the live FUE page and converted to WebP. They are actual patients
+with their eyes redacted as published, not generated images, which is why they
+carry the old page's ring and arrow treatment.
 
 ## Google Tag Manager
 

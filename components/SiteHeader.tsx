@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 import { Arrow, Close, Menu, Phone } from "./icons";
 
-const links = [
+export type NavLink = { hash: string; label: string };
+
+const defaultLinks: NavLink[] = [
   { hash: "#treatments", label: "Treatments" },
   { hash: "#results", label: "Results" },
   { hash: "#pricing", label: "Pricing" },
@@ -17,9 +19,20 @@ const links = [
 type Props = {
   /** Logo only — for pages past the point of conversion. */
   minimal?: boolean;
+  /**
+   * Which landing page the header belongs to. Every link is built from it, so
+   * a second landing page gets the same bar pointing at its own sections.
+   */
+  basePath?: string;
+  /** Section links for that page, in the order they appear on it. */
+  links?: NavLink[];
 };
 
-export default function SiteHeader({ minimal = false }: Props) {
+export default function SiteHeader({
+  minimal = false,
+  basePath = site.lpPath,
+  links = defaultLinks,
+}: Props) {
   /** The bar is transparent over the hero and solid once you leave it. On the
    *  minimal header there is no hero behind it, so it starts solid. */
   const [stuck, setStuck] = useState(minimal);
@@ -52,7 +65,7 @@ export default function SiteHeader({ minimal = false }: Props) {
       <div className="shell hdr__in">
         <a
           className="hdr__logo"
-          href={site.lpPath}
+          href={basePath}
           aria-label={`${site.doctor} Aesthetic Clinic`}
           style={minimal ? { marginInline: "auto" } : undefined}
         >
@@ -83,13 +96,13 @@ export default function SiteHeader({ minimal = false }: Props) {
                 once the bar goes solid: past the hero, the call to action is
                 worth more than the logo. Hidden from desktop, which keeps its
                 own button on the right. */}
-            <a href={`${site.lpPath}#book`} className="btn hdr__book">
+            <a href={`${basePath}#book`} className="btn hdr__book">
               Book a consultation <Arrow size={13} />
             </a>
 
             <nav className="hdr__nav" aria-label="Sections">
               {links.map((l) => (
-                <a key={l.hash} href={`${site.lpPath}${l.hash}`}>
+                <a key={l.hash} href={`${basePath}${l.hash}`}>
                   {l.label}
                 </a>
               ))}
@@ -110,7 +123,7 @@ export default function SiteHeader({ minimal = false }: Props) {
               <Phone size={18} />
             </a>
 
-            <a href={`${site.lpPath}#book`} className="btn hdr__cta">
+            <a href={`${basePath}#book`} className="btn hdr__cta">
               Book a consult <Arrow size={13} />
             </a>
 
@@ -134,7 +147,7 @@ export default function SiteHeader({ minimal = false }: Props) {
             {links.map((l) => (
               <a
                 key={l.hash}
-                href={`${site.lpPath}${l.hash}`}
+                href={`${basePath}${l.hash}`}
                 onClick={() => setOpen(false)}
               >
                 {l.label}
@@ -142,7 +155,7 @@ export default function SiteHeader({ minimal = false }: Props) {
             ))}
           </nav>
           <a
-            href={`${site.lpPath}#book`}
+            href={`${basePath}#book`}
             className="btn btn--wide"
             onClick={() => setOpen(false)}
           >

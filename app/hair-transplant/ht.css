@@ -1,0 +1,1969 @@
+/* ============================================================
+   Hair transplant landing page.
+
+   Loaded only by app/hair-transplant/page.tsx. It inherits the tokens and
+   primitives from app/globals.css (--rust, --ink, .shell, .band, .tag, .h1,
+   .btn, [data-reveal]) and adds nothing to them: every class below is
+   namespaced to one section, so no rule here can reach the other page.
+
+   The recurring device is a mono figure over a hairline rule. A hair
+   transplant is the one procedure measured in countable units, so every
+   number on the page — graft counts, Norwood grades, viability, price per
+   thousand — is set the same way and carries the page.
+   ============================================================ */
+
+/* ============================================================
+   HERO — full-bleed theatre photograph, type set low, and the
+   graft ledger as a strip along the bottom edge
+   ============================================================ */
+
+.hth {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+  overflow: hidden;
+  background: #14171a;
+}
+
+.hth__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hth__media img {
+  object-fit: cover;
+  object-position: 72% center;
+  animation: hthDrift 24s var(--ease) forwards;
+}
+
+/* A very slow settle on load. It is the only ambient motion on the page. */
+@keyframes hthDrift {
+  from {
+    transform: scale(1.07);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hth__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      to top,
+      rgba(12, 14, 17, 0.94) 0%,
+      rgba(12, 14, 17, 0.72) 34%,
+      rgba(12, 14, 17, 0.2) 66%,
+      rgba(12, 14, 17, 0.5) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(12, 14, 17, 0.78) 0%,
+      rgba(12, 14, 17, 0.28) 52%,
+      rgba(12, 14, 17, 0) 78%
+    );
+}
+
+.hth__in {
+  padding-top: 148px;
+  padding-bottom: 46px;
+  color: #fff;
+  max-width: min(var(--measure), 100%);
+}
+
+.hth__tag {
+  color: var(--peach);
+}
+
+.hth__h1 {
+  margin-top: 20px;
+  color: #fff;
+  max-width: 15ch;
+}
+
+.hth__lede {
+  margin-top: 24px;
+  max-width: 48ch;
+  font-size: clamp(16.5px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hth__acts {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 26px;
+}
+
+.hth__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.hth__badge:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hth__badge-body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.hth__badge-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hth__badge-top b {
+  font-size: 17px;
+}
+
+.hth__badge-stars {
+  color: var(--peach);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.hth__badge-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-top: 3px;
+}
+
+.hth__price {
+  margin-top: 26px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.hth__price b {
+  color: var(--peach);
+  font-weight: 500;
+}
+
+.hth__ast {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ---- the graft ledger ---- */
+
+.hth__ledger {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 12, 15, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.hth__ledger-in {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.hth__cell {
+  padding: 22px 0 24px;
+  padding-right: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  padding-left: 22px;
+}
+
+.hth__cell:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.hth__fig {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.hth__fig i {
+  font-style: normal;
+  font-size: 0.5em;
+  color: var(--peach);
+  letter-spacing: 0.02em;
+}
+
+.hth__lab {
+  display: block;
+  margin-top: 9px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+@media (max-width: 900px) {
+  .hth {
+    min-height: 0;
+  }
+
+  .hth__in {
+    padding-top: 132px;
+    padding-bottom: 40px;
+  }
+
+  .hth__media img {
+    object-position: 66% center;
+  }
+
+  .hth__ledger-in {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hth__h1 {
+    font-size: clamp(38px, 11.5vw, 52px);
+  }
+
+  .hth__cell {
+    padding: 18px 16px;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .hth__cell:nth-child(-n + 2) {
+    border-top: 0;
+  }
+
+  .hth__cell:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* Rust on near-black is barely legible, so every tag sitting on a dark
+   ground takes the peach the design system uses on .band--ink. */
+.hwhy .tag,
+.hpri .tag,
+.hcta .tag,
+.htrv__cap .tag,
+.hfrm__cap .tag {
+  color: var(--peach);
+}
+
+/* ============================================================
+   RESULTS — one patient per slide, led by the graft count
+   ============================================================ */
+
+.hres {
+  background: var(--paper);
+  padding-block: var(--band);
+  overflow: hidden;
+}
+
+.hres__top {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 46ch);
+  gap: 40px 64px;
+  align-items: end;
+}
+
+.hres__h2 {
+  margin-top: 20px;
+}
+
+.hres__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.hres__note {
+  color: var(--ink-70);
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+
+.hres__nav {
+  display: flex;
+  gap: 10px;
+}
+
+.hres__btn {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+.hres__btn:first-child svg {
+  transform: rotate(180deg);
+}
+
+.hres__btn:hover:not(:disabled) {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: #fff;
+}
+
+.hres__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.hres__viewport {
+  margin-top: 52px;
+}
+
+.hres__track {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* Start flush with the shell, run off the right edge of the viewport. */
+  padding-inline: max(var(--gutter), var(--edge)) var(--gutter);
+  padding-block: 6px 10px;
+  /* Without this, snapping aligns the first slide to the scrollport edge and
+     scrolls the gutter away on load. */
+  scroll-padding-inline-start: max(var(--gutter), var(--edge));
+}
+
+.hres__track::-webkit-scrollbar {
+  display: none;
+}
+
+.hres__slide {
+  flex: 0 0 380px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.hres__frame {
+  position: relative;
+  background: var(--cream);
+  border: 1px solid var(--hairline-soft);
+  border-radius: 3px;
+  box-shadow: 0 26px 44px -34px rgba(30, 35, 41, 0.5);
+  padding: 12px;
+  transition: box-shadow 0.35s var(--ease);
+}
+
+.hres__slide:hover .hres__frame {
+  box-shadow: 0 34px 56px -32px rgba(30, 35, 41, 0.58);
+}
+
+.hres__frame img {
+  width: 100%;
+  height: auto;
+}
+
+/* The graft count sits half off the frame's top-left corner: the number is
+   what tells the cases apart, so it is the first thing read. */
+.hres__grafts {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  z-index: 2;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--rust);
+  padding: 7px 14px;
+  border-radius: 2px;
+  box-shadow: 0 10px 20px -12px rgba(187, 54, 19, 0.9);
+}
+
+.hres__cap {
+  padding: 26px 4px 0;
+}
+
+.hres__who {
+  font-family: var(--display);
+  font-size: 22px;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 120;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.hres__meta {
+  margin-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+.hres__meta > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.hres__meta dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+  flex: none;
+}
+
+.hres__meta dd {
+  font-size: 13.5px;
+  text-align: right;
+  color: var(--ink);
+}
+
+.hres__det {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-70);
+}
+
+.hres__dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 40px;
+}
+
+.hres__dot {
+  width: 22px;
+  height: 2px;
+  background: var(--hairline);
+  transition: background 0.3s var(--ease);
+}
+
+.hres__dot[data-on="true"] {
+  background: var(--rust);
+}
+
+.hres__disc {
+  margin-top: 26px;
+  font-size: 12.5px;
+  color: var(--ink-45);
+  max-width: 62ch;
+}
+
+.hres__cta {
+  margin-top: 30px;
+}
+
+@media (max-width: 820px) {
+  .hres__top {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .hres__slide {
+    flex-basis: min(84vw, 380px);
+  }
+}
+
+/* ============================================================
+   SAPPHIRE — the blade macro bleeds off the left viewport edge,
+   the argument sits beside it
+   ============================================================ */
+
+.hsap {
+  background: var(--blush);
+  padding-bottom: var(--band);
+  overflow: hidden;
+}
+
+.hsap__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+  align-items: stretch;
+  gap: clamp(36px, 5vw, 78px);
+}
+
+.hsap__media {
+  position: relative;
+  min-height: clamp(460px, 62vw, 860px);
+  isolation: isolate;
+  /* Pull left so the frame runs to the viewport edge, not the shell's. */
+  margin-left: calc(var(--edge) * -1);
+}
+
+.hsap__media img {
+  object-fit: cover;
+  object-position: 62% 68%;
+}
+
+.hsap__sat {
+  position: absolute;
+  z-index: 2;
+  border: 7px solid var(--blush);
+  box-shadow: 0 28px 48px -32px rgba(30, 35, 41, 0.7);
+}
+
+.hsap__sat img {
+  object-fit: cover;
+}
+
+.hsap__sat--a {
+  width: 44%;
+  aspect-ratio: 1 / 1;
+  right: 6%;
+  bottom: 24%;
+}
+
+.hsap__sat--b {
+  width: 32%;
+  aspect-ratio: 4 / 5;
+  right: 24%;
+  bottom: 3%;
+}
+
+.hsap__body {
+  padding-block: var(--band);
+  padding-right: max(var(--gutter), var(--edge));
+  max-width: 62ch;
+  align-self: center;
+}
+
+.hsap__h2 {
+  margin-top: 20px;
+}
+
+.hsap__lede {
+  margin-top: 24px;
+  max-width: 50ch;
+}
+
+/* ---- the channel comparison ---- */
+
+.hsap__compare {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+}
+
+.hsap__col {
+  background: var(--paper);
+  padding: 22px 22px 24px;
+}
+
+.hsap__col--on {
+  background: var(--cream);
+}
+
+.hsap__col-name {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+.hsap__col--on .hsap__col-name {
+  color: var(--rust);
+}
+
+.hsap__slits {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 52px;
+  margin: 20px 0 16px;
+}
+
+/* Steel: wide flat slits. */
+.hsap__slit {
+  width: 11px;
+  height: 15px;
+  background: var(--ink-45);
+  border-radius: 1px;
+  opacity: 0.5;
+}
+
+/* Sapphire: narrow deep channels, more of them in the same span. */
+.hsap__chan {
+  width: 5px;
+  height: 38px;
+  background: var(--rust);
+  border-radius: 3px 3px 1px 1px;
+  transform-origin: bottom;
+  transform: scaleY(0.36);
+  opacity: 0.4;
+  transition:
+    transform 0.6s var(--ease),
+    opacity 0.6s var(--ease);
+}
+
+/* The channels grow as the comparison scrolls into view, so the sapphire
+   column visibly out-counts the steel one in the same span. */
+.hsap__compare[data-reveal="in"] .hsap__chan {
+  transform: none;
+  opacity: 1;
+}
+
+.hsap__chan:nth-child(1) { transition-delay: 240ms; }
+.hsap__chan:nth-child(2) { transition-delay: 280ms; }
+.hsap__chan:nth-child(3) { transition-delay: 320ms; }
+.hsap__chan:nth-child(4) { transition-delay: 360ms; }
+.hsap__chan:nth-child(5) { transition-delay: 400ms; }
+.hsap__chan:nth-child(6) { transition-delay: 440ms; }
+.hsap__chan:nth-child(7) { transition-delay: 480ms; }
+.hsap__chan:nth-child(8) { transition-delay: 520ms; }
+.hsap__chan:nth-child(9) { transition-delay: 560ms; }
+.hsap__chan:nth-child(10) { transition-delay: 600ms; }
+.hsap__chan:nth-child(11) { transition-delay: 640ms; }
+.hsap__chan:nth-child(12) { transition-delay: 680ms; }
+
+.hsap__col-det {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+
+/* ---- the eight-point ledger ---- */
+
+.hsap__points {
+  margin-top: 40px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--hairline);
+}
+
+.hsap__points li {
+  padding: 16px 14px 18px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.hsap__points b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--rust);
+  letter-spacing: -0.01em;
+}
+
+.hsap__points span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--ink-70);
+}
+
+/* ---- the three arguments ---- */
+
+.hsap__case {
+  margin-top: clamp(52px, 6vw, 86px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--hairline);
+  border-block: 1px solid var(--hairline);
+}
+
+.hsap__card {
+  background: var(--blush);
+  padding: 34px 30px 38px;
+}
+
+.hsap__card h3 {
+  max-width: 14ch;
+}
+
+.hsap__card p {
+  margin-top: 18px;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--ink-70);
+}
+
+@media (max-width: 980px) {
+  .hsap__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hsap__media {
+    min-height: 54vw;
+    margin-left: 0;
+    margin-inline: calc(var(--gutter) * -1);
+  }
+
+  /* The stacked column is far wider than it is tall, so the pair sits
+     side by side along the bottom edge rather than stacked. */
+  .hsap__sat--a {
+    right: 4%;
+    bottom: -14%;
+    width: 32%;
+  }
+
+  .hsap__sat--b {
+    right: 38%;
+    bottom: -6%;
+    width: 24%;
+  }
+
+  .hsap__body {
+    padding-inline: 0;
+    padding-top: clamp(72px, 18vw, 110px);
+    margin-inline: var(--gutter);
+  }
+
+  .hsap__case {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .hsap__points {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hsap__compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   PROCEDURES — staggered image cards, copy on the photograph
+   ============================================================ */
+
+.hproc {
+  background: var(--paper);
+  padding-block: var(--band);
+}
+
+.hproc__h2 {
+  margin-top: 20px;
+  max-width: 22ch;
+}
+
+.hproc__grid {
+  margin-top: clamp(46px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(22px, 2.6vw, 38px);
+  align-items: start;
+}
+
+/* The right-hand column drops, so the pairs never line up as a table. */
+.hproc__card:nth-child(even) {
+  margin-top: clamp(30px, 6vw, 96px);
+}
+
+.hproc__card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--ink);
+  box-shadow: 0 30px 54px -40px rgba(30, 35, 41, 0.62);
+}
+
+/* Each frame is a different height, so the run reads as a spread. */
+.hproc__card[data-proc="male"] {
+  aspect-ratio: 4 / 5;
+}
+.hproc__card[data-proc="hairline"] {
+  aspect-ratio: 5 / 6;
+}
+.hproc__card[data-proc="repair"] {
+  aspect-ratio: 1 / 1;
+}
+.hproc__card[data-proc="beard"] {
+  aspect-ratio: 4 / 5;
+}
+
+.hproc__media {
+  position: absolute;
+  inset: 0;
+}
+
+.hproc__media img {
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+
+.hproc__card:hover .hproc__media img {
+  transform: scale(1.045);
+}
+
+.hproc__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(12, 14, 17, 0.93) 0%,
+    rgba(12, 14, 17, 0.72) 28%,
+    rgba(12, 14, 17, 0.12) 62%,
+    rgba(12, 14, 17, 0.04) 100%
+  );
+}
+
+.hproc__body {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: clamp(24px, 2.6vw, 38px);
+  color: #fff;
+}
+
+.hproc__lede {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+
+.hproc__title {
+  margin-top: 12px;
+  color: #fff;
+}
+
+.hproc__copy {
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.76);
+  max-width: 46ch;
+}
+
+@media (max-width: 780px) {
+  .hproc__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hproc__card:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .hproc__card[data-proc] {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* ============================================================
+   WHY — the dark band, over the theatre
+   ============================================================ */
+
+.hwhy {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  padding-block: var(--band);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hwhy__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hwhy__img {
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.hwhy__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 23, 27, 0.9),
+    rgba(20, 23, 27, 0.97)
+  );
+}
+
+.hwhy__h2 {
+  margin-top: 20px;
+  color: #fff;
+  max-width: 16ch;
+}
+
+.hwhy__list {
+  margin-top: clamp(46px, 5vw, 74px);
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: clamp(28px, 3.4vw, 56px);
+  row-gap: clamp(34px, 3.6vw, 54px);
+}
+
+.hwhy__item {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hwhy__n {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  color: var(--peach);
+}
+
+.hwhy__title {
+  margin-top: 14px;
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 120;
+  letter-spacing: -0.015em;
+  line-height: 1.14;
+  max-width: 16ch;
+}
+
+.hwhy__copy {
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.hwhy__assure {
+  margin-top: clamp(52px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hwhy__cell {
+  background: rgba(20, 23, 27, 0.86);
+  padding: 28px 26px 30px;
+}
+
+.hwhy__cell-t {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+
+.hwhy__cell-b {
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.hwhy__cta {
+  margin-top: clamp(44px, 4.4vw, 66px);
+}
+
+@media (max-width: 940px) {
+  .hwhy__list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hwhy__assure {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hwhy__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   ABOUT — magazine spread, with an overlapping satellite frame
+   ============================================================ */
+
+.habt {
+  background: var(--cream);
+  padding-block: var(--band);
+  overflow: hidden;
+}
+
+.habt__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+  gap: clamp(40px, 5vw, 96px);
+  align-items: center;
+  padding-left: max(var(--gutter), var(--edge));
+  padding-right: max(var(--gutter), var(--edge));
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+.habt__media {
+  position: relative;
+  padding-bottom: 96px;
+}
+
+.habt__plate {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  /* Runs to the left viewport edge rather than the shell's. */
+  margin-left: calc(var(--edge) * -1 - var(--gutter));
+  box-shadow: 0 40px 70px -46px rgba(30, 35, 41, 0.6);
+}
+
+.habt__plate img {
+  object-fit: cover;
+}
+
+/* The satellite, overlapping the portrait's bottom-right corner. */
+.habt__satellite {
+  position: absolute;
+  right: -8%;
+  bottom: 0;
+  width: 52%;
+  aspect-ratio: 4 / 5;
+  border: 7px solid var(--cream);
+  box-shadow: 0 30px 54px -36px rgba(30, 35, 41, 0.66);
+}
+
+.habt__satellite img {
+  object-fit: cover;
+}
+
+.habt__h2 {
+  margin-top: 20px;
+}
+
+.habt__copy {
+  margin-top: 28px;
+  max-width: 54ch;
+}
+
+.habt__copy p + p {
+  margin-top: 16px;
+}
+
+.habt__copy p {
+  font-size: 15.5px;
+  line-height: 1.68;
+  color: var(--ink-70);
+}
+
+.habt__first {
+  font-size: 17px !important;
+  color: var(--ink) !important;
+}
+
+.habt__edu {
+  margin-top: 36px;
+  border-top: 1px solid var(--hairline);
+  max-width: 54ch;
+}
+
+.habt__row {
+  display: grid;
+  grid-template-columns: 12ch 1fr;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.habt__row dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--rust);
+  padding-top: 3px;
+}
+
+.habt__row dd {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-70);
+}
+
+@media (max-width: 980px) {
+  .habt__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .habt__media {
+    padding-bottom: 64px;
+  }
+
+  .habt__plate {
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: 18%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .habt__satellite {
+    right: 0;
+    width: 46%;
+  }
+}
+
+@media (max-width: 560px) {
+  .habt__row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ============================================================
+   PRICING — the figure, typeset over the scalp macro
+   ============================================================ */
+
+.hpri {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  padding-block: clamp(80px, 9vw, 150px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hpri__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hpri__media img {
+  object-fit: cover;
+  opacity: 0.52;
+}
+
+.hpri__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(16, 19, 22, 0.94) 0%,
+    rgba(16, 19, 22, 0.8) 44%,
+    rgba(16, 19, 22, 0.42) 100%
+  );
+}
+
+.hpri__stmt {
+  margin-top: 22px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 120;
+  font-size: clamp(28px, 3.6vw, 50px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.hpri__fig {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--peach);
+  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 120;
+  white-space: nowrap;
+}
+
+.hpri__per {
+  white-space: nowrap;
+}
+
+.hpri__fine {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.6em;
+}
+
+.hpri__split {
+  margin-top: clamp(40px, 4.4vw, 66px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 4vw, 72px);
+  align-items: start;
+}
+
+.hpri__terms {
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.hpri__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.hpri__row span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.hpri__row b {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-align: right;
+}
+
+.hpri__note p {
+  font-size: 15.5px;
+  line-height: 1.66;
+  color: rgba(255, 255, 255, 0.76);
+  max-width: 44ch;
+}
+
+.hpri__note .btn {
+  margin-top: 26px;
+}
+
+@media (max-width: 820px) {
+  .hpri__split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   TRAVELLING PATIENTS — a panel overlapping the city
+   ============================================================ */
+
+.htrv {
+  background: var(--paper);
+  padding-bottom: var(--band);
+}
+
+.htrv__media {
+  position: relative;
+  height: clamp(320px, 46vw, 560px);
+  isolation: isolate;
+}
+
+.htrv__media img {
+  object-fit: cover;
+}
+
+.htrv__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(12, 14, 17, 0.8) 0%,
+    rgba(12, 14, 17, 0.34) 52%,
+    rgba(12, 14, 17, 0.06) 100%
+  );
+}
+
+.htrv__cap {
+  position: absolute;
+  z-index: 1;
+  inset: auto auto 0 0;
+  right: 0;
+  padding-inline: max(var(--gutter), var(--edge));
+  padding-bottom: clamp(120px, 12vw, 190px);
+  color: #fff;
+}
+
+.htrv__cap-h {
+  margin-top: 18px;
+  color: #fff;
+  max-width: 22ch;
+}
+
+.htrv__panel {
+  position: relative;
+  margin-top: clamp(-150px, -11vw, -90px);
+  background: var(--cream);
+  border: 1px solid var(--hairline-soft);
+  box-shadow: 0 40px 76px -50px rgba(30, 35, 41, 0.7);
+  padding: clamp(32px, 3.6vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
+  gap: clamp(32px, 4vw, 66px);
+}
+
+.htrv__h3 {
+  max-width: 18ch;
+}
+
+.htrv__ol {
+  margin-top: 26px;
+  list-style: none;
+  counter-reset: none;
+}
+
+.htrv__ol li {
+  display: grid;
+  grid-template-columns: 4ch 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--hairline-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-70);
+}
+
+.htrv__n {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  color: var(--rust);
+  padding-top: 3px;
+}
+
+.htrv__dl {
+  border-top: 1px solid var(--hairline);
+}
+
+.htrv__dl > div {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.htrv__dl dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+.htrv__dl dd {
+  margin-top: 4px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+
+.htrv__hotels {
+  margin-top: 28px;
+}
+
+.htrv__hotels-t {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.htrv__hotels ul {
+  margin-top: 12px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.htrv__hotels li {
+  font-size: 13px;
+  padding: 6px 13px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--ink-70);
+}
+
+.htrv__addr {
+  margin-top: 22px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-45);
+}
+
+@media (max-width: 880px) {
+  .htrv__panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   VOICES — two pull quotes and one photograph
+   ============================================================ */
+
+.hvoi {
+  background: var(--blush);
+  padding-block: var(--band);
+}
+
+.hvoi__grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+  gap: clamp(28px, 3.4vw, 56px);
+  align-items: start;
+}
+
+.hvoi__media {
+  position: relative;
+  grid-row: span 2;
+  align-self: stretch;
+  min-height: clamp(380px, 46vw, 640px);
+  box-shadow: 0 36px 62px -44px rgba(30, 35, 41, 0.6);
+}
+
+.hvoi__media img {
+  object-fit: cover;
+}
+
+.hvoi__q {
+  background: var(--cream);
+  border: 1px solid var(--hairline-soft);
+  padding: clamp(26px, 2.8vw, 40px);
+  box-shadow: 0 28px 50px -42px rgba(30, 35, 41, 0.5);
+}
+
+/* A quotation mark drawn in the display face, bled off the top edge. */
+.hvoi__q::before {
+  content: "\201C";
+  display: block;
+  font-family: var(--display);
+  font-size: 68px;
+  line-height: 0.5;
+  color: var(--peach);
+  margin-bottom: 14px;
+}
+
+.hvoi__q p {
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.66;
+  color: var(--ink-70);
+}
+
+.hvoi__q footer {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.hvoi__q footer b {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 120;
+}
+
+.hvoi__q footer span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+/* The second quote steps out to the right and sits over the gutter. */
+.hvoi__q--two {
+  margin-left: clamp(0px, 4vw, 62px);
+  margin-top: clamp(-30px, -2vw, 0px);
+  background: var(--paper);
+}
+
+@media (max-width: 900px) {
+  .hvoi__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hvoi__media {
+    grid-row: auto;
+    align-self: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .hvoi__q--two {
+    margin-left: 0;
+    margin-top: 0;
+  }
+}
+
+/* ============================================================
+   FAQ — a sticky heading beside native accordions
+   ============================================================ */
+
+.hfaq {
+  background: var(--paper);
+  padding-block: var(--band);
+}
+
+.hfaq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
+  gap: clamp(36px, 4vw, 80px);
+  align-items: start;
+}
+
+.hfaq__head {
+  position: sticky;
+  top: 120px;
+}
+
+.hfaq__h2 {
+  margin-top: 20px;
+}
+
+.hfaq__note {
+  margin-top: 22px;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--ink-70);
+  max-width: 32ch;
+}
+
+.hfaq__list {
+  border-top: 1px solid var(--hairline);
+}
+
+.hfaq__item {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hfaq__q {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--display);
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 120;
+  letter-spacing: -0.012em;
+  line-height: 1.24;
+  transition: color 0.25s var(--ease);
+}
+
+.hfaq__q::-webkit-details-marker {
+  display: none;
+}
+
+.hfaq__q:hover,
+.hfaq__item[open] .hfaq__q {
+  color: var(--rust);
+}
+
+/* A plus that becomes a minus, drawn rather than typed. */
+.hfaq__sign {
+  position: relative;
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin-top: 6px;
+}
+
+.hfaq__sign::before,
+.hfaq__sign::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease);
+}
+
+.hfaq__sign::after {
+  transform: rotate(90deg);
+}
+
+.hfaq__item[open] .hfaq__sign::after {
+  transform: rotate(0deg);
+}
+
+.hfaq__a {
+  padding-bottom: 24px;
+  animation: hfaqIn 0.35s var(--ease);
+}
+
+.hfaq__a p {
+  font-size: 15px;
+  line-height: 1.68;
+  color: var(--ink-70);
+  max-width: 62ch;
+}
+
+@keyframes hfaqIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 860px) {
+  .hfaq__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hfaq__head {
+    position: static;
+  }
+}
+
+/* ============================================================
+   CTA — the dark break before the form
+   ============================================================ */
+
+.hcta {
+  position: relative;
+  background: #0d0f12;
+  color: #fff;
+  padding-block: clamp(72px, 8vw, 128px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hcta__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hcta__media img {
+  object-fit: cover;
+}
+
+.hcta__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(13, 15, 18, 0.94) 0%,
+    rgba(13, 15, 18, 0.7) 54%,
+    rgba(13, 15, 18, 0.25) 100%
+  );
+}
+
+.hcta__h2 {
+  color: #fff;
+  max-width: 18ch;
+}
+
+.hcta__acts {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}
+
+.hcta__tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.86);
+  transition: color 0.25s var(--ease);
+}
+
+.hcta__tel:hover {
+  color: var(--peach);
+}
+
+/* ============================================================
+   FORM — placeholder, laid out as the real one will be
+   ============================================================ */
+
+.hfrm {
+  background: var(--paper);
+  padding-block: var(--band);
+}
+
+.hfrm__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+  gap: clamp(32px, 3.6vw, 62px);
+  align-items: start;
+}
+
+.hfrm__media {
+  position: sticky;
+  top: 118px;
+  aspect-ratio: 3 / 4;
+  box-shadow: 0 38px 66px -46px rgba(30, 35, 41, 0.62);
+  isolation: isolate;
+}
+
+.hfrm__media img {
+  object-fit: cover;
+}
+
+.hfrm__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(12, 14, 17, 0.86) 0%,
+    rgba(12, 14, 17, 0.34) 38%,
+    rgba(12, 14, 17, 0) 68%
+  );
+}
+
+.hfrm__cap {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0 0;
+  padding: clamp(22px, 2.2vw, 34px);
+  color: #fff;
+}
+
+.hfrm__cap .h3 {
+  margin-top: 14px;
+  color: #fff;
+}
+
+.hfrm__addr {
+  margin-top: 12px;
+  font-style: normal;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.hfrm__addr a:hover {
+  color: var(--peach);
+}
+
+.hfrm__panel {
+  background: var(--cream);
+  border: 1px solid var(--hairline-soft);
+  padding: clamp(28px, 3vw, 50px);
+  box-shadow: 0 34px 62px -50px rgba(30, 35, 41, 0.5);
+}
+
+.hfrm__h2 {
+  margin-top: 20px;
+}
+
+.hfrm__sub {
+  margin-top: 20px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-70);
+  max-width: 44ch;
+}
+
+.hfrm__form {
+  margin-top: 32px;
+  display: grid;
+  gap: 18px;
+}
+
+.hfrm__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.hfrm__field {
+  display: grid;
+  gap: 7px;
+}
+
+.hfrm__field > span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+.hfrm__field input,
+.hfrm__field select {
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  padding: 13px 14px;
+  width: 100%;
+  transition:
+    border-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.hfrm__field input:focus,
+.hfrm__field select:focus {
+  outline: none;
+  border-color: var(--rust);
+  box-shadow: 0 0 0 3px rgba(187, 54, 19, 0.12);
+}
+
+.hfrm__field input[type="file"] {
+  padding: 10px 12px;
+  font-size: 13.5px;
+}
+
+.hfrm__file small {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-45);
+}
+
+.hfrm__file small a {
+  color: var(--rust);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hfrm__scale {
+  border: 0;
+  padding: 4px 0 0;
+}
+
+.hfrm__scale legend {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+  padding: 0;
+}
+
+.hfrm__chips {
+  margin-top: 11px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hfrm__chip {
+  position: relative;
+  cursor: pointer;
+}
+
+.hfrm__chip input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  cursor: pointer;
+}
+
+.hfrm__chip span {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--ink-70);
+  background: var(--paper);
+  transition:
+    background 0.22s var(--ease),
+    color 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    transform 0.22s var(--ease);
+}
+
+.hfrm__chip:hover span {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+.hfrm__chip[data-on="true"] span {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.hfrm__chip input:focus-visible + span {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+}
+
+.hfrm__hint {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-45);
+  max-width: 48ch;
+}
+
+.hfrm__submit {
+  margin-top: 6px;
+  justify-self: start;
+}
+
+.hfrm__notice {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--rust);
+  background: var(--peach-wash);
+  border: 1px solid rgba(187, 54, 19, 0.24);
+  border-radius: 2px;
+  padding: 12px 14px;
+}
+
+.hfrm__fine {
+  font-size: 12.5px;
+  color: var(--ink-45);
+}
+
+@media (max-width: 980px) {
+  .hfrm__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hfrm__media {
+    position: relative;
+    top: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 560px) {
+  .hfrm__pair {
+    grid-template-columns: 1fr;
+  }
+}

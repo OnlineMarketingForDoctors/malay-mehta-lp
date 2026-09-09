@@ -62,3 +62,33 @@ export const img = {
   clinic: "/img/clinic.jpg",
   scalp: "/img/scalp.jpg",
 } as const;
+
+/**
+ * Where the hair transplant landing page lives. Kept beside `lpPath` so both
+ * pages' internal links are built from one place.
+ */
+export const htPath = "/hair-transplant";
+
+/**
+ * Photography for the hair transplant page, generated for it and self-hosted
+ * in /public/img/ht as WebP. The frames featuring Dr Mehta were generated with
+ * the clinic's own photographs attached as likeness references.
+ */
+export const htImg = {
+  hero: "/img/ht/hero.webp",
+  hairline: "/img/ht/hairline.webp",
+  theatre: "/img/ht/theatre.webp",
+  theatreWide: "/img/ht/theatre-wide.webp",
+  consult: "/img/ht/consult.webp",
+  portrait: "/img/ht/portrait.webp",
+  followUp: "/img/ht/follow-up.webp",
+  blades: "/img/ht/blades.webp",
+  implant: "/img/ht/implant.webp",
+  grafts: "/img/ht/grafts.webp",
+  reception: "/img/ht/reception.webp",
+  mumbai: "/img/ht/mumbai.webp",
+  patient: "/img/ht/patient.webp",
+  beard: "/img/ht/beard.webp",
+  scalp: "/img/ht/scalp.webp",
+  ctaLight: "/img/ht/cta.webp",
+} as const;
