@@ -41,9 +41,9 @@ export default function HtHero() {
           data-reveal
           style={{ "--d": "90ms" } as React.CSSProperties}
         >
-          Your hairline back.
+          Take ten years
           <br />
-          <span className="em">For good.</span>
+          <span className="em">off the mirror.</span>
         </h1>
 
         <p
