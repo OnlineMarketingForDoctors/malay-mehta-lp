@@ -171,14 +171,13 @@ photographs were taken at the clinic in Turkey that performed his first
 transplant, so they are cropped in tightly to keep that clinic's branded
 backdrop out of frame.
 
-### Before this page goes live
+### The booking form
 
-- **The booking form is a placeholder.** `components/ht/HtForm.tsx` mirrors the
-  field set of the Contact Form 7 form on the WordPress FUE page (name, email,
-  phone, preferred date, how they heard, Norwood grade 1 to 7, up to three
-  photographs) but submits nowhere; it shows a notice instead. Replace it with a
-  LeadConnector iframe the way `components/BookForm.tsx` does, or point the
-  `<form>` at a real endpoint and drop the guard in `onSubmit`.
+`components/ht/HtForm.tsx` embeds the same LeadConnector form as the
+non-surgical page: `LP Form`, `MYDGWNFIK8AldRJjAagk`. Both landing pages point
+at it, so leads from the two arrive in one place. Give this page its own form
+in LeadConnector if they need telling apart, and change the four `MYDGWNFIK...`
+ids in that component to the new one.
 
 
 ### Photography

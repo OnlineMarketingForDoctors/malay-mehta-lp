@@ -1,38 +1,17 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
+import Script from "next/script";
 import { htImg, site } from "@/lib/site";
-import { Arrow } from "../icons";
 
 /**
- * PLACEHOLDER — this form is deliberately not connected to anything.
+ * The booking form is the same LeadConnector (GoHighLevel) embed the
+ * non-surgical page uses, so submission, validation and the post-submit
+ * destination are all configured in LeadConnector rather than here.
  *
- * It mirrors the field set of the Contact Form 7 form on the clinic's
- * WordPress FUE page (first and last name, email, phone, preferred date, how
- * they heard about us, baldness level 1 to 7 and up to three photographs), so
- * whatever replaces it can be dropped in without the layout changing.
- *
- * Submitting does nothing but show a notice. To make it live, either swap this
- * component for a LeadConnector iframe the way components/BookForm.tsx does,
- * or point the <form> at a real endpoint and remove the guard in `onSubmit`.
+ * Note that both landing pages point at the same form (`LP Form`,
+ * MYDGWNFIK8AldRJjAagk), so leads from the two arrive in one place. Give this
+ * page its own form in LeadConnector if the two need telling apart.
  */
-
-const HEARD = [
-  "Google",
-  "Facebook Ads",
-  "Instagram",
-  "Newsletter",
-  "Colleague or friend",
-  "Other",
-];
-
-const LEVELS = [1, 2, 3, 4, 5, 6, 7];
-
 export default function HtForm() {
-  const [level, setLevel] = useState<number | null>(null);
-  const [sent, setSent] = useState(false);
-
   return (
     <section className="hfrm" id="book">
       <div className="shell hfrm__grid">
@@ -78,111 +57,38 @@ export default function HtForm() {
             we will arrange a time with {site.doctor}.
           </p>
 
-          <form
+          <div
             className="hfrm__form"
             data-reveal
             style={{ "--d": "180ms" } as React.CSSProperties}
-            onSubmit={(e) => {
-              // Placeholder: there is nowhere to send this yet.
-              e.preventDefault();
-              setSent(true);
-            }}
           >
-            <div className="hfrm__pair">
-              <label className="hfrm__field">
-                <span>First name</span>
-                <input type="text" name="first-name" autoComplete="given-name" required />
-              </label>
-              <label className="hfrm__field">
-                <span>Last name</span>
-                <input type="text" name="last-name" autoComplete="family-name" required />
-              </label>
-            </div>
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/MYDGWNFIK8AldRJjAagk"
+              style={{ width: "100%", height: "100%", border: "none", borderRadius: "4px" }}
+              id="inline-MYDGWNFIK8AldRJjAagk"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="LP Form"
+              data-height="502"
+              data-layout-iframe-id="inline-MYDGWNFIK8AldRJjAagk"
+              data-form-id="MYDGWNFIK8AldRJjAagk"
+              title="LP Form"
+            />
+          </div>
 
-            <div className="hfrm__pair">
-              <label className="hfrm__field">
-                <span>Email</span>
-                <input type="email" name="email" autoComplete="email" required />
-              </label>
-              <label className="hfrm__field">
-                <span>Phone</span>
-                <input type="tel" name="phone" autoComplete="tel" required />
-              </label>
-            </div>
-
-            <div className="hfrm__pair">
-              <label className="hfrm__field">
-                <span>Preferred date and time</span>
-                <input type="text" name="preferred" placeholder="Optional" />
-              </label>
-              <label className="hfrm__field">
-                <span>How did you hear about us?</span>
-                <select name="heard" defaultValue="" required>
-                  <option value="" disabled>
-                    Please choose
-                  </option>
-                  {HEARD.map((h) => (
-                    <option key={h} value={h}>
-                      {h}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            {/* The Norwood Hamilton scale, as the page's one interactive
-                control. It is the same 1 to 7 the surgery is planned around. */}
-            <fieldset className="hfrm__scale">
-              <legend>Where are you on the scale?</legend>
-              <div className="hfrm__chips">
-                {LEVELS.map((n) => (
-                  <label className="hfrm__chip" key={n} data-on={level === n}>
-                    <input
-                      type="radio"
-                      name="baldness-level"
-                      value={n}
-                      checked={level === n}
-                      onChange={() => setLevel(n)}
-                    />
-                    <span>{n}</span>
-                  </label>
-                ))}
-              </div>
-              <p className="hfrm__hint">
-                Norwood Hamilton grade, 1 is barely receding and 7 is fully
-                bald. A guess is fine, it is counted properly at the
-                consultation.
-              </p>
-            </fieldset>
-
-            <label className="hfrm__field hfrm__file">
-              <span>Photographs of the area</span>
-              <input type="file" name="photos" accept="image/*" multiple />
-              <small>
-                Up to three images, taken with the area exposed and in good
-                light. You can email them instead to{" "}
-                <a href="mailto:drmalaymehta@gmail.com">drmalaymehta@gmail.com</a>.
-              </small>
-            </label>
-
-            <button type="submit" className="btn btn--wide hfrm__submit">
-              Book a consultation <Arrow />
-            </button>
-
-            {sent && (
-              <p className="hfrm__notice" role="status">
-                This form is a placeholder and is not connected yet, so nothing
-                was sent. Call {site.phoneDisplay} to book in the meantime.
-              </p>
-            )}
-
-            <p className="hfrm__fine">
-              No obligation. Your details would be used only to arrange your
-              consultation.
-            </p>
-          </form>
+          <p className="hfrm__fine">
+            No obligation. Your details are used only to arrange your
+            consultation.
+          </p>
         </div>
       </div>
+
+      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
     </section>
   );
 }
