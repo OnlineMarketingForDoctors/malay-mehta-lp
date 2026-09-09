@@ -33,7 +33,7 @@ export default function HtHero() {
 
       <div className="hth__in shell">
         <span className="tag hth__tag" data-reveal>
-          Sapphire FUE &middot; Vile Parle West, Mumbai
+          Hair transplant in Mumbai
         </span>
 
         <h1
@@ -41,9 +41,9 @@ export default function HtHero() {
           data-reveal
           style={{ "--d": "90ms" } as React.CSSProperties}
         >
-          Hair transplant
+          Your hairline back.
           <br />
-          <span className="em">in Mumbai.</span>
+          <span className="em">For good.</span>
         </h1>
 
         <p
