@@ -44,7 +44,6 @@ export default function HtHero() {
           Take ten years
           <br />
           <span className="em">off the mirror</span>
-          <br />
           <span className="hth__h1-sub">with a hair transplant.</span>
         </h1>
 

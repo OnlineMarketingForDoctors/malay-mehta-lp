@@ -96,11 +96,17 @@
 
 /* The closing clause is a qualifier, not part of the punch, so it drops to
    half the size. It also keeps the longest line of the three from running
-   into the portrait on a desktop and from wrapping on a phone. */
+   into the portrait on a desktop and from wrapping on a phone.
+
+   `display: block` rather than a <br /> and an inline-block: a break would
+   open an empty line box at the parent's full 104px before the clause, which
+   is where the gap under it came from. As a block it makes its own line box,
+   sized by its own font-size, and the space above it is only this margin. */
 .hth__h1-sub {
-  display: inline-block;
-  margin-top: 0.04em;
+  display: block;
+  margin-top: 0.22em;
   font-size: 0.5em;
+  line-height: 1;
   color: rgba(255, 255, 255, 0.82);
 }
 
