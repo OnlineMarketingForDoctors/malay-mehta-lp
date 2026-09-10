@@ -21,8 +21,8 @@ export default function HtTravel() {
         <figcaption className="htrv__cap">
           <span className="tag">Travelling patients</span>
           <p className="h3 htrv__cap-h">
-            We treat patients from across Mumbai and from Dubai, Qatar and
-            Turkey.
+            We treat patients from across Mumbai, Thane and Vashi, and from
+            Dubai, Qatar and Turkey.
           </p>
         </figcaption>
       </figure>

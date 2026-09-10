@@ -37,7 +37,7 @@ export default function HtPricing() {
             style={{ "--d": "160ms" } as React.CSSProperties}
           >
             <div className="hpri__row">
-              <span>Instalment period</span>
+              <span>EMI period</span>
               <b>Up to 8 months</b>
             </div>
             <div className="hpri__row">
