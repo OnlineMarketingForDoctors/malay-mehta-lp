@@ -87,9 +87,8 @@ export default function HtAbout() {
               surgical tables run alongside a fully trained team, which is what
               makes a 5,000 to 6,000 graft case possible within one planned
               2-to-3-day course of treatment, with approximately 4 hours of
-              treatment each day. A case that size is otherwise split across two
-              surgeries six months apart. The punches are imported and run on a
-              German motor, keeping graft transection to around 1 to 2%.
+              treatment each day. The punches are imported and run on a German
+              motor, keeping graft transection to around 1 to 2%.
             </p>
             <p>
               The work he is best known for is the difficult end of it: grade 6
