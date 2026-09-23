@@ -72,8 +72,9 @@ export default function HtAbout() {
               years in a chain clinic before opening his own centre in the heart
               of Mumbai, where he is chief surgeon and managing director. Four
               surgical tables run alongside a fully trained team, which is what
-              makes a 5,000 to 6,000 graft sitting possible in one day instead
-              of split across two surgeries six months apart. The punches are
+              makes a 5,000 to 6,000 graft case possible within one planned
+              course of treatment rather than split across two surgeries six
+              months apart. The punches are
               imported and run on a German motor, keeping graft transection to
               around 1 to 2%.
             </p>
@@ -81,8 +82,9 @@ export default function HtAbout() {
               The work he is best known for is the difficult end of it: grade 6
               and 7 patterns, exhausted donor areas, and repairing transplants
               performed badly elsewhere, where beard and body grafts make up the
-              numbers a scalp no longer can. Patients come from across Mumbai and
-              from Dubai, Qatar and Turkey. Dr Mehta plans every case himself,
+              numbers a scalp no longer can. Patients regularly travel to Dr Mehta
+              from the US, Australia, the UK and Dubai for their procedures in
+              Mumbai. Dr Mehta plans every case himself,
               performs the surgery himself, and is in theatre throughout.
             </p>
           </div>

@@ -12,8 +12,8 @@
  *  hairline rule, and these are its source. */
 export const ledger: { figure: string; unit: string; label: string }[] = [
   { figure: "98", unit: "–100%", label: "Graft viability rate" },
-  { figure: "6,130", unit: " max", label: "Grafts in one sitting" },
-  { figure: "1", unit: " day", label: "One sitting, then home" },
+  { figure: "6,130", unit: " max", label: "Grafts, largest case" },
+  { figure: "2–3", unit: " days", label: "About 4 hours each day" },
   { figure: "7", unit: " days", label: "Back to normal" },
 ];
 
@@ -54,7 +54,7 @@ export const sapphireCase: { title: string; body: string }[] = [
   },
   {
     title: "Maximum efficiency",
-    body: "Harvesting is where grafts are lost. Imported punches on a German motor keep transection to around 1 to 2%, and four tables running together mean 5,000 to 6,000 grafts can be taken and placed in one surgery. Most clinics in Mumbai split that across two operations six months apart, which doubles both the cost and the wait.",
+    body: "Harvesting is where grafts are lost. Imported punches on a German motor keep transection to around 1 to 2%, and four tables running together mean 5,000 to 6,000 grafts can be taken and placed within a single planned course of treatment, usually over 2 to 3 days with around 4 hours of treatment each day. Many clinics in Mumbai stage a case of that size across two operations six months apart, which doubles both the cost and the wait.",
   },
 ];
 
@@ -71,7 +71,7 @@ export const procedures: {
     key: "male",
     title: "Male hair transplantation",
     lede: "The full front, mid scalp and crown.",
-    body: "The whole pattern in one sitting: hairline, frontotemporal angles, temples, mid scalp and crown. Most men looking for a hair transplant doctor in Andheri or Bandra are really asking one question, which is whether it will still look right in ten years. That is settled at the planning stage, by how much donor hair is spent now and how much is deliberately held back.",
+    body: "The whole pattern in one planned course of treatment: hairline, frontotemporal angles, temples, mid scalp and crown. Most men looking for a hair transplant doctor in Andheri or Bandra are really asking one question, which is whether it will still look right in ten years. That is settled at the planning stage, by how much donor hair is spent now and how much is deliberately held back.",
     img: "/img/ht/patient.webp",
     alt: "A man in his thirties with a full, natural hairline",
   },
@@ -109,7 +109,7 @@ export const reasons: { title: string; body: string }[] = [
   },
   {
     title: "We go beyond surgery",
-    body: "The operation is one day of a twelve-month process, and a good deal of what decides the result happens after it. Every patient is taken through the aftercare properly, and Dr Mehta answers questions himself, before the surgery and long after it.",
+    body: "The surgery is a few days of a twelve-month process, and a good deal of what decides the result happens after it. Every patient is taken through the aftercare properly, and Dr Mehta answers questions himself, before the surgery and long after it.",
   },
   {
     title: "We are different",
@@ -148,10 +148,10 @@ export const assurances: { title: string; body: string }[] = [
 /** The credentials that matter to a transplant, set as a ledger. */
 export const education: [string, string][] = [
   ["Qualified", "MBBS 2011 · MD 2014 · Registration No. G-46106"],
-  ["Fellowships", "Microsurgical training, McGill University, Montreal · Gold Skin Care Centre, Nashville"],
+  ["Fellowships", "Microsurgical training, McGill University, Montreal, Canada · Gold Skin Care Centre, Nashville, USA"],
   ["Practice", "Chief surgeon and managing director, Vile Parle West, Mumbai"],
   ["Theatre", "Four surgical tables and a full trained team"],
-  ["Largest sitting", "6,130 grafts · 4,650 scalp and 1,480 beard"],
+  ["Largest case", "6,130 grafts · 4,650 scalp and 1,480 beard"],
 ];
 
 /** The two written testimonials from the old page, verbatim. */
@@ -179,12 +179,12 @@ export const testimonials: {
 
 /** The promise the FUE page opened with, kept as the page's second beat. */
 export const promise = {
-  lead: "One day, one sitting,",
+  lead: "Two or three days,",
   em: "and a rich look forever.",
-  body: "Thinning hair is one of the first things you notice in a photograph, and one of the last things you can do anything about on your own. A hair transplant ends it in a day: minimally invasive, permanent, and performed personally by Dr Malay Mehta with a graft viability rate of 98 to 100%.",
+  body: "Thinning hair is one of the first things you notice in a photograph, and one of the last things you can do anything about on your own. A hair transplant ends it: minimally invasive, permanent, and performed personally by Dr Malay Mehta with a graft viability rate of 98 to 100%. Treatment is usually planned over 2 to 3 days, with approximately 4 hours of treatment each day.",
   points: [
     ["Over 98%", "Graft survival"],
-    ["One day", "Start to finish"],
+    ["2 to 3 days", "About 4 hours each day"],
     ["From 7,000 INR", "Per 1,000 grafts, monthly"],
   ] as [string, string][],
 };
@@ -198,8 +198,8 @@ export const travelSteps: string[] = [
 ];
 
 export const travelFacts: [string, string][] = [
-  ["Where", "104 Cosmos Court, Vile Parle West, Mumbai"],
-  ["On the day", "5 to 6 hours, under local anaesthetic"],
+  ["Where", "6th Floor, Cosmos Court, Vile Parle West, Mumbai"],
+  ["Treatment", "2 to 3 days, about 4 hours each day, under local anaesthetic"],
   ["Stay", "4 days in Mumbai is what we recommend"],
   ["Getting there", "Minutes from both Mumbai airports"],
 ];
@@ -213,18 +213,25 @@ export const hotels: string[] = [
 ];
 
 /** Questions the cost and procedure keywords ask, answered on the page. */
-export const faqs: { q: string; a: string }[] = [
+export const faqs: { q: string; a: string | string[] }[] = [
+  {
+    q: "What happens at the consultation?",
+    a: [
+      "Every treatment plan starts with a full scalp examination using a high-resolution Trichoscope. This helps Dr Mehta assess the donor-area reserve, plan the graft strategy and reduce the risk of over-harvesting.",
+      "Scalp health is also assessed before surgery is recommended. Where inflammatory scalp conditions, including lichen planus, discoid lupus or Pseudopelade of Brocq, are present, the condition must be appropriately treated and stable before the patient is considered for surgery.",
+    ],
+  },
   {
     q: "How much does a hair transplant cost in Mumbai?",
     a: "At this clinic the Sapphire FUE hair transplant starts at 7,000 INR per 1,000 grafts, which is the follicular unit count rather than the hair count. What you pay depends on how many grafts your plan needs, and you are given that number and that figure at your consultation, before anything is booked. The cost can be paid in monthly instalments over up to 8 months at 0% interest.",
   },
   {
     q: "How many grafts will I need?",
-    a: "It depends on your Norwood Hamilton grade, the density you want and what your donor area can give. Grade 3 is often around 2,600 grafts; grade 5 to 6 is usually 4,000 to 4,600; the largest single sitting we have done is 6,130, combining 4,650 scalp and 1,480 beard grafts. Dr Mehta counts your donor area at the consultation rather than quoting a range down the phone.",
+    a: "It depends on your Norwood Hamilton grade, the density you want and what your donor area can give. Grade 3 is often around 2,600 grafts; grade 5 to 6 is usually 4,000 to 4,600; the largest case we have done is 6,130, combining 4,650 scalp and 1,480 beard grafts. Dr Mehta counts your donor area at the consultation rather than quoting a range down the phone.",
   },
   {
-    q: "Is it done in one sitting?",
-    a: "In almost all cases, yes. We can harvest and implant around 5,000 to 6,000 grafts in a single surgery, which takes 5 to 6 hours under local anaesthetic. Many clinics in Mumbai split that across two surgeries six months apart, which doubles both the cost and the wait.",
+    q: "How long does a hair transplant procedure take?",
+    a: "Treatment is usually planned over 2 to 3 days, with approximately 4 hours of treatment each day. The exact plan depends on the graft requirement, donor area and individual case.",
   },
   {
     q: "Will anyone be able to tell?",
@@ -319,19 +326,19 @@ export const results: {
       ["Grafts", "4,642"],
       ["Shown at", "1 year"],
     ],
-    note: "Grade 6 covered in a single sitting rather than staged across two, photographed at one year.",
+    note: "Grade 6 covered within one planned course of treatment rather than staged months apart, photographed at one year.",
   },
   {
     src: "/results/ht/before-after-5.webp",
     grafts: "6,130",
-    title: "30, male · largest sitting",
+    title: "30, male · largest case",
     meta: [
       ["Baldness", "7 Norwood Hamilton"],
       ["Surgery", "Sapphire bio FUE"],
       ["Donor", "4,650 scalp · 1,480 beard"],
       ["Shown at", "1 year"],
     ],
-    note: "6,130 grafts in a single sitting, the largest performed here. A grade 7 pattern needs more than a scalp can give on its own, so the beard was opened as a second donor area to reach the number.",
+    note: "6,130 grafts, the largest case performed here. A grade 7 pattern needs more than a scalp can give on its own, so the beard was opened as a second donor area to reach the number.",
   },
   {
     src: "/results/ht/before-after-6.webp",
@@ -403,6 +410,24 @@ export const caseStudies: {
 }[] = [
   {
     n: "01",
+    who: "26, male",
+    procedure: "Sapphire FUE",
+    grafts: "3,200",
+    facts: [
+      ["Diagnosis", "Traction alopecia"],
+      ["Treated", "Hairline, frontotemporal angles, temples"],
+      ["Shown at", "1 year"],
+    ],
+    summary:
+      "Treatment addressed traction alopecia affecting the frontal hairline, frontotemporal angles and temples. At 1 year the patient showed good density and natural-appearing hairline restoration.",
+    detail:
+      "Not pattern baldness but chronic mechanical tension on the hair, which had pulled the frontal and temporal hairline back. The temples are the hardest part of a case like this: the hair there is fine and grows downwards, so angle and direction matter more than volume.",
+    before: "/results/cases/case-4-before.webp",
+    after: "/results/cases/case-4-after.webp",
+    alt: "Temple and frontal hairline of a 26-year-old man, before and one year after a 3,200 graft Sapphire FUE transplant",
+  },
+  {
+    n: "02",
     who: "28, male",
     procedure: "Sapphire FUE",
     grafts: "4,800",
@@ -420,7 +445,7 @@ export const caseStudies: {
     alt: "Crown and mid scalp of a 28-year-old man, before and eight months after a 4,800 graft Sapphire FUE transplant",
   },
   {
-    n: "02",
+    n: "03",
     who: "52, male",
     procedure: "FUE",
     grafts: "5,200",
@@ -438,7 +463,7 @@ export const caseStudies: {
     alt: "Crown of a 52-year-old man, before and eight months after a 5,200 graft FUE transplant",
   },
   {
-    n: "03",
+    n: "04",
     who: "49, male",
     procedure: "FUE",
     grafts: "5,200",
@@ -454,24 +479,6 @@ export const caseStudies: {
     before: "/results/cases/case-3-before.webp",
     after: "/results/cases/case-3-after.webp",
     alt: "Crown of a 49-year-old man, before and after a 5,200 graft FUE transplant",
-  },
-  {
-    n: "04",
-    who: "26, male",
-    procedure: "Sapphire FUE",
-    grafts: "3,200",
-    facts: [
-      ["Diagnosis", "Traction alopecia"],
-      ["Treated", "Hairline, frontotemporal angles, temples"],
-      ["Shown at", "1 year"],
-    ],
-    summary:
-      "Treatment addressed traction alopecia affecting the frontal hairline, frontotemporal angles and temples. At 1 year the patient showed good density and natural-appearing hairline restoration.",
-    detail:
-      "Not pattern baldness but chronic mechanical tension on the hair, which had pulled the frontal and temporal hairline back. The temples are the hardest part of a case like this: the hair there is fine and grows downwards, so angle and direction matter more than volume.",
-    before: "/results/cases/case-4-before.webp",
-    after: "/results/cases/case-4-after.webp",
-    alt: "Temple and frontal hairline of a 26-year-old man, before and one year after a 3,200 graft Sapphire FUE transplant",
   },
   {
     n: "05",

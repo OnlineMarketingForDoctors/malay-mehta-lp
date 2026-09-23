@@ -34,7 +34,7 @@ const links: NavLink[] = [
 export const metadata: Metadata = {
   title: "Hair Transplant in Mumbai | Sapphire FUE by Dr Malay Mehta",
   description:
-    "Sapphire FUE hair transplant in Mumbai, performed personally by Dr Malay Mehta, MBBS, MD Dermatology, in Vile Parle West. Up to 6,000 grafts in one sitting, from 7,000 INR per 1,000 grafts. Book a consultation.",
+    "Sapphire FUE hair transplant in Mumbai, performed personally by Dr Malay Mehta, MBBS, MD Dermatology, in Vile Parle West. Treatment is usually planned over 2 to 3 days, with approximately 4 hours of treatment each day, from 7,000 INR per 1,000 grafts. Book a consultation.",
   // Paid-traffic landing page. It carries the same terms as the clinic's own
   // hair transplant pages, so it is kept out of the index to avoid competing
   // with them. Flip both to true to make it an organic page.
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hair Transplant in Mumbai | Sapphire FUE by Dr Malay Mehta",
     description:
-      "Doctor-led Sapphire FUE hair transplant in Vile Parle West, Mumbai. Up to 6,000 grafts in one sitting.",
+      "Doctor-led Sapphire FUE hair transplant in Vile Parle West, Mumbai. Treatment is usually planned over 2 to 3 days, with approximately 4 hours of treatment each day.",
     siteName: site.name,
     locale: "en_IN",
     type: "website",

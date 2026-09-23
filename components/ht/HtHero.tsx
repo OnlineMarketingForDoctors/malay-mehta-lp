@@ -52,9 +52,9 @@ export default function HtHero() {
           data-reveal
           style={{ "--d": "170ms" } as React.CSSProperties}
         >
-          Up to 6,000 grafts placed in a single sitting, by {site.doctor}{" "}
-          himself, behind a hairline drawn by hand to suit your face. Permanent,
-          minimally invasive, and finished in a day.
+          A hairline drawn by hand to suit your face, then placed graft by graft
+          by {site.doctor} himself. Treatment is usually planned over 2 to 3
+          days, with approximately 4 hours of treatment each day.
         </p>
 
         <div
