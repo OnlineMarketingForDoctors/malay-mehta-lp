@@ -68,15 +68,28 @@ export default function HtAbout() {
               grew there.
             </p>
             <p>
+              Every treatment plan starts with a full scalp examination using a
+              high-resolution Trichoscope. This helps Dr Mehta assess the
+              donor-area reserve, plan the graft strategy and reduce the risk of
+              over-harvesting.
+            </p>
+            <p>
+              Scalp health is also assessed before surgery is recommended. Where
+              inflammatory scalp conditions, including lichen planus, discoid
+              lupus or Pseudopelade of Brocq, are present, the condition must be
+              appropriately treated and stable before the patient is considered
+              for surgery.
+            </p>
+            <p>
               He qualified MBBS in 2011 and took his MD in 2014, then spent four
               years in a chain clinic before opening his own centre in the heart
               of Mumbai, where he is chief surgeon and managing director. Four
               surgical tables run alongside a fully trained team, which is what
               makes a 5,000 to 6,000 graft case possible within one planned
-              course of treatment rather than split across two surgeries six
-              months apart. The punches are
-              imported and run on a German motor, keeping graft transection to
-              around 1 to 2%.
+              2-to-3-day course of treatment, with approximately 4 hours of
+              treatment each day. A case that size is otherwise split across two
+              surgeries six months apart. The punches are imported and run on a
+              German motor, keeping graft transection to around 1 to 2%.
             </p>
             <p>
               The work he is best known for is the difficult end of it: grade 6

@@ -45,9 +45,7 @@ export default function HtFaq() {
                 <span className="hfaq__sign" aria-hidden="true" />
               </summary>
               <div className="hfaq__a">
-                {(Array.isArray(f.a) ? f.a : [f.a]).map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
+                <p>{f.a}</p>
               </div>
             </details>
           ))}

@@ -213,13 +213,10 @@ export const hotels: string[] = [
 ];
 
 /** Questions the cost and procedure keywords ask, answered on the page. */
-export const faqs: { q: string; a: string | string[] }[] = [
+export const faqs: { q: string; a: string }[] = [
   {
     q: "What happens at the consultation?",
-    a: [
-      "Every treatment plan starts with a full scalp examination using a high-resolution Trichoscope. This helps Dr Mehta assess the donor-area reserve, plan the graft strategy and reduce the risk of over-harvesting.",
-      "Scalp health is also assessed before surgery is recommended. Where inflammatory scalp conditions, including lichen planus, discoid lupus or Pseudopelade of Brocq, are present, the condition must be appropriately treated and stable before the patient is considered for surgery.",
-    ],
+    a: "A full scalp examination under the Trichoscope, a reading of your donor-area reserve and a graft plan built from it, as set out above. Scalp health is checked before surgery is recommended. You are given your graft count and what it will cost before anything is booked, and the consultation is free.",
   },
   {
     q: "How much does a hair transplant cost in Mumbai?",
