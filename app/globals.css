@@ -587,8 +587,10 @@ a {
     order: 2;
     margin-left: auto;
   }
-  /* Past the hero the mark steps aside for the booking button. */
-  .hdr[data-stuck="true"] .hdr__logo {
+  /* Past the hero the mark steps aside for the booking button. Not on the
+     minimal bar, which carries no button, so hiding the mark there would
+     leave the whole header empty. */
+  .hdr[data-stuck="true"]:not([data-minimal="true"]) .hdr__logo {
     display: none;
   }
   .hdr[data-stuck="true"] .hdr__book {

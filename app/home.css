@@ -1,0 +1,175 @@
+/* ============================================================
+   Landing page index, served at /.
+   Namespaced `hmx` so nothing here can reach either landing page,
+   the same isolation ht.css keeps on the other side.
+   ============================================================ */
+
+.hmx {
+  /* The header is fixed and solid here rather than transparent over a hero,
+     so the top padding has to clear it: 88px on a desktop, 72px once the bar
+     shortens. */
+  padding-block: clamp(118px, 12vw, 168px) clamp(72px, 10vw, 140px);
+}
+
+.hmx__head {
+  max-width: 62ch;
+}
+
+.hmx__h1 {
+  margin-top: 20px;
+  /* The measure sits on the heading itself: a `ch` resolves against the
+     element's own font size, so putting it on a wrapper would cut a display
+     line to a fraction of the width intended here. */
+  max-width: 16ch;
+}
+
+.hmx__lede {
+  margin-top: 22px;
+  max-width: 56ch;
+}
+
+/* ---------- the list ---------- */
+
+.hmx__list {
+  margin-top: clamp(44px, 6vw, 76px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 3.4vw, 48px);
+}
+
+.hmx__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  border: 1px solid rgba(30, 35, 41, 0.08);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  box-shadow: 0 30px 56px -44px rgba(30, 35, 41, 0.5);
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+
+.hmx__card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(187, 54, 19, 0.3);
+  box-shadow: 0 46px 72px -44px rgba(30, 35, 41, 0.58);
+}
+
+.hmx__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.hmx__media img {
+  object-fit: cover;
+  /* Both heroes are wide crops with Dr Mehta right of centre, so the frame is
+     pulled across to keep him in it at this much narrower aspect. */
+  object-position: var(--focus, 50%) center;
+  transform: scale(1.02);
+  transition: transform 0.6s var(--ease);
+}
+
+.hmx__card:hover .hmx__media img {
+  transform: scale(1.06);
+}
+
+/* The plate number, over the photograph in the corner the subject is not in. */
+.hmx__n {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 10px 16px;
+  background: var(--rust);
+  color: #fff;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.hmx__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(24px, 2.6vw, 36px);
+}
+
+.hmx__path {
+  font-family: var(--font-mono), monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--rust);
+}
+
+.hmx__title {
+  margin-top: 12px;
+}
+
+.hmx__copy {
+  margin-top: 14px;
+  font-size: 15.5px;
+  line-height: 1.68;
+  color: var(--ink-70);
+  max-width: 44ch;
+}
+
+.hmx__tags {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.hmx__tags li {
+  padding: 6px 13px;
+  border: 1px solid rgba(30, 35, 41, 0.14);
+  border-radius: 999px;
+  font-size: 12.5px;
+  color: var(--ink-70);
+  background: var(--paper);
+}
+
+/* Pushed to the bottom edge so both cards' links sit on one line however
+   long the copy above them runs. */
+.hmx__go {
+  margin-top: auto;
+  padding-top: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--rust);
+}
+
+.hmx__go svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.hmx__card:hover .hmx__go svg {
+  transform: translateX(4px);
+}
+
+.hmx__note {
+  margin-top: clamp(34px, 4vw, 54px);
+  font-size: 13.5px;
+  color: var(--ink-45);
+  max-width: 62ch;
+}
+
+@media (max-width: 860px) {
+  .hmx__list {
+    grid-template-columns: 1fr;
+  }
+
+  .hmx__h1 {
+    max-width: none;
+  }
+}

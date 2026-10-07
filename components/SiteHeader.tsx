@@ -61,7 +61,12 @@ export default function SiteHeader({
   }, [open]);
 
   return (
-    <header className="hdr" data-stuck={stuck} data-open={open}>
+    <header
+      className="hdr"
+      data-stuck={stuck}
+      data-open={open}
+      data-minimal={minimal}
+    >
       <div className="shell hdr__in">
         <a
           className="hdr__logo"
