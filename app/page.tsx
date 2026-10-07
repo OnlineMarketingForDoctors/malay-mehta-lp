@@ -58,24 +58,22 @@ export default function Page() {
         <div className="shell">
           <header className="hmx__head">
             <span className="tag" data-reveal>
-              Landing pages
+              {site.name}
             </span>
             <h1
               className="h1 hmx__h1"
               data-reveal
               style={{ "--d": "80ms" } as React.CSSProperties}
             >
-              Two pages,
-              <br />
-              <span className="em">two patients.</span>
+              Landing <span className="em">pages.</span>
             </h1>
             <p
               className="lede hmx__lede"
               data-reveal
               style={{ "--d": "140ms" } as React.CSSProperties}
             >
-              The paid-traffic landing pages for {site.name}, both led by{" "}
-              {site.doctor} in Vile Parle West, Mumbai.
+              The clinic&rsquo;s paid-traffic pages, both led by {site.doctor}{" "}
+              in Vile Parle West, Mumbai.
             </p>
           </header>
 
